@@ -32,7 +32,7 @@
     flex-direction: row-reverse;
     gap: 15px;
 }
-.dps-image img {
+.cstm_cart_upsell-wrapper .dps-image img {
     max-height: 85px;
     min-height: 85px;
     max-width: 85px;

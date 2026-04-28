@@ -1,369 +1,414 @@
- <script
-  src="{{ 'product-recommendations.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
- <style>
+<style>
   #section-{{ section.id }} {
-  padding-top: {{ section.settings.padding_top_desktop }}px;
-  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
-  background: {{ section.settings.bg_color }};
-}
-.Testimonial-csp-mobs {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    background: {{ section.settings.bg_color }};
+  }
+
+  /* ── Header ── */
+  .testi-header-{{ section.id }} {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 38px;
-}
-.Testimonial-live-heading {
+    margin-bottom: 36px;
+  }
+  .testi-heading-{{ section.id }} {
     margin: 0;
-    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-family: 'FONTSPRING DEMO - Gibson Book', sans-serif;
     font-weight: 300;
-    font-style: Regular;
     font-size: 60px;
-    leading-trim: NONE;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
+    line-height: 1;
+    letter-spacing: 0;
     text-transform: uppercase;
-    color: #000000;
-}
-.cs_testi_block_content{
-    padding: 20px;
-}
-.Testimonial-cs_coll_tab_sider-button {
+    color: #221919;
+  }
+
+  /* ── Nav buttons ── */
+  .testi-nav-{{ section.id }} {
     display: flex;
     flex-direction: row-reverse;
-    gap: 21px;
-}
-.Testimonial-cs_coll_tab_sider-button {
+    align-items: center;
+    gap: 12px;
+  }
+  .testi-btn-next-{{ section.id }},
+  .testi-btn-prev-{{ section.id }} {
     cursor: pointer;
-}
-.Testimonial-cs_coll_tab_sider-button_prev {
-    transform: rotate(180deg);
-}
-.cs_testi_block_img_cart img{
-    display: block;
-    object-fit: cover;
-    width: 100%;
-    height: 296px;
-}
-.cs_testi_block_img_cart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    line-height: 0;
+    flex-shrink: 0;
+  }
+  .testi-btn-next-{{ section.id }} svg rect { fill: #221919; }
+  .testi-btn-prev-{{ section.id }} svg rect { fill: transparent; stroke: #22191947; stroke-width: 1; }
+  .testi-btn-prev-{{ section.id }} svg path { stroke: #221919; }
+
+  /* ── Swiper wrapper ── */
+  .testi-swiper-{{ section.id }} { overflow: hidden; }
+
+  /* ── Card ── */
+  .testi-card-{{ section.id }} {
+    background: #ffffff;
+    border: 1px solid rgba(34, 25, 25, 0.08);
+    border-radius: 24px;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  /* ── Card image ── */
+  .testi-img-wrap-{{ section.id }} {
     position: relative;
-}
-.cs_testi_pro_cart {
+    width: 100%;
+    height: 310px;
+    overflow: hidden;
+  }
+  .testi-img-wrap-{{ section.id }} > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Product overlay ── */
+  .testi-overlay-{{ section.id }} {
     position: absolute;
-    left: 0;
-    /* transform: translateX(-50%); */
     bottom: 12px;
-    background: #FFFFFF;
+    left: 12px;
+    right: 12px;
+    background: #ffffff;
     border-radius: 12px;
     padding: 12px;
     display: flex;
     align-items: center;
-    gap: 14px;
-    width: 94%;
-    /* margin: 0 20px; */
+    gap: 12px;
     box-sizing: border-box;
-    right: 0;
-    margin: 0 auto;
-}
-.cs_stesti_pro_img img{
-    display: block;
+  }
+  .testi-prod-img-{{ section.id }} img {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    min-height: 62px;
+    border-radius: 8px;
     object-fit: cover;
-    width: 70px;
-    height: 70px;
-    min-width: 70px;
-    min-height: 70px;
-    border-radius: 10px;
-}
-.cs_stesti_pro_title_button{
-    display: flex;
-    {% comment %} align-items: center; {% endcomment %}
-    justify-content: space-between;
-    width: 100%;
-}
-.cs_stesti_cs_pro_title{
-    margin: 0;
-    font-family: Montserrat;
+    display: block;
+  }
+  .testi-prod-info-{{ section.id }} {
+    flex: 1;
+    min-width: 0;
+  }
+  .testi-prod-name-{{ section.id }} {
+    margin: 0 0 3px;
+    font-family: Montserrat, sans-serif;
     font-weight: 600;
-    font-style: SemiBold;
-    font-size: 17px;
-    leading-trim: NONE;
-    line-height: 16px;
-    letter-spacing: 0%;
+    font-size: 15px;
+    line-height: 1.2;
     text-transform: uppercase;
     color: #221919;
-}
-.cs_stesti_cs_text{
-    margin: 0;
-    font-family: Montserrat;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .testi-prod-type-{{ section.id }} {
+    margin: 0 0 4px;
+    font-family: Montserrat, sans-serif;
     font-weight: 400;
-    font-style: Regular;
+    font-size: 13px;
+    line-height: 1.2;
+    color: rgba(34, 25, 25, 0.8);
+  }
+  .testi-prod-price-{{ section.id }} {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
     font-size: 14px;
-    leading-trim: NONE;
-    line-height: 16px;
-    letter-spacing: 0%;
-    padding: 4px 0;
-    color: #221919CC;   
-}
-.cs_stesti_pro_price{
-    margin: 0;
-    font-family: Montserrat;
-    font-weight: 600;
-    font-style: SemiBold;
-    font-size: 17px;
-    leading-trim: NONE;
-    line-height: 15px;
-    letter-spacing: 0%;
+    line-height: 1.2;
     text-transform: uppercase;
     color: #221919;
-}
-.cs_testi_pro_block_cart_main{
-    background: #FFFFFF;
-    border: 1px solid #22191914
-}
-.cs_testi_block_richtext p{
-    margin: 0;
-    font-family: Montserrat;
-    font-weight: 400;
-    font-style: Regular;
-    font-size: 16px;
-    leading-trim: NONE;
-    line-height: 26px;
-    letter-spacing: 0%;
-    color: #221919;
-    min-height: 260px;
-}
-.cs_testi_block_name_icon{
+  }
+  /* Quick-add within testimonial overlay — always visible, circular dark icon */
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add {
+    position: static;
+    inset: unset;
+    z-index: unset;
+    pointer-events: auto;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__product-form-component {
+    height: auto;
     display: flex;
     align-items: center;
-    justify-content: space-Between;
-    margin-top: 8px;
-}
-.cs_testi_name{
-    margin 0:
-    font-family: Montserrat;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__product-form-component .shopify-product-form {
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__button {
+    position: static !important;
+    right: unset !important;
+    bottom: unset !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    border-radius: 50% !important;
+    background: #221919 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+    flex-shrink: 0;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__button:hover {
+    opacity: 0.75 !important;
+    scale: 1;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__button .add-to-cart-text__content {
+    display: none !important;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__button .add-to-cart-icon {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__button svg {
+    width: 14px !important;
+    height: 14px !important;
+    display: block;
+  }
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .quick-add__button svg path {
+    fill: white !important;
+  }
+  /* Hide the inline "add to bag" text in the choose button */
+  #section-{{ section.id }} .testi-prod-btn-{{ section.id }} .cs-add-to-cart-icon_main > span {
+    display: none !important;
+  }
+
+  /* ── Quick-add popup: brand fonts + full-width button ── */
+  #quick-add-dialog .quick-add-modal {
+    font-family: Montserrat, sans-serif;
+  }
+  #quick-add-dialog .view-product-title a,
+  #quick-add-dialog .product-header a {
+    font-family: 'FONTSPRING DEMO - Gibson Book', sans-serif !important;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+  #quick-add-dialog product-price,
+  #quick-add-dialog product-price *,
+  #quick-add-dialog variant-picker,
+  #quick-add-dialog variant-picker * {
+    font-family: Montserrat, sans-serif !important;
+  }
+  #quick-add-dialog .buy-buttons-block button[type="submit"],
+  #quick-add-dialog .buy-buttons-block .button {
+    width: 100%;
+    background: #221919 !important;
+    color: #ffffff !important;
+    font-family: Montserrat, sans-serif !important;
     font-weight: 600;
-    font-style: SemiBold;
-    font-size: 16px;
-    leading-trim: NONE;
-    line-height: 18px;
-    letter-spacing: 0%;
-    color: #221919;
-}
-.cs_testi_name_icon_text{
-    margin: 0;
-    font-family: Montserrat;
-font-weight: 400;
-font-style: Regular;
-font-size: 14px;
-leading-trim: NONE;
-line-height: 100%;
-letter-spacing: 0%;
-text-align: center;
-color: #221919;
-padding: 6px;
-border: 1px solid #22191947;
-display: flex;
-align-items: center;
-gap: 8px;
-}
-/* Mobile padding */
-.cs_stesti_pro_button .quick-add__button{
-opacity: 1 !important;
-}
-@media (max-width: 767px) {
-  #section-{{ section.id }} {
-    padding-top: {{ section.settings.padding_top_mobile }}px !important;
-    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
-  }
-  .Testimonial-live-heading {
-    font-size: 40px;
-  }
-  .Testimonial-cs_coll_tab_sider-button{
-    display: none;
-  }
-  .Testimonial-csp-mobs{
-      margin-bottom: 20px;
-    }
-    .cs_stesti_cs_text{
-      display: none;
-    }
-    .cs_stesti_pro_price{
-      display: none;
-    }
-    .cs_testi_block_richtext p {
     font-size: 14px;
-    line-height: 24px;
-        min-height: 217px;
-}
-.cs_testi_block_content {
-    padding: 16px;
-}
-.cs_testi_pro_cart{
-  padding: 10px;
-}
-.cs_stesti_cs_pro_title {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 0;
+    border: none;
+  }
+  #quick-add-dialog .buy-buttons-block button[type="submit"]:hover,
+  #quick-add-dialog .buy-buttons-block .button:hover {
+    opacity: 0.85;
+  }
+
+  /* ── Card body ── */
+  .testi-body-{{ section.id }} {
+    padding: 20px;
+  }
+  .testi-review-{{ section.id }} p {
+    margin: 0 0 20px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
     font-size: 15px;
-}
-.cs_stesti_pro_img img {
-    width: 62px;
-    height: 53px;
-    min-width: 62px;
-    min-height: 53px;
-}
-}</style>
-<section
-  class="Testimonial-shop-collections Testimonial-cs-featured-collection"
-  id="section-{{ section.id }}"
->
+    line-height: 26px;
+    color: #221919;
+    min-height: 234px;
+  }
+  .testi-footer-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+  .testi-name-{{ section.id }} {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #221919;
+  }
+  .testi-handle-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #221919;
+    padding: 5px 8px;
+    border: 1px solid rgba(34, 25, 25, 0.28);
+    line-height: 1;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 767px) {
+    #section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px !important;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+    }
+    .testi-heading-{{ section.id }} { font-size: 36px; }
+    .testi-nav-{{ section.id }} { display: none; }
+    .testi-header-{{ section.id }} { margin-bottom: 20px; }
+    .testi-img-wrap-{{ section.id }} { height: 260px; }
+    .testi-review-{{ section.id }} p {
+      font-size: 13px;
+      line-height: 22px;
+      min-height: auto;
+    }
+    .testi-body-{{ section.id }} { padding: 14px; }
+    .testi-prod-type-{{ section.id }},
+    .testi-prod-price-{{ section.id }} { display: none; }
+    .testi-prod-img-{{ section.id }} img {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      min-height: 52px;
+    }
+  }
+</style>
+
+<section id="section-{{ section.id }}">
   <div class="page-width">
 
-    <div class="Testimonial-csp-mobs">
-    <!-- Heading -->
-    <div class="Testimonial-cs_coll_tab_heading_tab_button animate-item">
-    <h2 class="Testimonial-live-heading">{{ section.settings.headings }}</h2>
-    </div>
-    <div class="Testimonial-cs_coll_tab_sider-button animate-item">
-        <span class="Testimonial-cs_coll_tab_sider-button_next">{% render 'cs_tab_slider_button' %}</span>
-         <span class="Testimonial-cs_coll_tab_sider-button_prev">{% render 'cs_tab_slider_button' %}</span>
-    </div>
-    </div>
-    <!-- Collections Wrapper -->
-   <div class="Testimonial-collections-wrapper animate-item">
-  
-    <div id="collection-{{ section.id }}">
-      <div class="swiper collection-swiper-{{ section.id }} Testimonial-mb-5">
-        <div class="swiper-wrapper">
-
-         {%- for block in section.blocks -%}
-    <div class="swiper-slide cs_testi_pro_block_cart_main">
-        <div class="cs_testi_pro_block_cart">
-            <div class="cs_testi_block_img_cart">
-            <img src="{{ block.settings.image | image_url }}" width="100%" height="auto" loading="lazy">
-        <div class="cs_testi_pro_cart">
-           {% assign product = all_products[block.settings.cs_product] %}
-
-{% if product %}
-  <div class="cs_stesti_pro_img">
-    <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-  </div>
-
-  <div class="cs_stesti_pro_title_button">
-    <div class="cs_stesti_pro_title">
-      <h3 class="cs_stesti_cs_pro_title">
-  {{ product.title | split: ' ' | slice: 0, 2 | join: ' ' }}
-</h3>
-      <h4 class="cs_stesti_cs_text">Classic jersey</h4>
-      <p class="cs_stesti_pro_price">{{ product.price | money }}</p>
-    </div>
-
-    <div class="cs_stesti_pro_button">
-       
-           {% render 'quick-add',
-  product: product,
-  section_id: section.id,   
-  block: block,
-  color_scheme: section.settings.color_scheme
-%}
-      {% comment %} {% render 'cs_stesti_buy_button', product: product %} {% endcomment %}
-    </div>
-  </div>
-{% endif %}
-        </div>
-    </div>
-    <div class="cs_testi_block_content">
-        <div class="cs_testi_block_richtext">{{ block.settings.rich-text }}</div>
-        <div class="cs_testi_block_name_icon">
-            <span class="cs_testi_name">{{ block.settings.name }}</span>
-            <span class="cs_testi_name_icon_text">{{ block.settings.icon-text }} {% render 'cs_testi_icon' %}</span>
-        </div>
-    </div>
-    </div>
-    </div>
-{% endfor %}
-        </div>
+    <!-- Header -->
+    <div class="testi-header-{{ section.id }}">
+      <h2 class="testi-heading-{{ section.id }} animate-item">{{ section.settings.headings }}</h2>
+      <div class="testi-nav-{{ section.id }} animate-item">
+        <span class="testi-btn-next-{{ section.id }}">
+          {% render 'cs_tab_slider_button' %}
+        </span>
+        <span class="testi-btn-prev-{{ section.id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="54" height="51" viewBox="0 0 54 51" fill="none">
+            <rect width="54" height="51" rx="25.5"/>
+            <path d="M40.4872 24.8846H12.7948" stroke="white" stroke-width="0.820514" stroke-linecap="round"/>
+            <path d="M25.205 13.5C23.5936 19.3878 18.5677 23.7068 12.5045 24.4142L10.2307 24.6795L12.738 25.3064C18.7917 26.8198 23.5578 31.4814 25.205 37.5" stroke="white" stroke-width="0.820514" stroke-linecap="round"/>
+          </svg>
+        </span>
       </div>
     </div>
-</div>
+
+    <!-- Slider -->
+    <div class="swiper testi-swiper-{{ section.id }} animate-item">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          {%- assign product = all_products[block.settings.cs_product] -%}
+          <div class="swiper-slide">
+            <div class="testi-card-{{ section.id }}">
+
+              <!-- Image + Overlay -->
+              <div class="testi-img-wrap-{{ section.id }}">
+                <img
+                  src="{{ block.settings.image | image_url: width: 600 }}"
+                  alt="Customer review photo"
+                  width="600"
+                  height="310"
+                  loading="lazy"
+                >
+                {%- if product -%}
+                  <div class="testi-overlay-{{ section.id }}">
+                    <div class="testi-prod-img-{{ section.id }}">
+                      <img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.title }}">
+                    </div>
+                    <div class="testi-prod-info-{{ section.id }}">
+                      <p class="testi-prod-name-{{ section.id }}">{{ product.title | split: ' ' | slice: 0, 2 | join: ' ' }}</p>
+                      <p class="testi-prod-type-{{ section.id }}">Classic jersey</p>
+                      <p class="testi-prod-price-{{ section.id }}">{{ product.price | money }}</p>
+                    </div>
+                    <div class="testi-prod-btn-{{ section.id }}">
+                      <product-card data-no-navigation style="display:contents">
+                        <a href="{{ product.url }}" ref="productCardLink" style="display:none;" aria-hidden="true" tabindex="-1"></a>
+                        {% render 'quick-add', product: product, section_id: section.id, block: block %}
+                      </product-card>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <!-- Review body -->
+              <div class="testi-body-{{ section.id }}">
+                <div class="testi-review-{{ section.id }}">{{ block.settings.rich-text }}</div>
+                <div class="testi-footer-{{ section.id }}">
+                  <span class="testi-name-{{ section.id }}">{{ block.settings.name }}</span>
+                  <span class="testi-handle-{{ section.id }}">{{ block.settings['icon-text'] }} {% render 'cs_testi_icon' %}</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
   </div>
 </section>
+
 {% schema %}
 {
   "name": "Testimonial",
   "settings": [
-    { "type": "text", "id": "headings", "label": "Section Heading",},
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color"
-    },
-    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 80 },
-    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 80 },
+    { "type": "text", "id": "headings", "label": "Section Heading" },
+    { "type": "color", "id": "bg_color", "label": "Background Color" },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 60 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 60 },
     { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
-    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 }
   ],
   "blocks": [
     {
       "type": "add",
-      "name": "add",
+      "name": "Testimonial Card",
       "settings": [
-         {
-        "type": "product",
-        "id": "cs_product",
-        "label": "Select Product"
-        },
-        {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-        },
-        {
-            "type": "richtext",
-            "id": "rich-text",
-            "label": "Rich Text"
-        },
-        {
-            "type": "text",
-            "id": "name",
-            "label": "Name"
-        },
-        {
-            "type": "text",
-            "id": "icon-text",
-            "label": "Iocn Text"
-        }
+        { "type": "product", "id": "cs_product", "label": "Select Product" },
+        { "type": "image_picker", "id": "image", "label": "Customer Photo" },
+        { "type": "richtext", "id": "rich-text", "label": "Review Text" },
+        { "type": "text", "id": "name", "label": "Reviewer Name" },
+        { "type": "text", "id": "icon-text", "label": "Social Handle (e.g. @rayan)" }
       ]
     }
-    ],
+  ],
   "presets": [
     { "name": "Testimonial", "category": "Custom" }
   ]
 }
 {% endschema %}
-{% comment %} ---tab-script {% endcomment %}
+
 <script>
-  // Initialize Swipers for each block
-  
-    new Swiper(".collection-swiper-{{ section.id }}", {
-      slidesPerView: 4,
-      spaceBetween: 16,
-      speed: 500,
-      pagination: {
-        el: ".cs-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".Testimonial-cs_coll_tab_sider-button_next",
-        prevEl: ".Testimonial-cs_coll_tab_sider-button_prev",
-      },
-      breakpoints: {
-        320: { slidesPerView: 1.2, spaceBetween: 16 },
-        768: { slidesPerView: 2.2, spaceBetween: 16 },
-        1024: { slidesPerView: 4, spaceBetween: 16 },
-      },
-    });
- 
+  new Swiper(".testi-swiper-{{ section.id }}", {
+    slidesPerView: 4,
+    spaceBetween: 16,
+    speed: 500,
+    navigation: {
+      nextEl: ".testi-btn-next-{{ section.id }}",
+      prevEl: ".testi-btn-prev-{{ section.id }}",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1.15, spaceBetween: 12 },
+      768: { slidesPerView: 2.2, spaceBetween: 16 },
+      1024: { slidesPerView: 4, spaceBetween: 16 },
+    },
+  });
 </script>
-{% comment %} ------------------add-to-cart----------------- {% endcomment %}

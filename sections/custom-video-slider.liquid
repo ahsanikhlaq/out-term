@@ -248,7 +248,7 @@ opacity: 0.2;
     <div id="vs-container" class="swiper-container">
       <div class="swiper-wrapper cstm_video-wrapper" >
         {% for block in section.blocks %}
-            {% assign video_poster = block.settings.video | img_url: ""   %}
+            {% assign video_poster = block.settings.video.preview_image | image_url: width: 800 %}
           <div class="swiper-slide vs-slide">
             <div class="vs-video-card">
               {% if block.settings.abs_img != blank or block.settings.abs_text != blank %}
@@ -312,8 +312,7 @@ opacity: 0.2;
       slidesPerView: 4,
     },
   },
-}); 
->
+});
     setTimeout(() => {
       swiper.update();
     }, 500);

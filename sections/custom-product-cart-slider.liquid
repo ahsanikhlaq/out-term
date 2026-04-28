@@ -501,7 +501,7 @@ text-transform: capitalize;
 
                   <a class="arr-dps-image" href="{{ product.url }}">
                     <img
-                      src="{{ product.featured_image | img_url: '480x480' }}"
+                      src="{{ product.featured_image | image_url: width: 480 }}"
                       alt="{{ product.title }}"
                     >
                     <div class="arr-cs_coll_tab_pro_size_varint">
