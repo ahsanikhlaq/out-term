@@ -1,0 +1,55 @@
+<div class="product-tabs" id="product-tabs-{{ section.id }}">
+  <ul class="tab-buttons">
+    {% for block in section.blocks %}
+      <li data-tab="{{ block.id }}" class="{% if forloop.first %}active{% endif %}">
+        {{ block.settings.tab_title }}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% for block in section.blocks %}
+    <div class="tab-content {% if forloop.first %}active{% endif %}" id="{{ block.id }}">
+      {{ block.settings.tab_content }}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Product Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Product Information"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content",
+          "label": "Tab Content",
+          "default": "<p>Add your content here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Product Tabs",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

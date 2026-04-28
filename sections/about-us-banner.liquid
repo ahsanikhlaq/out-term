@@ -1,0 +1,225 @@
+<style>
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+    letter-spacing: 0px;
+}
+.about_banner_sec_main_img_des{
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+.about_banner_sec_main_img_mbl{
+    display: none;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+.about_banner_content_sub_heaing{
+       margin: 0;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #fff;
+    width: fit-content;
+    padding-bottom: 14px;
+}
+.about_banner_content_buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+.about_banner_content_buttons_text1{
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 50px;
+    leading-trim: NONE;
+    line-height: 50px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #221919;
+    padding: 16px 49px;
+    background: #fff;
+    width: fit-content;
+}
+.about_banner_content_buttons_text2{
+    margin: 0;
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 500;
+    font-style: Regular;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 22px 43px;
+    background: #221919;
+}
+.about_banner_sec_main{
+    position: relative;
+}
+.about_banner_sec_main_content{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+    max-width: 1240px;
+    margin: 0 auto;
+    z-index: 1;
+        width: 100%;
+}
+/* Mobile */
+@media (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.mbl_padding_top }}px;
+        padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    }
+    .about_banner_sec_main_img_des{
+    display: none;
+}
+.about_banner_sec_main_img_mbl{
+    display: block;
+}
+.about_banner_content_buttons{
+flex-direction: column;
+    gap: 16px;
+}
+.about_banner_content_buttons_text1 {
+    text-align: center;
+    font-size: 30px;
+    line-height: 35px;
+    padding: 7px 49px;
+    width: 100%;
+}
+.about_banner_content_buttons_text2{
+    width: 100%;
+}
+.about_banner_sec_main_content{
+    left: 0;
+    right: 0;
+    transform: unset;
+    box-sizing: border-box;
+    width: 89%;
+}
+}
+</style>
+
+<section class="section-{{ section.id }}-padding"> 
+  <div class="about_banner_sec_main">
+    <div class="about_banner_sec_main_img">
+        <img class="about_banner_sec_main_img_des" src="{{ section.settings.des-img | image_url }}" width="100%" height="auto" loading="egar"/>
+         <img class="about_banner_sec_main_img_mbl" src="{{ section.settings.mbl-img | image_url }}" width="100%" height="auto" loading="egar"/>
+    </div>
+    <div class="about_banner_sec_main_content">
+        <h4 class="about_banner_content_sub_heaing">{{ section.settings.sub-heading }}</h4>
+         <div class="about_banner_content_buttons">
+            <a class="about_banner_content_buttons_text1" href="{{ section.settings.men-button-url1 }}">{{ section.settings.men-button-text1 }}</a>
+            <a class="about_banner_content_buttons_text2" href="{{ section.settings.Explore-products-url }}">{{ section.settings.Explore-products-text }}</a>
+         </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "About Us Banner",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "des-img",
+        "label": "Desktop Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "mbl-img",
+        "label": "Mobile Image"
+    },
+    {
+        "type": "text",
+        "id": "sub-heading",
+        "label": "Sub Heading"
+    },
+    {
+        "type": "text",
+        "id": "men-button-text1",
+        "label": "Our terms"
+    },
+    {
+        "type": "url",
+        "id": "men-button-url1",
+        "label": "Our terms Url"
+    },
+    {
+        "type": "text",
+        "id": "Explore-products-text",
+        "label": "Explore products Text"
+    },
+    {
+        "type": "url",
+        "id": "Explore-products-url",
+        "label": "Explore products Url"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Top Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Bottom Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us Banner"
+    }
+  ]
+}
+{% endschema %}
+

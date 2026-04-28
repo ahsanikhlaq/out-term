@@ -1,0 +1,375 @@
+<!doctype html>
+<html
+  {% if request.design_mode %}
+    class="shopify-design-mode"
+  {% endif %}
+  lang="{{ request.locale.iso_code }}"
+>
+  <head>
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+    {%- endif -%}
+{% render 'custom-font-family' %}
+    {% # theme-check-disable RemoteAsset %}
+    {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
+    {% if settings.transition_to_main_product or settings.page_transition_enabled %}
+      <link
+        rel="expect"
+        href="#MainContent"
+        blocking="render"
+        id="view-transition-render-blocker"
+      >
+    {% endif %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@12/swiper-bundle.min.css" />
+    {%- render 'meta-tags' -%}
+    {%- render 'stylesheets' -%}
+    {%- render 'fonts' -%}
+    {%- render 'scripts' -%}
+    {%- render 'theme-styles-variables' -%}
+    {%- render 'color-schemes' -%}
+
+    {% if request.design_mode %}
+      {%- render 'theme-editor' -%}
+    {% endif %}
+
+    {{ content_for_header }}
+    <script src="https://unpkg.com/swiper@12/swiper-bundle.min.js"></script>
+    {% # theme-check-enable RemoteAsset %}
+  </head>
+
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
+    <div id="header-group">
+      {% sections 'header-group' %}
+    </div>
+
+    <script>
+      // Inline header height and menu style calculations to prevent layout shift
+      // Note: Updates in calculateHeaderGroupHeight(), updateTransparentHeaderOffset() and setHeaderMenuStyle() utilities.js should be kept in sync with this function
+      (function setHeaderHeighCustomProperties() {
+        /*
+         * Header calculation functions for maintaining CSS variables
+         * Mimic calculateHeaderGroupHeight() in utilities.js
+         */
+        const header = document.querySelector('header-component');
+        const headerGroup = document.querySelector('#header-group');
+        const hasHeaderSection = headerGroup?.querySelector('.header-section');
+
+        if (!header || !headerGroup) return;
+
+        const headerTopRow = header.querySelector('.header__row--top');
+        const headerHeight = header.offsetHeight;
+
+        // Calculate the total height of the header group
+        let headerGroupHeight = 0;
+        const children = headerGroup.children;
+        for (let i = 0; i < children.length; i++) {
+          const element = children[i];
+          if (element === header || !(element instanceof HTMLElement)) continue;
+          headerGroupHeight += element.offsetHeight;
+        }
+
+        // Check for transparent header special case
+        if (header.hasAttribute('transparent') && header.parentElement?.nextElementSibling) {
+          headerGroupHeight += headerHeight;
+        }
+
+        // Set CSS variables
+        document.body.style.setProperty('--header-height', `${headerHeight}px`);
+        document.body.style.setProperty('--header-group-height', `${headerGroupHeight}px`);
+
+        if (headerTopRow) {
+          window.requestAnimationFrame(function () {
+            document.body.style.setProperty('--top-row-height', `${headerTopRow.offsetHeight}px`);
+          });
+        }
+
+        /**
+         * Updates CSS custom properties for transparent header offset calculation
+         * Mimic updateTransparentHeaderOffset() in utilities.js
+         */
+
+        if (!hasHeaderSection || !header?.hasAttribute('transparent')) {
+          document.body.style.setProperty('--transparent-header-offset-boolean', '0');
+          return;
+        }
+
+        const hasImmediateSection = hasHeaderSection.nextElementSibling?.classList.contains('shopify-section');
+
+        const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
+        document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
+      })();
+
+      (function setHeaderMenuStyle() {
+        const headerComponent = document.querySelector('#header-component');
+        if (headerComponent) {
+          const isTouchDevice = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+          const overflowList = headerComponent?.querySelector('overflow-list');
+          const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
+          headerComponent.dataset.menuStyle = isTouchDevice || hasReachedMinimum ? 'drawer' : 'menu';
+        }
+      })();
+    </script>
+
+    <main
+      id="MainContent"
+      class="{% if template == 'index' %}content-for-layout{% endif %}"
+      role="main"
+      data-page-transition-enabled="{{ settings.page_transition_enabled }}"
+      data-product-transition="{{ settings.transition_to_main_product }}"
+      data-template="{{ template }}"
+    >
+      {{ content_for_layout }}
+    </main>
+
+    <footer>
+      {% sections 'footer-group' %}
+    </footer>
+
+    {% render 'search-modal' %}
+
+    {% comment %} {% if settings.quick_add or settings.mobile_quick_add %} {% endcomment %}
+      {% render 'quick-add-modal' %}
+    {% comment %} {% endif %} {% endcomment %}
+     {% comment %} -----------------------------------------------------------jjjjjjjjjjjjjjjj {% endcomment %}
+      {% comment %} ---tab-script {% endcomment %}
+
+{% comment %} ------------------add-to-cart----------------- {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // 1. Helper: Sync size + color
+  function syncHiddenInputs(card) {
+    const sizeInput = card.querySelector('.size-badge_input:checked');
+    const colorInput = card.querySelector('.color-badge_input:checked');
+    const hiddenSize = card.querySelector('.cs_coll_tab_slect_size');
+    const hiddenColor = card.querySelector('.cs_coll_tab_slect_color');
+    if (hiddenSize) hiddenSize.value = sizeInput ? sizeInput.value : '';
+    if (hiddenColor) hiddenColor.value = colorInput ? colorInput.getAttribute('variant-id') : '';
+  }
+
+  document.querySelectorAll('.swiper-slide.product-card').forEach(card => syncHiddenInputs(card));
+
+  // 2. Selection changes
+  document.querySelectorAll('.size-badge_input, .color-badge_input').forEach(input => {
+    input.addEventListener('change', function () {
+      const card = this.closest('.swiper-slide.product-card');
+      if (card) {
+        if (this.classList.contains('color-badge_input')) {
+          const colorNameSpan = card.querySelector('.selected-color-name');
+          if (colorNameSpan) colorNameSpan.textContent = this.value;
+        }
+        syncHiddenInputs(card);
+      }
+    });
+  });
+
+  // 3. Correct section ID nikalo page se
+  function getCartSectionId() {
+    const cartItems = document.querySelector('cart-items-component[data-section-id]');
+    if (cartItems) return cartItems.getAttribute('data-section-id');
+    return 'sections--26355253805372__header_section'; // fallback
+  }
+
+  // 4. Add to Cart Logic
+  document.querySelectorAll('.cs_coll_tab_cart_buy_button').forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const btn = this;
+      const card = btn.closest('.swiper-slide.product-card');
+      if (!card) return;
+
+      const variantId = card.querySelector('.cs_coll_tab_slect_size')?.value ||
+                        card.querySelector('.cs_coll_tab_slect_color')?.value;
+
+      if (!variantId) {
+        alert('Please select options first!');
+        return;
+      }
+
+      btn.disabled = true;
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = 'Adding...';
+
+      const sectionId = getCartSectionId();
+
+      const formData = {
+        id: variantId,
+        quantity: 1,
+        sections: sectionId
+      };
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(parsedState => {
+        if (parsedState.status === 422) throw new Error(parsedState.description);
+
+        const cartDrawer = document.querySelector('cart-drawer-component');
+        const sectionHTML = parsedState.sections?.[sectionId];
+
+        if (cartDrawer && sectionHTML) {
+          const parsed = new DOMParser().parseFromString(sectionHTML, 'text/html');
+
+          // cart-items-component update karo
+          const newCartItems = parsed.querySelector('cart-items-component');
+          const currentCartItems = cartDrawer.querySelector('cart-items-component');
+
+          if (currentCartItems && newCartItems) {
+            currentCartItems.innerHTML = newCartItems.innerHTML;
+          } else {
+            const newInner = parsed.querySelector('[data-hydration-key="cart-drawer-inner"]') ||
+                             parsed.querySelector('.cart-drawer__inner');
+            const currentInner = cartDrawer.querySelector('[data-hydration-key="cart-drawer-inner"]') ||
+                                 cartDrawer.querySelector('.cart-drawer__inner');
+            if (currentInner && newInner) {
+              currentInner.innerHTML = newInner.innerHTML;
+            }
+          }
+
+          // Empty class hata do
+          const dialog = cartDrawer.querySelector('dialog');
+          if (dialog) {
+            dialog.classList.remove('cart-drawer--empty');
+          }
+        }
+
+        // Cart bubble update
+        const cartBubbleCount = document.querySelector('[ref="cartBubbleCount"], .cart-bubble__text-count');
+        if (cartBubbleCount && parsedState.items_count !== undefined) {
+          cartBubbleCount.textContent = parsedState.items_count;
+          cartBubbleCount.classList.remove('hidden');
+          const bubble = document.querySelector('[ref="cartBubble"], .cart-bubble');
+          if (bubble) bubble.classList.remove('visually-hidden');
+        }
+
+        // 5. Drawer open karo
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const drawerEl = document.querySelector('cart-drawer-component');
+            if (drawerEl) {
+
+              // Pehle theme ka trigger button try karo
+              const cartTriggerBtn = drawerEl.querySelector('[data-testid="cart-drawer-trigger"], [on\\:click="/open"]');
+              if (cartTriggerBtn) {
+                cartTriggerBtn.click();
+              } else {
+                // Fallback: dialog force open
+                const dialog = drawerEl.querySelector('dialog[ref="dialog"]');
+                if (dialog) {
+                  dialog.setAttribute('open', '');
+                  dialog.style.display = 'flex';
+                  dialog.style.visibility = 'visible';
+                  dialog.style.opacity = '1';
+                  dialog.style.transform = 'translateX(0)';
+                }
+                document.body.classList.add('overflow-hidden');
+              }
+            }
+
+            document.dispatchEvent(new CustomEvent('cart:updated', {
+              detail: { cart: parsedState }
+            }));
+          });
+        });
+
+      })
+      .catch(error => {
+        console.error('Cart Error:', error);
+        alert(error.message || 'Kuch masla hua, dobara try karo.');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+      });
+
+    });
+  });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const zoomButtons = document.querySelectorAll('.cs_coll_cart_zoom_img');
+
+  zoomButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      // Button ke sabse kareeb jo product card hai uske andar wali image dhoondein
+      const productCard = this.closest('.product-card');
+      const imageWrapper = productCard.querySelector('.dps-image');
+      const img = imageWrapper.querySelector('img');
+
+      // Toggle Zoom class
+      imageWrapper.classList.toggle('is-zoomed');
+
+      // Optional: Mouse move par image follow kare (Sirf agar zoomed ho)
+      imageWrapper.addEventListener('mousemove', function(e) {
+        if (this.classList.contains('is-zoomed')) {
+          const rect = this.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          img.style.transformOrigin = `${x}% ${y}%`;
+        }
+      });
+
+      // Reset origin on mouse leave
+      imageWrapper.addEventListener('mouseleave', function() {
+        img.style.transformOrigin = 'center center';
+      });
+    });
+  });
+});
+</script>
+  </body>
+  <script>
+  (function () {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  function observeItems() {
+    document.querySelectorAll('.animate-item').forEach((el) => {
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeItems);
+  } else {
+    observeItems();
+  }
+})();
+</script>
+</html>

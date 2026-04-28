@@ -1,0 +1,414 @@
+{% comment %}
+  Section: Fits That Miss Out
+  - Left side: Schema settings se text/button aata hai
+  - Right side: Blocks se products/images ka slider
+  - Bottom: SwiperJS progress bar
+{% endcomment %}
+
+
+<style>
+  .ftmo-section {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+     background-color: {{ section.settings.bg_color }};
+  }
+
+  .ftmo-wrapper {
+        display: grid;
+    grid-template-columns: 33% auto;
+    align-items: center;
+    gap: 60px;
+    margin: 0 auto;
+  }
+
+  /* ── LEFT SIDE ── */
+ .ftmo-left {
+    max-width: 402px;
+}
+
+  .ftmo-eyebrow {
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #221919;
+    margin: 0px;
+  }
+
+  .ftmo-heading {
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 60px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #221919;
+    margin: 0px;
+    padding: 20px 0;
+  }
+
+  .ftmo-subtext {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #221919CF;
+    margin: 0 0 28px 0;
+  }
+
+  .ftmo-btn {
+    display: inline-block;
+    padding: 17px 36px;
+    background: #221919;
+    color: #fff;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .ftmo-btn:hover {
+    background: #333;
+  }
+
+  /* ── RIGHT SIDE SLIDER ── */
+  .ftmo-right {
+    min-width: 0;
+    position: relative;
+  }
+
+  .ftmo-swiper {
+    overflow: hidden;
+  }
+
+  .ftmo-slide-img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #f2f2f2;
+    aspect-ratio: 3 / 4;
+  }
+
+  .ftmo-slide-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .ftmo-slide:hover .ftmo-slide-img-wrap img {
+    transform: scale(1.04);
+  }
+
+  .ftmo-slide-label {
+    margin-top: 12px;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 19px;
+    letter-spacing: 12%;
+    text-transform: uppercase;
+    color: #221919;
+  }
+
+  /* ── SWIPER PROGRESS BAR ── */
+  .ftmo-progress-wrap {
+    margin-top: 28px;
+    padding: 0 2px;
+  }
+
+  .swiper-pagination-progressbar {
+    position: relative !important;
+    width: 100% !important;
+    height: 4px !important;
+    background: #e0e0e0 !important;
+    border-radius: 42px;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: #111 !important;
+    border-radius: 42px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .ftmo-section {
+       padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .ftmo-wrapper {
+          grid-template-columns: 1fr;
+      gap:27px;
+    }
+.ftmo-heading {
+    font-size: 30px;
+    padding: 9px 0;
+}
+.ftmo-subtext {
+    font-size: 14px;
+    line-height: 23px;
+    margin: 0 0 18px 0;
+}
+.ftmo-btn{
+  width: 100%;
+}
+    .ftmo-left {
+      flex: none;
+      width: 100%;
+    }
+    .ftmo-slide-label {
+    font-size: 14px;
+    }
+    .ftmo-slide-img-wrap img {
+    min-height: 380px;
+    max-height: 380px;
+}
+#ftmo-{{ section.id }} .page-width{
+  padding-right: 0;
+}
+.ftmo-left{
+  padding-right: 16px;
+}
+.ftmo-slide-img-wrap{
+  aspect-ratio: unset;
+}
+.ftmo-progress-wrap {
+    margin-top: 20px;
+        width: 96%;
+    }
+  }
+</style>
+
+<section class="ftmo-section" id="ftmo-{{ section.id }}">
+<div class="page-width">
+  <div class="ftmo-wrapper animate-item">
+
+    {%- comment -%} ── LEFT: Schema settings se text ── {%- endcomment -%}
+    <div class="ftmo-left animate-item">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ftmo-eyebrow animate-item">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="ftmo-heading animate-item">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.subtext != blank -%}
+        <p class="ftmo-subtext animate-item">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a class="ftmo-btn animate-item" href="{{ section.settings.button_link }}">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── RIGHT: Blocks se slider ── {%- endcomment -%}
+    <div class="ftmo-right animate-item">
+      <div class="swiper ftmo-swiper" id="ftmo-swiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'slide_item' -%}
+              <div class="swiper-slide ftmo-slide" {{ block.shopify_attributes }}>
+                <div class="ftmo-slide-img-wrap">
+                  {%- if block.settings.image != blank -%}
+                    {{
+                      block.settings.image
+                      | image_url: width: 500
+                      | image_tag:
+                        loading: 'lazy',
+                        alt: block.settings.label
+                    }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+                {%- if block.settings.label != blank -%}
+                  <p class="ftmo-slide-label">{{ block.settings.label }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} Progress bar pagination ── {%- endcomment -%}
+      <div class="ftmo-progress-wrap">
+        <div class="swiper-pagination" id="ftmo-progress-{{ section.id }}"></div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fits That Miss Out",
+  "tag": "section",
+  "class": "ftmo-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Best Seller"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Fits That Miss Out"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Sub Text",
+      "default": "Chic energy, main character designs. Elevate your everyday rotation. No cap. Dropping now."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback Background Color",
+      "default": "#0f2f36"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide_item",
+      "name": "Slide Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Product Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fits That Miss Out",
+      "blocks": [
+        {
+          "type": "slide_item",
+          "settings": {
+            "label": "Blank Canvas"
+          }
+        },
+        {
+          "type": "slide_item",
+          "settings": {
+            "label": "Off-Duty Polo"
+          }
+        },
+        {
+          "type": "slide_item",
+          "settings": {
+            "label": "Vibe Check Drop"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>
+  new Swiper('.ftmo-swiper', {
+  spaceBetween: 20,
+  freeMode: true,
+  grabCursor: true,
+  pagination: {
+    el: '#ftmo-progress-{{ section.id }}',
+    type: 'progressbar',
+  },
+  breakpoints: {
+    0:{ 
+      slidesPerView: 1.2,
+      spaceBetween: 9,
+    },
+    768: { 
+      slidesPerView: 3,
+      spaceBetween: 20 
+    },
+  }
+});
+</script>

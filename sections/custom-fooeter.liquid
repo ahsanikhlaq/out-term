@@ -1,0 +1,1237 @@
+<footer
+  class="custom-footer animate-item footer-section animate-section animate--hidden" 
+  data-animations='{{ section.settings.display_animations }}' data-type='{{ settings.animations_type }}'
+  style="
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    background:#F2EFE6;
+  "
+>
+ 
+
+  <div class="page-width">
+
+    <!-- ================= MAIN FOOTER ================= -->
+<div class="footer-main animate-item">
+
+  <!-- 1️⃣ LOGO / LEFT CONTENT -->
+  <div class="footer-logo-col animate-item">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'left_content' %}
+          <div class="footer-left-block animate-item">
+
+            
+          {% if block.settings.logo != blank %}
+            <a href="{{ routes.root_url }}" class="footer-logo-link">
+                <img
+                src="{{ block.settings.logo | image_url: width: 240 }}"
+                alt="Footer logo"
+                class="footer-logo"
+                >
+            </a>
+            {% endif %}
+
+            <div class="cs--txst mob animate-item">{{block.settings.small_text }}</div>
+            <div class="cs_footer_socal_icons_main cs_footer_socal_icons_main_des">
+            {% if block.settings.facebook_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.facebook_url }}">{% render 'facbook-icon'%}</a>
+            {% endif %}
+            {% if block.settings.UXWing_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.UXWing_url }}">{% render 'UXWing-icon'%}</a>
+            {% endif %}
+            {% if block.settings.instagram_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.instagram_url }}">{% render 'instagram-icon'%}</a>
+            {% endif %}
+            {% if block.settings.linkedin_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.linkedin_url }}">{% render 'linkedin-icon'%}</a>
+            {% endif %}
+            {% if block.settings.whatsapp_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.whatsapp_url }}">{% render 'whatsapp-icon'%}</a>
+            {% endif %}
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  <!-- 2️⃣ MENUS -->
+  <div class="footer-menu-col animate-item">
+    {% for block in section.blocks %}
+      {% case block.type %}
+
+        {% when 'menu_block' %}
+          <div class="footer-menu animate-item">
+            <h4>{{ block.settings.title }}</h4>
+            <ul class="link-list">
+              {% for link in block.settings.menu.links %}
+                <li>
+                  <a href="{{ link.url }}" class="link-text">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        {% when 'accordion' %}
+          <div class="footer-accordion animate-item" data-accordion>
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="accordion-title">
+                {{ block.settings.accordion_title }}
+              </span>
+              <img class="icon-plus" src="{{ block.settings.icon_plus | image_url: width: 20 }}" />
+              <img class="icon-minus" src="{{ block.settings.icon_minus | image_url: width: 20 }}" />
+            </button>
+
+            <div class="accordion-content">
+              <ul>
+                {% for link in linklists[block.settings.accordion_menu].links %}
+                  <li>
+                    <a href="{{ link.url }}" class="link-text">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  <div class="footer-signup-col">
+    {% for block in section.blocks %}
+      {% if block.type == 'email_signup' %}
+                    <div class="csutom-signup animate-item">
+                      <div class="footer-block__details-content footer-block__details-content-mb rte fotter-head">
+                        {{ block.settings.subtext }}
+                      </div>
+                     
+                      {% assign block_settings = block.settings %}
+<div
+  class="email-signup-block size-style spacing-style"
+  style="{% render 'size-style', settings: block_settings %}{% render 'spacing-style', settings: block_settings %}"
+  {{ block.shopify_attributes }}
+>
+  
+  {%- form 'customer', class: 'email-signup__form spacing-style' %}
+    <div
+      class="email-signup__input-group {% if block_settings.integrated_button and block_settings.border_style != 'underline' %}email-signup__input-group--integrated{% endif %} {% if block_settings.border_style == 'underline' %}email-signup__input-group--underline{% endif %} {% if block_settings.border_style == 'none' %}email-signup__input-group--no-border{% endif %} {% if block_settings.display_type == 'arrow' %}email-signup__input-group--arrow{% endif %} {% if block_settings.inherit_color_scheme == false %}color-{{ block_settings.color_scheme }}{% endif %}"
+      style="--border-width: {{ block_settings.border_width }}px; --border-radius: {{ block_settings.border_radius }}px;"
+    >
+      <label
+        for="EmailInput-{{ block.id }}"
+        class="visually-hidden"
+      >
+        {{ 'blocks.email_signup.label' | t }}
+      </label>
+      <input
+        id="EmailInput-{{ block.id }}"
+        class="email-signup__input email-signup__input--{{ block_settings.border_style }} {{ block_settings.input_type_preset }} {{ block_settings.border_variation }}"
+        type="email"
+        name="contact[email]"
+        autocorrect="off"
+        autocapitalize="off"
+        autocomplete="email"
+        placeholder="{{ 'blocks.email_signup.placeholder' | t }}"
+        required
+        {% if form.errors and form.id == blank %}
+          autofocus
+          aria-invalid="true"
+          aria-describedby="Email-signup__message-error-{{ block.id }}"
+        {% elsif form.posted_successfully? and form.id == blank %}
+          aria-describedby="Email-signup__message-success-{{ block.id }}"
+        {% endif %}
+      >
+      <button
+        class="email-signup__button {% if block_settings.integrated_button or block_settings.border_style == 'underline' %}email-signup__button--integrated{% endif %} email-signup__button--{{ block_settings.display_type }} {{ block_settings.button_type_preset }} {{ block_settings.style_class }} {{ block_settings.style_class }}--{{ block.id }} {% if block_settings.inherit_color_scheme == false %}color-{{ block_settings.color_scheme }}{% endif %}"
+        {% if block_settings.display_type != 'text' %}
+          aria-label="{{ 'actions.sign_up' | t }}"
+        {% endif %}
+      >
+        <span>
+         Submit
+       </span>
+          <svg
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            focusable="false"
+            aria-hidden="true"
+            class="email-signup__button-icon"
+          >
+            {% render 'icon', icon: 'arrow' %}
+          </svg>
+       
+      </button>
+    </div>
+
+    {%- if form.errors and form.id == blank -%}
+      <div
+        id="Email-signup__message-error-{{ block.id }}"
+        class="email-signup__message"
+        tabindex="-1"
+      >
+        <svg
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+          focusable="false"
+          aria-hidden="true"
+          class="icon-error"
+        >
+          {%- render 'icon', icon: 'error'  -%}
+        </svg>
+        {{- form.errors.translated_fields.email | capitalize }}
+        {{ form.errors.messages.email -}}
+      </div>
+    {%- endif -%}
+
+    {%- if form.posted_successfully? and form.id == blank -%}
+      <div
+        id="Email-signup__message-success-{{ block.id }}"
+        class="email-signup__message"
+        tabindex="-1"
+      >
+        <span class="svg-wrapper icon-success">
+          {{ 'icon-checkmark.svg' | inline_asset_content }}
+        </span>
+        <p class="email-signup__message-text">{{ 'blocks.email_signup.success' | t }}</p>
+      </div>
+    {%- endif -%}
+  {% endform %}
+</div>
+                    </div>
+                    <div class="cs_footer_form_by-sec">{{ block.settings.By-subscribing }}</div>
+                    <div class="cs_footer_socal_icons_main cs_footer_socal_icons_main_mbl">
+            {% if block.settings.facebook_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.mbl-facebook_url }}">{% render 'facbook-icon'%}</a>
+            {% endif %}
+            {% if block.settings.UXWing_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.UXWing_url }}">{% render 'UXWing-icon'%}</a>
+            {% endif %}
+            {% if block.settings.instagram_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.instagram_url }}">{% render 'instagram-icon'%}</a>
+            {% endif %}
+            {% if block.settings.linkedin_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.linkedin_url }}">{% render 'linkedin-icon'%}</a>
+            {% endif %}
+            {% if block.settings.whatsapp_url !=blank %}
+            <a class="cs_footer-socal_icon" href="{{ block.settings.whatsapp_url }}">{% render 'whatsapp-icon'%}</a>
+            {% endif %}
+            </div>
+      {% endif %}
+    {% endfor %}
+    
+  </div>
+
+  <div class="footer-logo-col mob animate-item">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'left_content' %}
+          <div class="footer-left-block">
+
+            
+            {% if block.settings.logo != blank %}
+                <a href="{{ routes.root_url }}" class="footer-logo-link-mob">
+                    <img
+                    src="{{ block.settings.logo | image_url }}"
+                    alt="Footer logo"
+                    class="footer-logo-mob"
+                    >
+                </a>
+            {% endif %}
+                        <div class="cs--txst hidd">{{block.settings.small_text }}</div>
+
+
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+</div>
+
+<div class="cs_footer_bottom_powerd">{{ section.settings.Powered-by }}</div>
+  </div>
+</footer>
+
+
+<style>
+.custom-footer {
+  padding-top: var(--pt-desktop);
+  padding-bottom: var(--pb-desktop);
+  background-color: {{ section.settings.bg_color }} !important;
+  color: #fff;
+}
+
+.csutom-signup .field__input:focus ~ label {
+  display: none;
+}
+
+
+.footer-main {
+    display: grid;
+    grid-template-columns: auto 1fr 1.3fr;
+    gap: 86px;
+}
+
+.footer-menu-col {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.footer-right {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  column-gap: 100px;
+  justify-content:end;
+}
+
+
+.footer-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top:30px;
+  border-top: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction:row-reverse;
+}
+.bottom-text.none {
+    color: #FFF;
+    font-family: Saans;
+    font-size: 16.3px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px;
+    letter-spacing: -0.32px;
+    margin: 0px;
+}
+
+.footer-email-form {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.footer-email-form input {
+  flex: 1;
+  padding: 10px;
+}
+
+.footer-email-form button {
+  padding: 10px 16px;
+}
+.footer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width:max-content;
+}
+.footer-menu h4 {
+    font-family: FONTSPRING DEMO - Gibson Medium;
+    font-weight: 500;
+    font-style: Regular;
+    font-size: 24px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 2%;
+    text-transform: uppercase;
+    color: #221919;
+    margin:0px;
+
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin:0px;
+}
+.link-text {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 18px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 2%;
+    color: #221919;
+    margin:0px;
+}
+.foot-head {
+  color: var(--White, #FFF);
+  font-family: "Acumin Pro";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 28.8px */
+  letter-spacing: -0.48px;
+  text-transform: capitalize;
+  margin:0 0 16px;
+}
+.footer-desc {
+  max-width:590px;
+  margin:0 0 25px;
+}
+.footer-desc p {
+  color: var(--White, #FFF);
+  font-family: "Acumin Pro";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 19.2px */
+  letter-spacing: -0.32px;
+  margin:0;
+}
+.footer-small-text {
+    color: var(--light-gray-20, #E0E0E0);
+    font-family: "Acumin Pro";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.24px;
+    margin:16px 0 49px;
+}
+.footer-logo {
+  width: 100%;
+  height:auto;
+  object-fit:cover;
+
+}
+
+.footer-logo {
+ display:block;
+}
+.footer-logo-mob, .footer-accordion {
+ display:none;
+}
+
+  .input-wrap {
+     position:relative; 
+  }
+  .csutom-signup    .newsletter-form {
+      max-width:390px;
+      margin:0px;
+  }
+
+  .custom-signup .email-signup__input, .custom-signup .email-signup__button--text {
+    padding: var(--padding-lg) var(--padding-3xl);
+    background: transparent;
+    border:0px !important;
+    border-bottom: 1px solid white !important;
+    color: white;
+  }
+  .csutom-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.csutom-signup .field__input {
+    display: flex;
+    width: 100%;
+    padding: 12px 18px;
+    justify-content: space-between;
+    align-items: center;
+   border-radius: 4px;
+background: var(--herbies-white, #FFF);
+    border:0px;
+}
+.csutom-signup .field:after {
+display:none;
+}
+  .csutom-signup .fotter-head {
+      color: #000;
+      font-family: "Neue Haas Grotesk Display Pro";
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 120% */
+      letter-spacing: 0.4px;
+  }
+  .custom-arrow {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border:0px;
+  }
+  .field__input::placeholder {
+    color: #000;
+    /* copy */
+    font-family: "Neue Haas Grotesk Display Pro";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.4px;
+  }
+  .footer-bottom-text {
+      color: var(--black-color, #000);
+      /* copy 2 */
+      font-family: "Neue Haas Grotesk Display Pro";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px; /* 142.857% */
+      letter-spacing: 0.4px;
+      margin:0px;
+
+  }
+
+
+  .footer-block__details-content p {
+     font-weight:400px;
+  }
+
+.email-signup__input:focus {
+  border: none !important;
+  
+}
+
+.social-icons {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+.foot-btm-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+}
+
+
+
+.link-list li {
+  position: relative;
+}
+
+.link-text {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding-bottom: 2px; /* space for underline */
+}
+
+.link-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px; /* underline thickness */
+  background-color:#221919; /* inherits text color */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.link-text:hover::after {
+  transform: scaleX(1);
+}
+
+.custom-signup .email-signup__input {
+   padding-left:0px;
+}
+.footer-logo {
+    display: block;
+    width: 184.355px;
+    height: 46.089px;
+    margin: 0 0 30px;
+}
+.cs--txst {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 28px;
+    letter-spacing: 7%;
+    color: #221919;
+    max-width: 340px;
+}
+
+ul.link-list.none {
+    display: flex;
+    justify-content: flex-start;
+    gap: 32px;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px;
+}
+.link-list li {
+    position: relative;
+    list-style: none;
+}
+
+.cs--txst.hidd {
+  display:none;
+}
+.footer-logo-col.mob {
+    display: none;
+}
+.csutom-signup p{
+   font-family: Montserrat;
+font-weight: 400;
+font-style: Regular;
+font-size: 18px;
+leading-trim: NONE;
+line-height: 30px;
+letter-spacing: 3%;
+text-transform: uppercase;
+color: #221919;
+margin: 0:
+}
+
+{% comment %} --- {% endcomment %}
+ .footer-signup-col .footer__newsletter.newsletter-form{
+    margin-top: 30px;
+}
+.button.newsletter__solid-btn{
+border-radius: 4px;
+background: var(--herbies-bright-yellow, #FFCE2F) !important;
+    z-index: unset;
+    color: var(--herbies-dark-charcoal, #2A2929);
+font-family: Saans;
+font-size: 16.3px;
+font-style: normal;
+font-weight: 790;
+line-height: 19.5px; /* 119.632% */
+letter-spacing: -0.32px;
+text-transform: uppercase;
+}
+.footer-signup-col .csutom-signup .newsletter-form {
+    max-width: 100%;
+}
+.footer-signup-col .email-signup__button{
+    
+    background: #221919 !important;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 135px;
+    height: 52px;
+    justify-content: center;
+}
+.footer-signup-col .email-signup__button span{
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 2%;
+    text-align: center;
+    color: #fff !important;
+}
+.footer-signup-col .email-signup__button svg{
+    min-width: 28px;
+    min-height: 43px;
+    width: 38px;
+    height: 48px;
+
+}
+.footer-signup-col .email-signup__button svg path{
+  fill: white;
+}
+.footer-signup-col .email-signup__input{
+       background: #F0F0F0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0;
+    border: none;
+    height: 52px;
+    border-radius: 0 !important;
+    width: 100%;
+    padding-left: 10px;
+}
+.footer-signup-col .email-signup-block{
+    width: 100%;
+}
+.cs_footer_form_by-sec p{
+    font-family: Montserrat;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #221919; 
+    padding-top: 13px;
+}
+.cs_footer_form_by-sec p a{
+    font-family: Montserrat;
+font-weight: 300;
+font-style: Light;
+font-size: 14px;
+leading-trim: NONE;
+line-height: 24px;
+letter-spacing: 0;
+text-decoration: underline;
+text-decoration-style: solid;
+text-decoration-offset: 20.5%;
+text-decoration-thickness: 0;
+text-decoration-skip-ink: auto;
+color: #221919;
+}
+.footer-signup-col .email-signup__input-group:not(.email-signup__input-group--integrated):not(.email-signup__input-group--underline) {
+    gap: 12px !important;
+    align-items: center;
+    display: flex;
+}
+.cs_footer_socal_icons_main{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 50px;
+}
+.cs_footer-socal_icon svg{
+    width: 25px;
+    height: 25px;
+}
+.cs_footer_bottom_powerd p{
+    font-family: Montserrat;
+font-weight: 400;
+font-style: Regular;
+font-size: 16px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 2%;
+color: #221919;
+margin: 0;
+padding-top: 70px;
+text-align: center; 
+}
+.cs_footer_socal_icons_main_des{
+  display: flex;
+}
+.cs_footer_socal_icons_main_mbl{
+  display: none;
+}
+@media (max-width: 1300px) {
+
+.footer-right {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    column-gap: 70px;
+    justify-content: end;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 433px auto;
+    gap: 90px;
+}
+
+}
+@media (max-width: 1080px) {
+       .footer-right {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        column-gap: 42px;
+        justify-content: space-between;
+    }
+        .footer-main {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 433px auto;
+        gap: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+  .custom-footer {
+    padding-top: var(--pt-mobile);
+    padding-bottom: var(--pb-mobile);
+  }
+
+  .csutom-signup    .newsletter-form {
+      max-width:100%;
+      margin:0px;
+  }
+.footer-signup-col .footer__newsletter.newsletter-form {
+    margin-top: 10px;
+}
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-right {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-logo-mob {
+     display: block;
+        margin: 0 0 0px;
+        width: 100%;
+        height: auto;
+        max-width: 170px;
+        max-width: 210px;
+        height: 84px;
+        margin: 0 0 12px;
+  }
+  .footer-desc p {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+    letter-spacing: -0.28px;
+  }
+  .footer-small-text {
+      color: var(--Gray, #767676);
+      font-family: "Acumin Pro";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 18px */
+      letter-spacing: -0.24px;
+      margin:20px 0 0;
+  }
+  .footer-main {
+     gap:30px;
+
+  }
+  .cs_footer_bottom_powerd p {
+    padding-top: 34px;
+}
+  .footer-signup-col .email-signup__button {
+    width: 100% !important;
+}
+.footer-signup-col .email-signup__input {
+    padding-left: 10px;
+}
+.footer-signup-col .email-signup__button svg {
+    min-width: 30px;
+    min-height: 30px;
+    width: 30px;
+    height: 30px;
+}
+  .link-text {
+    font-size: 16px;
+    }
+  .email-signup__button {
+     width:unset !important;
+  }
+  .footer-menu-col {
+     flex-direction:column;
+     gap:30px;
+  }
+  .foot-btm-left {
+       gap:30px;
+  }
+.csutom-signup p {
+    font-size: 14px;
+    line-height: 23px;
+    }
+
+.cs--txst {
+    font-size: 14px;
+    line-height: 24px;
+    max-width: 100%;
+}
+ul.link-list.none {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px;
+    align-items: center;
+}
+.cs_footer_socal_icons_main_des{
+  display: none;
+}
+.cs_footer_socal_icons_main_mbl{
+  display: flex;
+  margin-top: 30px;
+}
+.footer-signup-col .email-signup__input-group:not(.email-signup__input-group--integrated):not(.email-signup__input-group--underline) {
+    flex-direction: column;
+}
+}
+</style>
+
+
+<script>
+  function trimTitle() {
+    const titles = document.querySelectorAll('.ra-product-title');
+    if (window.innerWidth <= 768) { // mobile
+      titles.forEach(title => {
+        const words = title.textContent.split(' ');
+        title.textContent = words.slice(0, 3).join(' ');
+      });
+    }
+  }
+
+  window.addEventListener('resize', trimTitle);
+  window.addEventListener('DOMContentLoaded', trimTitle);
+</script>
+
+{% schema %}
+{
+  "name": "Custom Footer",
+  "tag": "footer",
+  "settings": [
+    {
+        "type": "richtext",
+        "id": "Powered-by",
+        "label": "Powered by"
+    },
+    {
+      "type": "header",
+      "content": "Padding – Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding – Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback Background Color",
+      "default": "#EBEBEB"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "left_content",
+      "name": "Left Content",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "richtext", "id": "description", "label": "Description" },
+        { "type": "checkbox", "id": "show_email", "label": "Show Email Form", "default": true },
+        { "type": "text", "id": "small_text", "label": "Small Description" },
+        { "type": "image_picker", "id": "logo", "label": "Logo" },
+        {
+            "type": "url",
+            "id": "facebook_url",
+            "label": "Facebook Url"
+        },
+         {
+            "type": "url",
+            "id": "UXWing_url",
+            "label": "UXWing Url"
+        },
+         {
+            "type": "url",
+            "id": "instagram_url",
+            "label": "instagram Url"
+        },  
+         {
+            "type": "url",
+            "id": "linkedin_url",
+            "label": "linkedin Url"
+        },
+         {
+            "type": "url",
+            "id": "whatsapp_url",
+            "label": "whatsapp Url"
+        },
+      ]
+    },
+    {
+      "type": "menu_block",
+      "name": "Menu Column",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Menu Title" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    },
+    {
+    "type": "accordion",
+    "name": "Accordion Menu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "accordion_title",
+        "label": "Accordion Title",
+        "default": "More Info"
+      },
+      {
+        "type": "link_list",
+        "id": "accordion_menu",
+        "label": "Accordion Menu"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_plus",
+        "label": "Plus Icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_minus",
+        "label": "Minus Icon"
+      }
+    ]
+   },
+   {
+      "type": "email_signup",
+      "name": "Email signup",
+      "settings": [
+        {
+            "type": "url",
+            "id": "facebook_url",
+            "label": "Facebook Url"
+        },
+         {
+            "type": "url",
+            "id": "UXWing_url",
+            "label": "UXWing Url"
+        },
+         {
+            "type": "url",
+            "id": "instagram_url",
+            "label": "instagram Url"
+        },  
+         {
+            "type": "url",
+            "id": "linkedin_url",
+            "label": "linkedin Url"
+        },
+         {
+            "type": "url",
+            "id": "whatsapp_url",
+            "label": "whatsapp Url"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.footer.settings.header__1.info"
+        },
+        {
+          "type": "richtext",
+          "id": "By-subscribing",
+          "label": "By subscribing"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>A short sentence encouraging customers to subscribe to your newsletter.</p>",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "maintext",
+          "default": "Join our email list for exclusive offers and the latest news.",
+          "label": "Main Sub Text"
+        },
+        {
+          "type": "select",
+          "id": "button_type",
+          "options": [
+            {
+              "value": "arrow",
+              "label": "Arrow button"
+            },
+            {
+              "value": "solid",
+              "label": "Solid button"
+            }
+          ],
+          "default": "solid",
+          "label": "Submit button type"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Solid button label",
+          "default": "Sign up"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "label": "t:sections.slideshow.blocks.slide.settings.secondary_style.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "range",
+          "id": "width_desktop",
+          "max": 12,
+          "min": 1,
+          "step": 1,
+          "default": 3,
+          "label": "Column desktop width"
+        },
+        {
+          "type": "select",
+          "id": "width_mobile",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            }
+          ],
+          "default": "2",
+          "label": "Column mobile width"
+        }
+      ]
+    },
+        {
+      "type": "bottom_text",
+      "name": "Bottom Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Bottom Text"
+        },
+        {
+          "type": "select",
+          "id": "animation",
+          "label": "Animation Style",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "fade", "label": "Fade In" },
+            { "value": "slide-up", "label": "Slide Up" }
+          ],
+          "default": "none"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "category": "Footer"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["footer"]
+  }
+}
+{% endschema %}
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("✅ DOM loaded");
+
+  const accordions = document.querySelectorAll(".footer-accordion[data-accordion]");
+  console.log("🔍 Footer accordions found:", accordions.length);
+
+  if (accordions.length === 0) {
+    console.warn("⚠️ No footer accordions found on this page.");
+    return;
+  }
+
+  accordions.forEach((acc, index) => {
+    console.log(`➡️ Setting up accordion ${index + 1}`);
+
+    const toggle = acc.querySelector(".accordion-toggle");
+    const content = acc.querySelector(".accordion-content");
+    const plus = acc.querySelector(".icon-plus");
+    const minus = acc.querySelector(".icon-minus");
+
+    if (!toggle || !content) {
+      console.warn(`⚠️ Missing elements inside accordion ${index + 1}`);
+      return;
+    }
+
+    // --- 1. Handle toggle click ---
+    toggle.addEventListener("click", () => {
+      console.log(`🖱️ Clicked accordion ${index + 1}`);
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+
+      // Close all footer accordions first
+      accordions.forEach((otherAcc, i) => {
+        const otherToggle = otherAcc.querySelector(".accordion-toggle");
+        const otherContent = otherAcc.querySelector(".accordion-content");
+        const otherPlus = otherAcc.querySelector(".icon-plus");
+        const otherMinus = otherAcc.querySelector(".icon-minus");
+
+        if (otherToggle && otherContent) {
+          otherToggle.setAttribute("aria-expanded", "false");
+          otherContent.style.maxHeight = 0;
+          if (otherPlus && otherMinus) {
+            otherPlus.style.display = "inline";
+            otherMinus.style.display = "none";
+          }
+          console.log(`❌ Closed accordion ${i + 1}`);
+        }
+      });
+
+      if (!expanded) {
+        console.log(`✅ Opening accordion ${index + 1}`);
+        toggle.setAttribute("aria-expanded", "true");
+        content.style.maxHeight = content.scrollHeight + "px";
+        if (plus && minus) {
+          plus.style.display = "none";
+          minus.style.display = "inline";
+        }
+      }
+    });
+  });
+});
+</script>

@@ -1,0 +1,128 @@
+<style>
+  #section-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  background: {{ section.settings.bg_color }};
+}
+.live-heading-rictext p{
+  margin: 0;
+  font-family: Montserrat;
+font-weight: 300;
+font-style: Light;
+font-size: 15px;
+leading-trim: NONE;
+line-height: 26px;
+letter-spacing: 5%;
+text-transform: uppercase;
+color: #221919;
+padding-top: 8px;
+}
+.live-heading-rictext_main{
+  max-width: 800px;
+}
+/* Mobile padding */
+@media (max-width: 767px) {
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+  }
+}</style>
+<section
+  class="shop-collections cs-featured-collection"
+  id="section-{{ section.id }}"
+>
+  <div class="page-width">
+
+    <div class="csp-mobs">
+    <!-- Heading -->
+    <div class="cs_coll_tab_heading_tab_button animate-item">
+      <div class="live-heading-rictext_main">
+    <h2 class="live-heading">{{ section.settings.headings }}</h2>
+    {% if section.settings.rich-text !=blank %}
+    <div class="live-heading-rictext">{{ section.settings.rich-text }}</div>
+    {% endif %}
+  </div>
+    </div>
+    <div class="cs_coll_tab_sider-button animate-item">
+        <span class="cs_coll_tab_sider-button_next">{% render 'cs_tab_slider_button' %}</span>
+         <span class="cs_coll_tab_sider-button_prev">{% render 'cs_tab_slider_button' %}</span>
+    </div>
+    </div>
+
+  
+
+    <!-- Collections Wrapper -->
+   <div class="collections-wrapper animate-item">
+  
+    <div id="collection-{{ section.id }}">
+      <div class="swiper collection-swiper-{{ section.id }} mb-5">
+        <div class="swiper-wrapper">
+
+          {% assign selected_collection = collections[section.settings.cs_collection] %}
+          {% if selected_collection.products.size > 0 %}
+            {% for product in selected_collection.products %}
+              <div class="swiper-slide product-card">
+                {% render 'custom-product-cart', product: product %}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+</div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Trending",
+  "settings": [
+    { "type": "text", "id": "headings", "label": "Section Heading",},
+    { "type": "richtext", "id": "rich-text", "label": "Rich Text",},
+    {
+          "type": "collection",
+          "id": "cs_collection",  
+          "label": "Collection"
+        },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 },
+  ],
+
+  "presets": [
+    { "name": "Trending", "category": "Custom" }
+  ]
+}
+{% endschema %}
+{% comment %} ---tab-script {% endcomment %}
+<script>
+  // Initialize Swipers for each block
+  
+    new Swiper(".collection-swiper-{{ section.id }}", {
+      slidesPerView: 4,
+      spaceBetween: 16,
+      speed: 1000,
+      pagination: {
+        el: ".cs-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".cs_coll_tab_sider-button_next",
+        prevEl: ".cs_coll_tab_sider-button_prev",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1.2, spaceBetween: 16 },
+        768: { slidesPerView: 2.2, spaceBetween: 16 },
+        1024: { slidesPerView: 4, spaceBetween: 16 },
+      },
+    });
+ 
+</script>
+{% comment %} ------------------add-to-cart----------------- {% endcomment %}

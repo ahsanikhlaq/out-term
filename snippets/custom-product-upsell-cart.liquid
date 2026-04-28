@@ -1,0 +1,191 @@
+{% style %}
+  
+{% endstyle %}
+
+{% comment %} Ab yahan sirf 'product' variable use karo, koi loop nahi {% endcomment %}
+<div class="cs_pro_class_product_main">
+  <a class="dps-image" href="{{ product.url }}">
+    <img
+      src="{{ product.featured_image | img_url: '480x480' }}"
+      alt="{{ product.title }}"
+    >
+  </a>
+
+  <div class="cs_coll_tab_cart_content">
+
+    <div class="com_pro_content">
+      <div class="cs_coll_tab_title_varint">
+        <h4 class="dps-title">{{ product.title }}</h4>
+        <span class="cs_coll_tab_pro_price">{{ product.price | money }}</span>
+      </div>
+
+      <div class="cs_por_varint-color_size_main">
+<div class="cs_coll_tab_pro_size_varint">
+  {% assign size_option_index = nil %}
+  {% assign first_available_found = false %}
+
+  {% for option in product.options %}
+    {% if option == 'Size' %}
+      {% assign size_option_index = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if size_option_index != nil %}
+    {% for variant in product.variants %}
+      
+      {% assign is_checked = false %}
+      {% if variant.available and first_available_found == false %}
+        {% assign is_checked = true %}
+        {% assign first_available_found = true %}
+      {% endif %}
+
+      <span class="size-badge {% unless variant.available %}out-of-stock{% endunless %}">
+        
+        <input 
+  class="size-badge_input" 
+  type="radio"
+  name="variant-size-{{ product.handle }}-{{ section_id }}"
+  value="{{ variant.id }}"
+  data-available="{{ variant.available }}"
+  {% if is_checked %}checked{% endif %}
+  {% unless variant.available %}disabled{% endunless %}
+>
+
+        <label>
+          {{ variant.options[size_option_index] }}
+        </label>
+
+      </span>
+
+    {% endfor %}
+  {% endif %}
+</div>
+  
+
+  <div class="cs_coll_tab_pro_color_varint">
+    {% assign color_option = nil %}
+    {% for option in product.options_with_values %}
+      {% if option.name == 'Color' %}
+        {% assign color_option = option %}
+      {% endif %}
+    {% endfor %}
+
+    {% if color_option != nil %}
+      <div class="color-swatches">
+        {% for option_value in color_option.values %}
+
+          {% assign swatch_value = '#cccccc' %}
+          {% if option_value.swatch.color %}
+            {% assign swatch_value = 'rgb(' | append: option_value.swatch.color.rgb | append: ')' %}
+          {% elsif option_value.swatch.image %}
+            {% assign swatch_img = option_value.swatch.image | image_url: width: 80 %}
+            {% assign swatch_value = 'url(' | append: swatch_img | append: ')' %}
+          {% endif %}
+
+          <label class="color-badge">
+            {% comment %} Color Swatch loop ke andar {% endcomment %}
+<input class="color-badge_input" type="radio"
+  name="variant-color-{{ product.handle }}-{{ section_id }}"
+  value="{{ option_value.name }}"
+  {% comment %} Niche wali line add karein: hum variant ki image fetch kar rahe hain {% endcomment %}
+  data-variant-img="{{ option_value.variant.featured_media | img_url: '480x480' }}"
+  {% if forloop.first %}checked{% endif %}>
+            <span class="color-circle" style="background: {{ swatch_value }};"></span>
+          </label>
+
+        {% endfor %}
+      </div>
+      <span class="selected-color-name">
+        {{ color_option.values.first.name }}
+      </span>
+    {% endif %}
+  </div>
+<button
+      class="cs_coll_tab_cart_buy_button cs_coll_tab_cart_buy_button_mbl"
+      data-product-handle="{{ product.handle }}"
+      {% unless product.available %} disabled {% endunless %}
+    >
+      <input class="cs_coll_tab_slect_size" type="hidden" name="slected-size" value="">
+      <input class="cs_coll_tab_slect_color" type="hidden" name="slected-color" value="">
+      <span class="btn-label">
+        {% if product.available %}add{% else %}out of stock{% endif %}
+      </span>
+    </button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+
+  // ===================== SWATCH DOT INIT =====================
+  // Page load par pehle selected color ka swatch dot set karo
+  document.querySelectorAll('.color-dropdown').forEach(function(select) {
+    var dotId = select.id.replace('color-select-', 'swatch-dot-');
+    var dot = document.getElementById(dotId);
+    if (dot) {
+      var swatch = select.options[select.selectedIndex].getAttribute('data-swatch');
+      if (swatch) dot.style.background = swatch;
+    }
+  });
+
+  // ===================== COLOR CHANGE =====================
+  document.querySelectorAll('.color-dropdown').forEach(function(select) {
+    select.addEventListener('change', function() {
+      var selectedOption = this.options[this.selectedIndex];
+
+      // 1. Swatch dot update karo
+      var dotId = this.id.replace('color-select-', 'swatch-dot-');
+      var dot = document.getElementById(dotId);
+      if (dot) {
+        var swatch = selectedOption.getAttribute('data-swatch');
+        if (swatch) dot.style.background = swatch;
+      }
+
+      // 2. Product image update karo
+      var wrapper = this.closest('.cs_pro_class_product_main');
+      if (wrapper) {
+        var newImgUrl = selectedOption.getAttribute('data-variant-img');
+        var productImage = wrapper.querySelector('.dps-image img');
+        if (newImgUrl && productImage) {
+          productImage.src = newImgUrl;
+        }
+      }
+
+      // 3. Color variant ID hidden input mein save karo
+      if (wrapper) {
+        var colorInput = wrapper.querySelector('.cs_coll_tab_slect_color');
+        if (colorInput) {
+          colorInput.value = selectedOption.getAttribute('data-variant-id') || '';
+        }
+      }
+    });
+  });
+
+  // ===================== SIZE CHANGE =====================
+  document.querySelectorAll('.size-dropdown').forEach(function(select) {
+    select.addEventListener('change', function() {
+      var selectedOption = this.options[this.selectedIndex];
+      var wrapper = this.closest('.cs_pro_class_product_main');
+      if (!wrapper) return;
+
+      var btn = wrapper.querySelector('.cs_coll_tab_cart_buy_button');
+      var btnText = btn ? btn.querySelector('.btn-label') : null;
+      var isAvailable = selectedOption.getAttribute('data-available') === 'true';
+
+      // Button state update karo
+      if (btn) btn.disabled = !isAvailable;
+      if (btnText) btnText.textContent = isAvailable ? 'add' : 'out of stock';
+
+      // Size variant ID hidden input mein save karo
+      var sizeInput = wrapper.querySelector('.cs_coll_tab_slect_size');
+      if (sizeInput) {
+        sizeInput.value = isAvailable ? selectedOption.value : '';
+      }
+    });
+  });
+
+})();
+</script>

@@ -1,0 +1,414 @@
+{% comment %}
+  Shop the Collections Section
+{% endcomment %}
+<style>
+  #section-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  background: {{ section.settings.bg_color }};
+}
+/* Mobile padding */
+@media (max-width: 767px) {
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+  }
+  #section-{{ section.id }} .page-width{
+    padding-right: 0;
+  }
+}
+</style>
+<section
+  class="shop-collections cs-featured-collection"
+  id="section-{{ section.id }}"
+>
+  <div class="page-width">
+
+    <div class="csp-mobs">
+    <!-- Heading -->
+    <div class="cs_coll_tab_heading_tab_button animate-item">
+    <h2 class="live-heading">{{ section.settings.headings }}</h2>
+
+    <!-- Tabs -->
+        <div class="collection-tabs animate-item">
+          
+          <div class="cs_tabs">
+            {% for block in section.blocks %}
+              <button
+                class="tab-button {% if forloop.first %}active{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                data-target="collection-{{ block.id }}"
+              >
+                {{ block.settings.collection_name }}
+              </button>
+            {% endfor %}
+          </div>
+    </div>
+    </div>
+    <div class="cs_coll_tab_sider-button animate-item">
+        <span class="cs_coll_tab_sider-button_next">{% render 'cs_tab_slider_button' %}</span>
+         <span class="cs_coll_tab_sider-button_prev">{% render 'cs_tab_slider_button' %}</span>
+    </div>
+    </div>
+
+  
+
+    <!-- Collections Wrapper -->
+    <div class="collections-wrapper animate-item">
+      {% for block in section.blocks %}
+        <div
+          id="collection-{{ block.id }}"
+          class="collection-slider {% if forloop.first %}active{% endif %}"
+        >
+          <div class="swiper collection-swiper-{{ block.id }} mb-5">
+            <div class="swiper-wrapper">
+              {% assign selected_collection = collections[block.settings.cs_collection] %}
+          {% if selected_collection.products.size > 0 %}
+            {% for product in selected_collection.products %}
+              <div class="swiper-slide product-card">
+                {% render 'custom-product-cart', product: product, section_id: section.id %}
+              </div>
+            {% endfor %}
+          {% endif %}
+            </div>
+
+          </div>  
+        </div>
+      {% endfor %}
+    </div>
+    <a class="cs_coll_tab_sec_button animate-item" href="{{ section.settings.button-url }}">{{ section.settings.button-text  }}</a>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Collections Tab",
+  "settings": [
+    { "type": "text", "id": "headings", "label": "Section Heading",},
+    { "type": "text", "id": "button-text", "label": "Button Text",},
+    { "type": "text", "id": "button-url", "label": "Button Url",},
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "View Collection"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+       "type":"checkbox",
+       "id":"styling",
+       "default":false,
+       "label": "custom styling"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+        { "type": "collection", "id": "cs_collection", "label": "Select Collection" },
+        { "type": "text", "id": "collection_name", "label": "Tab Label", "default": "Collection Name" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    { "name": "Collections Tab", "category": "Custom" }
+  ]
+}
+{% endschema %}
+ {% comment %} ---tab-script {% endcomment %}
+ <script>
+    document.querySelectorAll('.color-badge_input').forEach(input => {
+  input.addEventListener('change', function() {
+    const card = this.closest('.cs_coll_tab_pro_color_varint');
+    card.querySelector('.selected-color-name').textContent = this.value;
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Select all sections with the .shop-collections class
+  document.querySelectorAll(".shop-collections").forEach((section) => {
+    const tabButtons = section.querySelectorAll(".collection-tabs .tab-button");
+    const sliders = section.querySelectorAll(".collection-slider");
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // Remove 'active' only within this section
+        tabButtons.forEach((b) => b.classList.remove("active"));
+        sliders.forEach((s) => s.classList.remove("active"));
+
+        btn.classList.add("active");
+        const target = btn.dataset.target;
+        const targetSlider = section.querySelector(`#${target}`);
+        if (targetSlider) targetSlider.classList.add("active");
+      });
+    });
+  });
+
+  // Initialize Swipers for each block
+  {% for block in section.blocks %}
+    new Swiper(".collection-swiper-{{ block.id }}", {
+      slidesPerView: 4,
+      spaceBetween: 16,
+      speed: 1000,
+      pagination: {
+        el: ".cs-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".cs_coll_tab_sider-button_next",
+        prevEl: ".cs_coll_tab_sider-button_prev",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1.2, spaceBetween: 16 },
+        768: { slidesPerView: 2.2, spaceBetween: 16 },
+        1024: { slidesPerView: 4, spaceBetween: 16 },
+      },
+    });
+  {% endfor %}
+});
+
+ document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll(".tab-button");
+  const progressBar = document.querySelector(".tabs-progress-bar");
+
+  const totalTabs = tabs.length;
+  const width = 100 / totalTabs;
+
+  // set initial width
+  progressBar.style.width = width + "%";
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", function () {
+      
+      // remove active
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      // move progress bar
+      progressBar.style.transform = `translateX(${index * 100}%)`;
+    });
+  });
+}); 
+</script>
+{% comment %} 
+{% comment %} ------------------add-to-cart----------------- {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // 1. Helper: Sync size + color
+  function syncHiddenInputs(card) {
+    const sizeInput = card.querySelector('.size-badge_input:checked');
+    const colorInput = card.querySelector('.color-badge_input:checked');
+    const hiddenSize = card.querySelector('.cs_coll_tab_slect_size');
+    const hiddenColor = card.querySelector('.cs_coll_tab_slect_color');
+    if (hiddenSize) hiddenSize.value = sizeInput ? sizeInput.value : '';
+    if (hiddenColor) hiddenColor.value = colorInput ? colorInput.getAttribute('variant-id') : '';
+  }
+
+  document.querySelectorAll('.swiper-slide.product-card').forEach(card => syncHiddenInputs(card));
+
+  // 2. Selection changes
+  document.querySelectorAll('.size-badge_input, .color-badge_input').forEach(input => {
+    input.addEventListener('change', function () {
+      const card = this.closest('.swiper-slide.product-card');
+      if (card) {
+        if (this.classList.contains('color-badge_input')) {
+          const colorNameSpan = card.querySelector('.selected-color-name');
+          if (colorNameSpan) colorNameSpan.textContent = this.value;
+        }
+        syncHiddenInputs(card);
+      }
+    });
+  });
+
+  // 3. Correct section ID nikalo page se
+  function getCartSectionId() {
+    const cartItems = document.querySelector('cart-items-component[data-section-id]');
+    if (cartItems) return cartItems.getAttribute('data-section-id');
+    return 'sections--26355253805372__header_section'; // fallback
+  }
+
+  // 4. Add to Cart Logic
+  document.querySelectorAll('.cs_coll_tab_cart_buy_button').forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const btn = this;
+      const card = btn.closest('.swiper-slide.product-card');
+      if (!card) return;
+
+      const variantId = card.querySelector('.cs_coll_tab_slect_size')?.value ||
+                        card.querySelector('.cs_coll_tab_slect_color')?.value;
+
+      if (!variantId) {
+        alert('Please select options first!');
+        return;
+      }
+
+      btn.disabled = true;
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = 'Adding...';
+
+      const sectionId = getCartSectionId();
+
+      const formData = {
+        id: variantId,
+        quantity: 1,
+        sections: sectionId
+      };
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(parsedState => {
+        if (parsedState.status === 422) throw new Error(parsedState.description);
+
+        const cartDrawer = document.querySelector('cart-drawer-component');
+        const sectionHTML = parsedState.sections?.[sectionId];
+
+        if (cartDrawer && sectionHTML) {
+          const parsed = new DOMParser().parseFromString(sectionHTML, 'text/html');
+
+          // cart-items-component update karo
+          const newCartItems = parsed.querySelector('cart-items-component');
+          const currentCartItems = cartDrawer.querySelector('cart-items-component');
+
+          if (currentCartItems && newCartItems) {
+            currentCartItems.innerHTML = newCartItems.innerHTML;
+          } else {
+            const newInner = parsed.querySelector('[data-hydration-key="cart-drawer-inner"]') ||
+                             parsed.querySelector('.cart-drawer__inner');
+            const currentInner = cartDrawer.querySelector('[data-hydration-key="cart-drawer-inner"]') ||
+                                 cartDrawer.querySelector('.cart-drawer__inner');
+            if (currentInner && newInner) {
+              currentInner.innerHTML = newInner.innerHTML;
+            }
+          }
+
+          // Empty class hata do
+          const dialog = cartDrawer.querySelector('dialog');
+          if (dialog) {
+            dialog.classList.remove('cart-drawer--empty');
+          }
+        }
+
+        // Cart bubble update
+        const cartBubbleCount = document.querySelector('[ref="cartBubbleCount"], .cart-bubble__text-count');
+        if (cartBubbleCount && parsedState.items_count !== undefined) {
+          cartBubbleCount.textContent = parsedState.items_count;
+          cartBubbleCount.classList.remove('hidden');
+          const bubble = document.querySelector('[ref="cartBubble"], .cart-bubble');
+          if (bubble) bubble.classList.remove('visually-hidden');
+        }
+
+        // 5. Drawer open karo
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const drawerEl = document.querySelector('cart-drawer-component');
+            if (drawerEl) {
+
+              // Pehle theme ka trigger button try karo
+              const cartTriggerBtn = drawerEl.querySelector('[data-testid="cart-drawer-trigger"], [on\\:click="/open"]');
+              if (cartTriggerBtn) {
+                cartTriggerBtn.click();
+              } else {
+                // Fallback: dialog force open
+                const dialog = drawerEl.querySelector('dialog[ref="dialog"]');
+                if (dialog) {
+                  dialog.setAttribute('open', '');
+                  dialog.style.display = 'flex';
+                  dialog.style.visibility = 'visible';
+                  dialog.style.opacity = '1';
+                  dialog.style.transform = 'translateX(0)';
+                }
+                document.body.classList.add('overflow-hidden');
+              }
+            }
+
+            document.dispatchEvent(new CustomEvent('cart:updated', {
+              detail: { cart: parsedState }
+            }));
+          });
+        });
+
+      })
+      .catch(error => {
+        console.error('Cart Error:', error);
+        alert(error.message || 'Kuch masla hua, dobara try karo.');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+      });
+
+    });
+  });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const zoomButtons = document.querySelectorAll('.cs_coll_cart_zoom_img');
+
+  zoomButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      // Button ke sabse kareeb jo product card hai uske andar wali image dhoondein
+      const productCard = this.closest('.product-card');
+      const imageWrapper = productCard.querySelector('.dps-image');
+      const img = imageWrapper.querySelector('img');
+
+      // Toggle Zoom class
+      imageWrapper.classList.toggle('is-zoomed');
+
+      // Optional: Mouse move par image follow kare (Sirf agar zoomed ho)
+      imageWrapper.addEventListener('mousemove', function(e) {
+        if (this.classList.contains('is-zoomed')) {
+          const rect = this.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          img.style.transformOrigin = `${x}% ${y}%`;
+        }
+      });
+
+      // Reset origin on mouse leave
+      imageWrapper.addEventListener('mouseleave', function() {
+        img.style.transformOrigin = 'center center';
+      });
+    });
+  });
+});
+</script> {% endcomment %}

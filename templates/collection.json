@@ -1,0 +1,333 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section": {
+      "type": "section",
+      "blocks": {
+        "text_tqQTNE": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.collection.title }}</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_tqQTNE"
+      ],
+      "disabled": true,
+      "name": "Collection heading",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
+    "custom_banner_zYVzm8": {
+      "type": "custom-banner",
+      "name": "Custom Banner",
+      "settings": {
+        "img-content": false,
+        "des-img": "shopify://shop_images/Frame_1228_2.png",
+        "mbl-img": "shopify://shop_images/Frame_1228_1.png",
+        "sub-heading": "",
+        "heading": "",
+        "men-button-text": "",
+        "men-button-url": "",
+        "women-button-text": "",
+        "women-button-url": "",
+        "bg_color": "",
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 15
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "butt1-text": "Men",
+            "butt1-url": "shopify://collections/men",
+            "butt2-text": "Women",
+            "butt2-url": "shopify://collections/women",
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": false,
+            "enable_grid_density": false,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-1",
+            "padding-block-start": 0,
+            "padding-block-end": 24,
+            "padding-inline-start": 40,
+            "padding-inline-end": 40,
+            "facets_margin_bottom": 0,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": false,
+        "products_per_page": 9,
+        "product_grid_width": "full-width",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 14,
+        "columns_gap_vertical": 16,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 24
+      }
+    },
+    "trending_3mPfcA": {
+      "type": "Trending",
+      "name": "Trending",
+      "settings": {
+        "headings": "Women’s t-shirts",
+        "rich-text": "<p>Not your basic tee—designed with a premium feel and a silhouette made to move in. The ultimate staple piece to ground your loudest fits.</p>",
+        "cs_collection": "bts-women",
+        "bg_color": "",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "custom_video_slider_rCUPyD": {
+      "type": "custom-video-slider",
+      "blocks": {
+        "video_a3pXEk": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/IMG_8686.MOV",
+            "abs_text": ""
+          }
+        },
+        "video_fkQj99": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/IMG_8692.MOV",
+            "abs_text": ""
+          }
+        },
+        "video_rAtNw9": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/1126.mov",
+            "abs_text": ""
+          }
+        },
+        "video_i6wdBy": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/WhatsApp Video 2025-09-23 at 17.26.02_ab8a9cd5.mp4",
+            "abs_text": ""
+          }
+        },
+        "video_34YRTr": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/IMG_0012.MOV",
+            "abs_text": ""
+          }
+        },
+        "video_dpeeiB": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/0605.mp4",
+            "abs_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_a3pXEk",
+        "video_fkQj99",
+        "video_rAtNw9",
+        "video_i6wdBy",
+        "video_34YRTr",
+        "video_dpeeiB"
+      ],
+      "name": "Video Slider",
+      "settings": {
+        "pdp": false,
+        "rating_text": "",
+        "header_text": "<p>APPROVED BY THE CULTURE</p>",
+        "background_color": "#ffffff",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "items_primary_color": "",
+        "items_light_color": ""
+      }
+    },
+    "custom_faq_iKEJae": {
+      "type": "custom-faq",
+      "blocks": {
+        "best_sellers_tzadg6": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": false,
+            "heading_faq": "How long will it take for my order to arrive?",
+            "heading_ans": "<p>How long will it take for my order to arrive How long will it take for my order to arrive?</p>"
+          }
+        },
+        "best_sellers_fEXCeE": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": false,
+            "heading_faq": "Do you offer exchanges if the fit isn't right?",
+            "heading_ans": "<p>Do you offer exchanges if the fit isn't right? Do you offer exchanges if the fit isn't right?</p>"
+          }
+        },
+        "best_sellers_NfmbLX": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": true,
+            "heading_faq": "How do I know which size to pick?",
+            "heading_ans": "<p>Our t-shirts are designed with a modern, relaxed streetwear fit. If you prefer a standard fit, we recommend staying true to your size.</p>"
+          }
+        },
+        "best_sellers_7cLAtx": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": false,
+            "heading_faq": "How should I wash my \"Our Terms\" tees to keep them looking new?",
+            "heading_ans": "<p>How should I wash my \"Our Terms\" tees to keep them looking new? How should I wash my \"Our Terms\" tees to keep them looking new?</p>"
+          }
+        }
+      },
+      "block_order": [
+        "best_sellers_tzadg6",
+        "best_sellers_fEXCeE",
+        "best_sellers_NfmbLX",
+        "best_sellers_7cLAtx"
+      ],
+      "name": "Custom Faq Section",
+      "settings": {
+        "headings": "FAQ",
+        "butt-text": "see more",
+        "butt_url": "",
+        "back_color": "#f5f5f5",
+        "desktop-padding-top": 60,
+        "desktop-padding-bottom": 40,
+        "padding-top-mbl": 50,
+        "padding-bottom-mbl": 40,
+        "section_color": "#efeee1"
+      }
+    },
+    "premium_streetwear_YAtkd6": {
+      "type": "Premium-Streetwear",
+      "blocks": {
+        "recognition_JCMRea": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_22.png",
+            "title": "FAST DISPATCH",
+            "text": "<p>Your order is packed and shipped within<strong> 48 hours</strong> of placing it. No waiting around.</p>"
+          }
+        },
+        "recognition_pQtAcn": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_23.png",
+            "title": "DESIGNED ON OUR TERMS",
+            "text": "<p><strong>100% original</strong>, bold graphics and relaxed streetwear cuts you won't find anywhere else.</p>"
+          }
+        },
+        "recognition_hX3hkF": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_24.png",
+            "title": "EASY 7-DAY EXCHANGES",
+            "text": "<p>Fit not quite right? Enjoy a smooth, no-questions-asked exchange process.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "recognition_JCMRea",
+        "recognition_pQtAcn",
+        "recognition_hX3hkF"
+      ],
+      "name": "Premium Streetwear",
+      "settings": {
+        "heading": "Premium Streetwear",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 60
+      }
+    }
+  },
+  "order": [
+    "section",
+    "custom_banner_zYVzm8",
+    "main-collection",
+    "trending_3mPfcA",
+    "custom_video_slider_rCUPyD",
+    "custom_faq_iKEJae",
+    "premium_streetwear_YAtkd6"
+  ]
+}

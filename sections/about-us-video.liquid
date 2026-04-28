@@ -1,0 +1,427 @@
+{% comment %}
+  Video Hero Section - "It's About Owning Who You Are"
+  Desktop: Wide landscape layout
+  Mobile: Portrait/vertical layout
+  Schema: video (Shopify media library), text, button_text, button_url
+{% endcomment %}
+
+<section class="video-hero" id="video-hero-{{ section.id }}">
+
+  {%- comment -%} Overlay Text (Top) {%- endcomment -%}
+  <div class="video-hero__top-text animate-item">
+    <span class="video-hero__asterisk animate-item">
+        
+<svg width="50" height="45" viewBox="0 0 50 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.6429 0L25.7271 18.8053L36.9643 3.01443L27.6051 19.7953L45.9842 11.25L28.6894 21.51L49.2857 22.5L28.6894 23.49L45.9842 33.75L27.6051 25.2047L36.9643 41.9856L25.7271 26.1947L24.6429 45L23.5586 26.1947L12.3214 41.9856L21.6806 25.2047L3.30152 33.75L20.5963 23.49L0 22.5L20.5963 21.51L3.30152 11.25L21.6806 19.7953L12.3214 3.01443L23.5586 18.8053L24.6429 0Z" fill="#221919"/>
+</svg>
+
+    </span>
+    {{ section.settings.heading }}
+    <span class="video-hero__asterisk animate-item">
+        
+<svg width="50" height="45" viewBox="0 0 50 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.6429 0L25.7271 18.8053L36.9643 3.01443L27.6051 19.7953L45.9842 11.25L28.6894 21.51L49.2857 22.5L28.6894 23.49L45.9842 33.75L27.6051 25.2047L36.9643 41.9856L25.7271 26.1947L24.6429 45L23.5586 26.1947L12.3214 41.9856L21.6806 25.2047L3.30152 33.75L20.5963 23.49L0 22.5L20.5963 21.51L3.30152 11.25L21.6806 19.7953L12.3214 3.01443L23.5586 18.8053L24.6429 0Z" fill="#221919"/>
+</svg>
+
+    </span>
+  </div>
+
+  {%- comment -%} Video / Image Container {%- endcomment -%}
+  <div class="video-hero__media-wrapper animate-item">
+
+    {%- if section.settings.video != blank -%}
+      {%- assign video = section.settings.video -%}
+      <div class="video-hero__video-wrap animate-item">
+        {{
+          video
+          | video_tag:
+            image_size: '1600x',
+            controls: false,
+            class: 'video-hero__native-video'
+        }}
+      </div>
+
+     {%- comment -%} Play Button Overlay {%- endcomment -%}
+<button class="video-hero__play-btn animate-item" aria-label="Play video" id="play-btn-{{ section.id }}">
+  
+<svg width="210" height="213" viewBox="0 0 210 213" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.75" y="0.75" width="208.5" height="211.5" rx="104.25" fill="white" fill-opacity="0.2"/>
+<rect x="0.75" y="0.75" width="208.5" height="211.5" rx="104.25" stroke="white" stroke-width="1.5"/>
+<path d="M150.5 106.5L82.25 146.77L82.25 66.2298L150.5 106.5Z" fill="white"/>
+</svg>
+
+</button>
+    {%- elsif section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          loading: 'lazy',
+          class: 'video-hero__fallback-image animate-item',
+          alt: section.settings.heading
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'video-hero__placeholder' }}
+    {%- endif -%}
+
+    {%- comment -%} Bottom CTA overlay {%- endcomment -%}
+    <div class="video-hero__bottom-overlay animate-item">
+      <a
+        href="{{ section.settings.button_url }}"
+        class="video-hero__cta-link animate-item"
+        {% if section.settings.button_url == blank %}aria-disabled="true"{% endif %}
+      >
+        {{ section.settings.button_text }}
+      </a>
+      <a
+        href="{{ section.settings.button_url }}"
+        class="video-hero__arrow-btn animate-item"
+        aria-label="{{ section.settings.button_text }}"
+      >
+        
+<svg width="111" height="64" viewBox="0 0 111 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="110" height="63" rx="31.5" stroke="white" stroke-opacity="0.4" stroke-linecap="round"/>
+<path d="M25 32L81 32" stroke="white" stroke-width="3" stroke-linecap="round"/>
+<path d="M64 16.2856C66.2444 24.4865 73.2447 30.5022 81.6898 31.4874L84.8569 31.8569L81.3645 32.73C72.9328 34.838 66.2943 41.331 64 49.7139" stroke="white" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
+      </a>
+    </div>
+
+  </div><!-- /.video-hero__media-wrapper -->
+
+</section>
+<script>
+(function() {
+  var wrapper = document.querySelector('#video-hero-{{ section.id }} .video-hero__media-wrapper');
+  if (!wrapper) return;
+
+  var video   = wrapper.querySelector('video');
+  var playBtn = wrapper.querySelector('.video-hero__play-btn');
+  if (!video || !playBtn) return;
+
+  // Video ya play button click karo — toggle play/pause
+  function togglePlay() {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  }
+
+  video.addEventListener('click', togglePlay);
+  playBtn.addEventListener('click', togglePlay);
+
+  // Play hone par button chupa do
+  video.addEventListener('play', function() {
+    playBtn.style.display = 'none';
+  });
+
+  // Pause hone par button dikha do
+  video.addEventListener('pause', function() {
+    playBtn.style.display = 'flex';
+  });
+
+  // Video khatam ho jaye to bhi button wapas aaye
+  video.addEventListener('ended', function() {
+    playBtn.style.display = 'flex';
+  });
+})();
+</script>
+<style>
+  #video-hero-{{ section.id }} {
+   padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+  }
+.video-hero__native-video {
+  cursor: pointer; /* add karo existing properties mein */
+}
+  /* ── Top Heading ─────────────────────────────── */
+  .video-hero__top-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 0px 40px 0;
+   font-family: FONTSPRING DEMO - Gibson Book;
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 60px;
+    leading-trim: NONE;
+    line-height: 82px;
+    letter-spacing: 1%;
+    text-align: center;
+    text-transform: capitalize;
+    color: #221919;
+  }
+
+  .video-hero__asterisk {
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+
+  /* ── Media Wrapper ───────────────────────────── */
+  .video-hero__media-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+
+  /* Desktop: 16:9 aspect (wide) */
+  .video-hero__media-wrapper::before {
+    content: '';
+    display: block;
+    padding-top: 42%;
+  }
+
+  /* ── Video Wrap (native video) ──────────────── */
+  .video-hero__video-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-hero__native-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Fallback Image ──────────────────────────── */
+  .video-hero__fallback-image,
+  .video-hero__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Play Button ─────────────────────────────── */
+  .video-hero__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 5;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .video-hero__play-btn:hover {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  .video-hero__play-btn svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── Bottom Overlay (CTA) ────────────────────── */
+  .video-hero__bottom-overlay {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, transparent 100%); */
+    z-index: 6;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .video-hero__cta-link {
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+font-weight: 300;
+font-style: Regular;
+font-size: 60px;
+leading-trim: NONE;
+line-height: 65px;
+letter-spacing: 14%;
+text-transform: uppercase;
+color: #FFFFFF;
+  }
+
+  .video-hero__cta-link:hover {
+    opacity: 0.85;
+  }
+
+  .video-hero__arrow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .video-hero__arrow-btn:hover {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+
+  .video-hero__arrow-btn svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* ── Mobile ──────────────────────────────────── */
+  @media (max-width: 749px) {
+    #video-hero-{{ section.id }} {
+   padding-top: {{ section.settings.mbl_padding_top }}px;
+        padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+  }
+    .video-hero__media-wrapper::before {
+      padding-top: 130%; /* Portrait aspect on mobile */
+    }
+
+    .video-hero__top-text {
+              padding: 0 16px 30px 16px;
+        font-size: 34px;
+        line-height: 44px;
+    }
+
+    .video-hero__play-btn {
+      width: 70px;
+      height: 70px;
+    }
+
+    .video-hero__bottom-overlay {
+      bottom: 22px;
+        padding: 0;
+        margin: 0;
+        left: 20px;
+    }
+
+    .video-hero__cta-link {
+      font-size: 40px;
+        letter-spacing: 0.1em;
+        line-height: 46px;
+    }
+
+    .video-hero__arrow-btn svg {
+      width: 38px;
+      height: 38px;
+    }
+    .video-hero__arrow-btn{
+    display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Video Hero",
+  "tag": "section",
+  "class": "video-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Text",
+      "default": "It's About Owning Who You Are",
+      "info": "Appears above the video with asterisk decorators"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "info": "Shopify media library se video upload karein (MP4 recommended)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback Image",
+      "info": "Shown when no video URL is provided, or as a poster frame"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP OUR TERMS"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL",
+      "info": "Link for both the text and the arrow button"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Top Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Bottom Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Hero",
+      "settings": {
+        "heading": "It's About Owning Who You Are",
+        "button_text": "SHOP OUR TERMS"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,458 @@
+.cs_main_product_custom_class.page-width{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+.cs_main_product_custom_class .cs_detail_header_icon{
+    display: none;
+ }
+ .details__header_cs{
+    padding-right: 20px;
+    padding-left: 20px;
+ }
+ .accordion-custom_custom_calss{
+    border: 1px solid #22191947;
+ }
+ .cs_custom_accordion_main{
+    border: none !important;
+       display: flex;
+    flex-direction: column;
+    gap: 20px;
+ }
+.group-block-content-custom p{
+        font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 27px;
+    letter-spacing: 3px;
+    max-width: 100%;
+    color: #221919;
+}
+.group-block-content-custom h5{
+    font-family: Montserrat;
+font-weight: 600;
+font-style: Italic;
+font-size: 14px;
+leading-trim: NONE;
+line-height: 20px;
+letter-spacing: 0px;
+color: #221919;
+}
+.cs_main_product_custom_class .product-details{
+    padding-right: 0;
+}
+.cs_main_product_custom_class .product-details .group-block{
+    padding-top: 0 !important;
+}
+.cs_main_product_custom_class .spacing-style.sticky-content{
+        margin-top: 0 !important;
+}
+.cs_main_product_custom_class h2{
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+}
+.cs_main_product_custom_class .price__regular .price .cvc-money{
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 23px;
+    letter-spacing: 0%;
+    color: #141B34;
+}
+.cs_main_product_custom_class .rating-wrapper.justify-right {
+    flex-direction: row;
+}
+.cs_main_product_custom_class .rating-wrapper .rating-count{
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    leading-trim: NONE;
+    line-height: 12.49px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+}
+.variant-picker__form .variant-option{
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium; 
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #221919;
+}
+
+/* --------------gallery------------- */
+.cs_pro_gallery_bottom_images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+.cs_gallery_thumb img{
+    display: block;
+    object-fit: cover;
+    max-height: 330px;
+}
+/* -------------buy-button---------- */
+.cs_main_product_custom_class .button.add-to-cart-button{
+    background: #fff;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 30.6px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+   box-shadow: none;
+}
+.shopify-payment-button__button{
+    font-family: Montserrat;
+font-weight: 500;
+font-style: Medium;
+font-size: 16px;
+leading-trim: NONE;
+line-height: 30.6px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+
+}
+.cs_main_product_custom_class button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
+    font-family: Montserrat;
+font-weight: 500;
+font-style: Medium;
+font-size: 16px;
+leading-trim: NONE;
+line-height: 30.6px;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+}
+/* -----------------------product-recommendations---------- */
+.custom-pro-recomm-main .resource-list__carousel slideshow-slides{
+    gap: 18px !important;
+}
+.custom-pro-recomm-main .quick-add__button.add-to-cart-button {
+    height: 45px;
+    opacity: 1;
+    width: 100%;
+    box-sizing: border-box;
+        right: 0;
+}
+.custom-pro-recomm-main .quick-add__button .add-to-cart-text {
+    background: transparent;
+    overflow: hidden;
+    border-radius: 50px;
+    height: 100%;
+    gap: 0;
+    width: 100%;
+}
+.custom-pro-recomm-main .quick-add__button .add-to-cart-icon{
+    width: 100%;
+}
+.custom-pro-recomm-main .add-to-cart-text__content{
+    display: none !important;
+}
+.cs-add-to-cart-icon_main{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.cs-add-to-cart-icon_main svg{
+    width: 12px;
+    height: 12px;
+}
+.custom-pro-recomm-main .button.quick-add__button{
+    display: flex;
+    justify-content: center;
+    margin: 0 12px;
+    box-sizing: border-box;
+    position: unset;
+    background: #221919;
+    border-radius: none;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: SemiBold;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+        border-radius: 0;
+}
+.custom-pro-recomm-main .product-grid__card.product-grid__card{
+    gap: 16px !important;
+}
+.custom-pro-recomm-main .contents.user-select-text p{
+        margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #221919;
+}
+.custom-pro-recomm-main .cvc-money{
+        margin: 0;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: start;
+    display: block;
+    text-transform: uppercase;
+    color: #221919;
+}
+.custom-pro-recomm-main h3{
+        margin: 0;
+    font-family: "FONTSPRING DEMO - Gibson Book" !important;
+    font-weight: 300 !important;
+    font-style: Regular !important;
+    font-size: 60px !important;
+    leading-trim: NONE !important;
+    line-height: 100% !important;
+    letter-spacing: 0% !important;
+    text-transform: uppercase !important;
+    color: #000 !important;
+}
+.custom-pro-recomm-main_in slideshow-arrows .slideshow-control{
+        opacity: 1 !important;
+        height: auto;
+} 
+.custom-pro-recomm-main .group-block{
+    padding-bottom: 15px !important;
+}
+/* ---------------collection-page----------------- */
+.custom-pro-recomm-main .facets.facets--vertical{
+    padding: 0 !important;
+}
+.custom-pro-recomm-main .facets__filters-wrapper{
+    margin: 0;
+}
+.custom-pro-recomm-main .cs_coll_tab_cart_content {
+    padding: 10px;
+    width: 100%;
+}
+.custom-pro-recomm-main .facets__label, .facets__summary{
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 13px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #050505;
+}
+.custom-pro-recomm-main .checkbox__label-text, .price-facet__separator, .price-facet__highest-price{
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 11px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #050505;
+}
+.cs_colection_page_tab_button {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+.cs_colection_page_tab_button_in{
+    padding: 18px 0;
+    width: 183px;
+    border: 0.4px solid #221919;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 5%;
+    text-transform: uppercase;
+    color: #221919;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.products-count-wrapper{
+    font-family: Montserrat;
+font-weight: 400;
+font-style: Regular;
+font-size: 15px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 5%;
+text-transform: uppercase;
+color:#05050580;
+}
+.facets.facets-controls-wrapper{
+    background: #fff; 
+    padding: 10px 0;
+}
+.cs_colection_page_tab_button_in.active {
+  /* apni active styling yahan */
+  background: #221919;
+  color: #fff;
+}
+.facets-block-wrapper{
+    margin-top: 14px !important;
+    background: #fff !important;
+    padding: 16px;
+}
+.main-collection-grid{
+    margin-top: 14px;
+}
+@media screen and (min-width: 750px) {
+    .facets--horizontal .products-count-wrapper{
+        margin-left: 0 !important;
+    }
+}
+/* @media screen and (min-width: 750px) {
+    .custom-pro-recomm-main .product-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+} */
+@media (max-width: 768px){
+    
+    .custom-pro-recomm-main h3 {
+    font-size: 35px !important;
+    line-height: 38px !important;
+}
+.custom-pro-recomm-main slideshow-arrows .slideshow-control{
+    display: none;
+}
+.custom-pro-recomm-main .button.quick-add__button {
+    margin: 0 8px;
+}
+.custom-pro-recomm-main .quick-add__button.add-to-cart-button {
+    height: 46px;
+}
+.custom-pro-recomm-main .product-grid__card.product-grid__card {
+    gap: 10px !important;
+}
+.custom-pro-recomm-main .contents.user-select-text p {
+    font-size: 16px;
+}
+.custom-pro-recomm-main .cvc-money {
+    font-size: 16px;
+}
+.custom-pro-recomm-main .resource-list__carousel slideshow-slides {
+    gap: 9px !important;
+}
+
+.custom-pro-recomm-main .resource-list__carousel .resource-list__slide {
+    width: 80%;
+}
+
+}
+/* ------------------- */
+@media (max-width: 768px){
+    .cs_main_product_custom_class.page-width {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+}
+.cs_main_product_custom_class .product-details.dd{
+    margin-top: 15px;
+}
+.cs_pro_gallery_bottom_images {
+    display: none;
+}
+
+.cs_main_product_custom_class .slideshow-controls__thumbnails .slideshow-control {
+    width: 80px;
+    height: 80px;
+}
+.cs_main_product_custom_class .group-block-content {
+    gap: 16px !important;
+}
+.group-block-content-custom p {
+    line-height: 23px;
+}
+    .cs_main_product_custom_class .layout-panel-flex--row:not(.mobile-column) {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+.cs_main_product_custom_class h2 {
+    line-height: 28px;
+}
+.cs_main_product_custom_class .product-form-buttons:not(:has(.quantity-rules)) {
+    row-gap: 16px !important;
+}
+.details__header_cs {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+rte-formatter.spacing-style.text-block.text-block--AbnNGRGxpanZ4SHJyb__text_wbGpVU.rte.text-block--align-left.rte {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+/* --------collecton-------------- */
+    .custom-pro-recomm-main .product-grid {
+    gap: 7px;
+}
+.custom-pro-recomm-main .dps-image img {
+        max-height: 200px;
+        min-height: 200px;
+    }
+    .custom-pro-recomm-main .cs_coll_tab_cart_buy_button {
+    padding: 11px;
+}
+.custom-pro-recomm-main .dps-title {
+        font-size: 16px;
+        min-height: 32px;
+    }
+    .custom-pro-recomm-main .cvc-money {
+        font-size: 14px;
+    }
+    .custom-pro-recomm-main .product-grid{
+        gap: 9px;
+    }
+        .facets.facets-controls-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: start;
+        height: auto;
+        gap: 16px;
+        padding: 20px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+.custom-pro-recomm-main .cs_colection_page_tab_button_in{
+    height: 40px;
+}
+
+.custom-pro-recomm-main .products-count-wrapper {
+    display: block !important;
+}
+.custom-pro-recomm-main .facets-block-wrapper.facets-block-wrapper--vertical{
+    display: none;
+}
+.custom-pro-recomm-main .facets-toggle{
+    padding: 10px !important;
+    margin: 13px 0 !important;  
+    background: #fff;
+}
+}

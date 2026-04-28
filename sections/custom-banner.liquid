@@ -1,0 +1,247 @@
+<style>
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+    letter-spacing: 0px;
+}
+.cs_banner_sec_main_img_des{
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+.cs_banner_sec_main_img_mbl{
+    display: none;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+.cs_banner_content_sub_heaing{
+    margin: 0;
+    font-family: Geist;
+    font-weight: 300;
+    font-style: SemiBold;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color:#F5F5F5;
+}
+.cs_banner_content_heaing{
+    margin: 0;
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 90px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 20px 0;
+    width: 882px;
+}
+.cs_banner_content_buttons{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+.cs_banner_content_buttons_text{
+font-family: Montserrat;
+font-weight: 400;
+font-style: Regular;
+font-size: 20px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+color: #221919;
+padding: 9px;
+width: 148px;
+text-decoration: none;
+background: #FFFFFF;
+
+}
+.cs_banner_sec_main{
+    position: relative;
+}
+.cs_banner_sec_main_content{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+    max-width: 1078px;
+    margin: 0 auto;
+    background: #22191966;
+    /* border-bottom: 2px solid #FFFFFF;*/
+    z-index: 1;
+    padding: 55px 98px;
+}
+/* Mobile */
+@media (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.mbl_padding_top }}px;
+        padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+    }
+    .cs_banner_sec_main_img_des{
+    display: none;
+}
+.cs_banner_sec_main_img_mbl{
+    display: block;
+}
+.cs_banner_content_heaing {
+    font-size: 30px;
+    padding: 10px 0;
+    width: 100%;
+            max-width: 256px;
+        margin: 0 auto;
+}
+.cs_banner_sec_main_content {
+    left: 0;
+    transform: unset;
+    bottom: 0;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.cs_banner_content_buttons {
+    gap: 10px;
+}
+.cs_banner_content_sub_heaing {
+    font-size: 16px;
+}
+.cs_banner_content_buttons_text {
+    font-size: 15px;
+    width: 111px;
+}
+}
+</style>
+
+<section class="section-{{ section.id }}-padding"> 
+  <div class="cs_banner_sec_main">
+    <div class="cs_banner_sec_main_img">
+        <img class="cs_banner_sec_main_img_des" src="{{ section.settings.des-img | image_url }}" width="100%" height="auto" loading="egar"/>
+         <img class="cs_banner_sec_main_img_mbl" src="{{ section.settings.mbl-img | image_url }}" width="100%" height="auto" loading="egar"/>
+    </div>
+    {% if section.settings.img-content != blank %}
+    <div class="cs_banner_sec_main_content">
+        <h4 class="cs_banner_content_sub_heaing">{{ section.settings.sub-heading }}</h4>
+         <h1 class="cs_banner_content_heaing">{{ section.settings.heading }}</h1>
+         <div class="cs_banner_content_buttons">
+            <a class="cs_banner_content_buttons_text" href="{{ section.settings.men-button-url }}">{{ section.settings.men-button-text }}</a>
+            <a class="cs_banner_content_buttons_text" href="{{ section.settings.women-button-url }}">{{ section.settings.women-button-text }}</a>
+         </div>
+         
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+        "type": "checkbox",
+        "id": "img-content",
+        "label": "Show Image Content"
+    },
+    {
+        "type": "image_picker",
+        "id": "des-img",
+        "label": "Desktop Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "mbl-img",
+        "label": "Mobile Image"
+    },
+    {
+        "type": "text",
+        "id": "sub-heading",
+        "label": "Sub Heading"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+    },
+    {
+        "type": "text",
+        "id": "men-button-text",
+        "label": "Men Button Text"
+    },
+    {
+        "type": "url",
+        "id": "men-button-url",
+        "label": "Men Button Url"
+    },
+    {
+        "type": "text",
+        "id": "women-button-text",
+        "label": "women Button Text"
+    },
+    {
+        "type": "url",
+        "id": "women-button-url",
+        "label": "women Button Url"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Top Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop Bottom Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner"
+    }
+  ]
+}
+{% endschema %}
+

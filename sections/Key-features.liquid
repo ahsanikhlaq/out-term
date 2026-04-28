@@ -1,0 +1,242 @@
+<style>
+  .section-{{ section.id }}{
+      background-color: {{ section.settings.background_color }};
+      padding-top: {{  section.settings.padding_top_desktop }}px ;
+      padding-bottom: {{  section.settings.padding_bottom_desktop }}px ;
+  }
+  .cs_Keycontainer-fluid{
+        max-width: 1200px;
+    margin: 0 auto;
+  }
+  .cs_Key-video_title p{
+    margin: 0;
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 60px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #221919;
+    padding-bottom: 40px;
+  }
+  .cs_Key_block_main{
+    position: relative;
+    border: 4px solid #FFFFFF;
+  }
+  .cs_key_content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(32.79999923706055px);
+    background: #FFFFFF;
+    padding: 40px 30px 20px 20px;
+    background: linear-gradient(to bottom, transparent, #ffffff);
+    width: 100%;
+  }
+  .cs_key_content_title{
+    margin: 0;
+    font-family: FONTSPRING DEMO - Gibson Medium;
+    font-weight: 500;
+    font-style: Regular;
+    font-size: 23px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #221919;
+  }
+  .cs_key_content_sub-title{
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    padding-top: 5px;
+    color: #221919;
+  }
+  .cs_key_image img{
+    display: flex;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+    @media (max-width: 768px) {
+      .section-{{ section.id }}{
+          padding-top: {{  section.settings.padding_top_mobile }}px ;
+          padding-bottom: {{  section.settings.padding_bottom_mobile }}px ;
+      }
+      .cs_Keycontainer-fluid{
+        max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden; 
+  }
+    .cs_Key-video_title p{
+    font-size: 35px;
+    padding-bottom: 18px;
+    text-align: left;
+}
+.cs_key_content_title {
+    font-size: 20px;
+     text-align: center;
+}
+.cs_key_content_sub-title{
+    text-align: center;
+
+}
+.cs_key_content {
+    padding: 25px 20px;
+    }
+    .section-{{ section.id }} .page-width{
+        padding-right: 0;
+    }
+    }
+</style>
+<div class="section-{{ section.id }}">
+    <div class="page-width">
+    <div class="vide-slider_head animate-item">
+        {% if section.settings.header_text != blank %}
+            <h3 class="cs_Key-video_title animate-item">{{ section.settings.header_text }}</h3>
+        {% endif %}
+    </div>
+  <div class="cs_Keycontainer-fluid animate-item">
+    <div id="cs_Keyvs-container" class="cs_Keyswiper-container">
+      <div class="swiper-wrapper cs_Keycstm_video-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="cs_Key_block_main">
+            <div class="cs_key_image">
+            <img src="{{ block.settings.img | image_url }}" width="100%" height="auto" loading="lazy"/>
+            </div>
+            <div class="cs_key_content">
+            <h3 class="cs_key_content_title">{{ block.settings.block-title }}</h3>
+            <h4 class="cs_key_content_sub-title">{{ block.settings.block-sub-title }}</h4>
+            </div>
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+     var swiper = new Swiper('.cs_Keyswiper-container', {
+  slidesPerView: 3,
+  spaceBetween: 22,
+  speed: 500,
+  breakpoints: {
+    0: {
+      slidesPerView: 1.1,
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 3,
+    },
+  },
+});     
+  });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Key features",
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "block-title",
+          "label": "Heading "
+        },
+        {
+          "type": "text",
+          "id": "block-sub-title",
+          "label": "Sub Heading"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "header_text",
+      "label": "Header Text",
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Key features",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

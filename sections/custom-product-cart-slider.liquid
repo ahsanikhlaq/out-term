@@ -1,0 +1,853 @@
+{% comment %}
+  Shop the Collections Section
+{% endcomment %}
+<style>
+  .arr-shop-collections {
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  background: {{ section.settings.bg_color }};
+}
+/* Mobile padding */
+@media (max-width: 767px) {
+  .arr-shop-collections {
+    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+  }
+}
+
+
+
+/* ================= GRID / SLIDER ================= */
+.arr-collections-wrapper {
+  position: relative;
+}
+/* ================= PRODUCT CARD ================= */
+#section-{{ section.id }} .arr-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+  flex-shrink: 0;
+}
+#section-{{ section.id }} .arr-live-heading  {
+  margin: 0;
+  font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 60px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+}
+/* Image */
+.arr-dps-image{
+    width: 100%;
+    position: relative;
+}
+
+#section-{{ section.id }} .arr-dps-image img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    max-width: 550px;
+    max-height: 550px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Meta Tags */
+#section-{{ section.id }} .arr-dps-tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 17px;
+}
+
+#section-{{ section.id }} .arr-dps-tag {
+  padding: 6px 12px;
+  border-radius: 65px;
+  border: 1px solid #00AEEF;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width:max-content;
+}
+
+#section-{{ section.id }} .arr-dps-tag  span {
+      color: #333;
+      font-family: Poppins;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px; /* 157.143% */
+}
+#section-{{ section.id }} .arr-dps-tag img {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* Title */
+#section-{{ section.id }} .arr-dps-title {
+    margin: 0;
+  font-family: Montserrat;
+font-weight: 400;
+font-style: Regular;
+font-size: 30px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+color: #221919;
+}
+{% comment %} ---------------------------- {% endcomment %}
+ .arr-cs_coll_tab_heading_tab_button {
+    display: flex;
+    gap: 100px;
+    
+}
+.arr-cs_coll_tab_sider-button{
+        width: 47%;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 21px;
+    margin: 0 auto;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 2;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.arr-cs_coll_tab_sider-button-mbl{
+  display: none;
+}
+.arr-cs_coll_tab_sider-button-des{
+  display: flex;
+}
+.arr-csp-mobs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 38px;
+}
+.arr-cs_coll_tab_cart_buy_button{
+  font-family: Montserrat;
+font-weight: 500;
+font-style: Medium;
+font-size: 20px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+color: #221919; 
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 15px;
+width: fit-content;
+margin: 0 auto;
+cursor: pointer;
+border: none;
+background: transparent;
+border-bottom: 1px solid #221919;
+margin-top: 11px;
+}
+.arr-cs_coll_tab_cart_buy_button svg path{
+    fill: #221919;
+}
+.arr-cs_coll_tab_cart_buy_button svg{
+    width: 16px;
+    height: 16px;
+}
+.arr-cs_coll_tab_cart_content{
+    padding: 30px 10px 14px 10px;
+    width: 100%;
+}
+.arr-cs_coll_tab_pro_size_varint {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 37px;
+  bottom: 46px;
+  z-index: 1;
+}
+
+.arr-size-badge {
+  padding: 2px 8px;
+  font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color:#221919;
+  cursor: pointer;
+  position: relative;
+}
+.arr-cs_coll_tab_pro_price{
+    margin: 0;
+   font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 25px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #221919;
+    padding: 6px 0 17px 0;
+        width: 100%;
+    display: block;
+}
+.arr-size-badge:has(.arr-size-badge_input:checked) {
+  border: 0.7px solid #221919;
+  font-weight: 600;
+}
+.arr-cs_coll_tab_title_varint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.arr-size-badge_input{
+position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.arr-color-swatches {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+justify-content: center;
+}
+
+.arr-color-badge {
+  cursor: pointer;
+}
+
+.arr-color-badge_input {
+  display: none;
+}
+
+.arr-color-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  transition: outline 0.2s;
+}
+
+.arr-color-badge:has(.arr-color-badge_input:checked) .arr-color-circle {
+  outline: 2px solid #555;
+  outline-offset: 2px;
+}
+
+.arr-selected-color-name {
+  display: block;
+  font-family: 'FONTSPRING DEMO - Gibson Book';
+font-weight: 300;
+font-style: Regular;
+font-size: 12px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+text-transform: capitalize;
+  margin-top: 13px;
+  color: #221919;
+  border-bottom: 0.5px solid #221919;
+  width: fit-content;
+}
+.arr-cs_coll_tab_sider-button_prev{
+    transform: rotate(180deg);
+  }
+  .arr-cs_coll_tab_sider-button{
+    cursor: pointer;
+  }
+  .arr-cs_btn_loader {
+  animation: cs_spin 0.8s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@keyframes cs_spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.arr-cs_coll_tab_cart_buy_button.loading {
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.arr-product-card{
+  
+  position: relative;
+}
+.arr-cs_coll_tab_sec_button{
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 15px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  background: #221919;
+  max-width: 246px;
+  height: 61px;
+  margin: 34px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ================= MOBILE ================= */
+/* Product card image container ko relative rakhna zaroori hai */
+/* Image container ko overflow hidden rakhein taake bahar na nikalay */
+.arr-dps-image {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.arr-dps-image img {
+  transition: transform 0.4s ease;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Jab active class add ho to image zoom ho jaye */
+.arr-dps-image.is-zoomed img {
+  transform: scale(1.6); /* Zoom level yahan se change karein */
+  cursor: zoom-out;
+}
+.arr-collections-wrapper .swiper-slide-active .arr-dps-image{
+    background: #FFFFFF;
+}
+.swiper-slide-active .arr-dps-image img{
+    mix-blend-mode: multiply;
+    filter: contrast(120%);
+}
+.arr-cs_coll_tab_cart_content{
+    display: none;
+} 
+.arr-cs_coll_tab_pro_size_varint{
+  display: none;
+}
+.arr-collections-wrapper .swiper-slide-active .arr-cs_coll_tab_pro_size_varint{
+  display: flex;
+}
+.arr-collections-wrapper .swiper-slide-active .arr-cs_coll_tab_cart_content{
+    display: block;
+}
+.arr-cs_coll_tab_cart_buy_button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.arr_cs_main_heading{
+  margin: 0;
+  font-family: FONTSPRING DEMO - Gibson Book;
+  font-weight: 300;
+  font-style: Regular;
+  font-size: 60px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #221919;
+  padding-bottom: 45px;
+}
+@media (max-width: 786px) {
+  .arr_cs_main_heading {
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+#section-{{ section.id }} .arr-dps-image img {
+    min-height: 360px;
+    max-height: 360px;
+    max-width: 100%;
+}
+.arr-cs_coll_tab_pro_size_varint {
+    gap: 8px;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+}
+  .arr-cs_coll_tab_sider-button-mbl{
+  display: flex;
+  margin-top: 25px;
+  position: unset;
+        margin: 12px auto 0 auto;
+        transform: unset;
+        justify-content: center;
+}
+.arr-cs_coll_tab_sider-button-mbl svg{
+  width: 39px;
+  height: 39px;
+}
+.arr-cs_coll_tab_sider-button-des{
+  display: none;
+}
+  .arr-cs_coll_tab_heading_tab_button {
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+  {% comment %} ---- {% endcomment %}
+
+  .arr-collection-section-heading p {
+    font-size: 28px;
+  }
+  .arr-csp-mobs {
+   margin-bottom: 12px;
+  }
+
+  .arr-collection-tabs {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .arr-cs_tabs {
+    overflow: auto;
+    width: 100%;
+    gap:12px;
+  }
+
+  .arr-cs_tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .arr-collection-tabs .tab-button {
+    font-size: 12px;
+    padding: 10px;
+    width: max-content;
+  }
+
+  .arr-slider-prev,
+  .arr-slider-next {
+    display: none;
+  }
+  #section-{{ section.id }} .arr-live-heading  {
+    margin:0;
+    font-size: 30px;
+  }
+  #section-{{ section.id }} .arr-dps-tags {
+    margin-bottom: 16px;
+  }
+  #section-{{ section.id }} .arr-dps-title {
+    font-size: 24px;
+  }
+  .arr-cs_coll_tab_pro_price {
+    font-size: 19px;
+    }
+    .arr-cs_coll_tab_cart_content {
+    padding: 20px 10px 14px 10px;
+}
+.arr-cs_coll_tab_cart_buy_button {
+    font-size: 15px;
+        margin-top: 10px;
+    }
+  #section-{{ section.id }} .arr-product-form__buttons button.arr-add-to-cart-button span {
+    font-weight: 400;
+  }
+}
+
+</style>
+<section
+  class="arr-shop-collections arr-cs-featured-collection"
+  id="section-{{ section.id }}"
+>
+  <div class="page-widths">
+  <h4 class="arr_cs_main_heading animate-item">{{ section.settings.headings }}</h4>
+    <div class="arr-collections-wrapper animate-item">
+      <div class="arr-cs_coll_tab_sider-button arr-cs_coll_tab_sider-button-des">
+        <span class="arr-cs_coll_tab_sider-button_next">{% render 'cs_tab_slider_button' %}</span>
+        <span class="arr-cs_coll_tab_sider-button_prev">{% render 'cs_tab_slider_button' %}</span>
+      </div>
+
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+        <div
+          id="arr-collection-{{ block.id }}"
+          class="arr-collection-slider"
+        >
+          <div class="swiper collection-swiper-{{ block.id }} arr-mb-5 animate-item">
+            <div class="swiper-wrapper">
+              {% for product in collection.products %}
+
+                <div class="swiper-slide arr-product-card">
+
+                  <a class="arr-dps-image" href="{{ product.url }}">
+                    <img
+                      src="{{ product.featured_image | img_url: '480x480' }}"
+                      alt="{{ product.title }}"
+                    >
+                    <div class="arr-cs_coll_tab_pro_size_varint">
+  {% assign size_option_index = nil %}
+  {% assign first_available_found = false %}
+
+  {% for option in product.options %}
+    {% if option == 'Size' %}
+      {% assign size_option_index = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if size_option_index != nil %}
+    {% for variant in product.variants %}
+      
+      {% assign is_checked = false %}
+      {% if variant.available and first_available_found == false %}
+        {% assign is_checked = true %}
+        {% assign first_available_found = true %}
+      {% endif %}
+
+      <span class="arr-size-badge {% unless variant.available %}out-of-stock{% endunless %}">
+        
+        <input 
+          class="arr-size-badge_input" 
+          type="radio"
+          name="variant-size-{{ product.id }}"
+          value="{{ variant.id }}"
+          {% if is_checked %}checked{% endif %}
+          {% unless variant.available %}disabled{% endunless %}
+        >
+
+        <label>
+          {{ variant.options[size_option_index] }}
+        </label>
+
+      </span>
+
+    {% endfor %}
+  {% endif %}
+</div>
+                  </a>
+
+                  <div class="arr-cs_coll_tab_cart_content">
+                  
+                    <div class="arr-cs_coll_tab_title_varint">
+                      <h4 class="arr-dps-title">{{ product.title }}</h4>
+                    </div>
+
+                    <span class="arr-cs_coll_tab_pro_price">{{ product.price | money }}</span>
+
+                    <div class="arr-cs_coll_tab_pro_color_varint">
+                      {% assign color_option = nil %}
+                      {% for option in product.options_with_values %}
+                        {% if option.name == 'Color' %}
+                          {% assign color_option = option %}
+                        {% endif %}
+                      {% endfor %}
+
+                      {% if color_option != nil %}
+                        <div class="arr-color-swatches">
+                          {% for option_value in color_option.values %}
+
+                            {% assign swatch_value = '#cccccc' %}
+                            {% if option_value.swatch.color %}
+                              {% assign swatch_value = 'rgb(' | append: option_value.swatch.color.rgb | append: ')' %}
+                            {% elsif option_value.swatch.image %}
+                              {% assign swatch_img = option_value.swatch.image | image_url: width: 80 %}
+                              {% assign swatch_value = 'url(' | append: swatch_img | append: ')' %}
+                            {% endif %}
+
+                            <label class="arr-color-badge">
+                              <input class="arr-color-badge_input" type="radio"
+                                name="variant-color-{{ product.id }}"
+                                value="{{ option_value.name }}"
+                                {% if forloop.first %}checked{% endif %}>
+                              <span class="arr-color-circle" style="background: {{ swatch_value }};"></span>
+                            </label>
+
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    </div> 
+
+                    <button 
+  class="arr-cs_coll_tab_cart_buy_button"
+  {% unless product.available %} disabled {% endunless %}
+>
+  <input class="arr-cs_coll_tab_slect_size" type="hidden" name="slected-size" value="">
+  <input class="arr-cs_coll_tab_slect_color" type="hidden" name="slected-color" value="">
+  {% render 'buy-button-bag-svg' %}
+  {% if product.available %}
+    add to bag
+  {% else %}
+    out of stock
+  {% endif %}
+</button>
+                  </div>
+
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="arr-cs_coll_tab_sider-button arr-cs_coll_tab_sider-button-mbl animate-item">
+        <span class="arr-cs_coll_tab_sider-button_next">{% render 'cs_tab_slider_button' %}</span>
+        <span class="arr-cs_coll_tab_sider-button_prev">{% render 'cs_tab_slider_button' %}</span>
+      </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "new arrivals",
+  "settings": [
+    { "type": "text", "id": "headings", "label": "Section Heading",},
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 },
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Select Collection" },
+        { "type": "text", "id": "collection_name", "label": "Tab Label", "default": "Collection Name" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    { "name": "new arrivals", "category": "Custom" }
+  ]
+}
+{% endschema %}
+{% comment %} ---tab-script {% endcomment %}
+ <script>
+  // Initialize Swipers for each block
+  {% for block in section.blocks %}
+    new Swiper(".collection-swiper-{{ block.id }}", {
+      slidesPerView: 2.3,
+      spaceBetween: 20,
+       centeredSlides: true,
+      speed: 1000,
+      loop: true,
+      pagination: {
+        el: ".arr-cs-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".arr-cs_coll_tab_sider-button_next",
+        prevEl: ".arr-cs_coll_tab_sider-button_prev",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1.2, spaceBetween: 16 },
+        768: { slidesPerView: 2.2, spaceBetween: 16 },
+        1024: { slidesPerView: 2.3, spaceBetween: 20   },
+      },
+    });
+  {% endfor %}
+</script>
+{% comment %} ------------------add-to-cart----------------- {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // 1. Helper: Sync size + color
+  function syncHiddenInputs(card) {
+    const sizeInput = card.querySelector('.arr-size-badge_input:checked');
+    const colorInput = card.querySelector('.arr-color-badge_input:checked');
+    const hiddenSize = card.querySelector('.arr-cs_coll_tab_slect_size');
+    const hiddenColor = card.querySelector('.arr-cs_coll_tab_slect_color');
+    if (hiddenSize) hiddenSize.value = sizeInput ? sizeInput.value : '';
+    if (hiddenColor) hiddenColor.value = colorInput ? colorInput.getAttribute('variant-id') : '';
+  }
+
+  document.querySelectorAll('.swiper-slide.arr-product-card').forEach(card => syncHiddenInputs(card));
+
+  // 2. Selection changes
+  document.querySelectorAll('.arr-size-badge_input, .arr-color-badge_input').forEach(input => {
+    input.addEventListener('change', function () {
+      const card = this.closest('.swiper-slide.arr-product-card');
+      if (card) {
+        if (this.classList.contains('arr-color-badge_input')) {
+          const colorNameSpan = card.querySelector('.arr-selected-color-name');
+          if (colorNameSpan) colorNameSpan.textContent = this.value;
+        }
+        syncHiddenInputs(card);
+      }
+    });
+  });
+
+  // 3. Correct section ID nikalo page se
+  function getCartSectionId() {
+    const cartItems = document.querySelector('cart-items-component[data-section-id]');
+    if (cartItems) return cartItems.getAttribute('data-section-id');
+    return 'sections--26355253805372__header_section'; // fallback
+  }
+
+  // 4. Add to Cart Logic
+  document.querySelectorAll('.arr-cs_coll_tab_cart_buy_button').forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const btn = this;
+      const card = btn.closest('.swiper-slide.arr-product-card');
+      if (!card) return;
+
+      const variantId = card.querySelector('.arr-cs_coll_tab_slect_size')?.value ||
+                        card.querySelector('.arr-cs_coll_tab_slect_color')?.value;
+
+      if (!variantId) {
+        alert('Please select options first!');
+        return;
+      }
+
+      btn.disabled = true;
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = 'Adding...';
+
+      const sectionId = getCartSectionId();
+
+      const formData = {
+        id: variantId,
+        quantity: 1,
+        sections: sectionId
+      };
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(parsedState => {
+        if (parsedState.status === 422) throw new Error(parsedState.description);
+
+        const cartDrawer = document.querySelector('cart-drawer-component');
+        const sectionHTML = parsedState.sections?.[sectionId];
+
+        if (cartDrawer && sectionHTML) {
+          const parsed = new DOMParser().parseFromString(sectionHTML, 'text/html');
+
+          // cart-items-component update karo
+          const newCartItems = parsed.querySelector('cart-items-component');
+          const currentCartItems = cartDrawer.querySelector('cart-items-component');
+
+          if (currentCartItems && newCartItems) {
+            currentCartItems.innerHTML = newCartItems.innerHTML;
+          } else {
+            const newInner = parsed.querySelector('[data-hydration-key="cart-drawer-inner"]') ||
+                             parsed.querySelector('arr-.cart-drawer__inner');
+            const currentInner = cartDrawer.querySelector('[data-hydration-key="cart-drawer-inner"]') ||
+                                 cartDrawer.querySelector('arr-.cart-drawer__inner');
+            if (currentInner && newInner) {
+              currentInner.innerHTML = newInner.innerHTML;
+            }
+          }
+
+          // Empty class hata do
+          const dialog = cartDrawer.querySelector('dialog');
+          if (dialog) {
+            dialog.classList.remove('cart-drawer--empty');
+          }
+        }
+
+        // Cart bubble update
+        const cartBubbleCount = document.querySelector('[ref="cartBubbleCount"], .arr-cart-bubble__text-count');
+        if (cartBubbleCount && parsedState.items_count !== undefined) {
+          cartBubbleCount.textContent = parsedState.items_count;
+          cartBubbleCount.classList.remove('hidden');
+          const bubble = document.querySelector('[ref="cartBubble"], .arr-cart-bubble');
+          if (bubble) bubble.classList.remove('visually-hidden');
+        }
+
+        // 5. Drawer open karo
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const drawerEl = document.querySelector('cart-drawer-component');
+            if (drawerEl) {
+
+              // Pehle theme ka trigger button try karo
+              const cartTriggerBtn = drawerEl.querySelector('[data-testid="cart-drawer-trigger"], [on\\:click="/open"]');
+              if (cartTriggerBtn) {
+                cartTriggerBtn.click();
+              } else {
+                // Fallback: dialog force open
+                const dialog = drawerEl.querySelector('dialog[ref="dialog"]');
+                if (dialog) {
+                  dialog.setAttribute('open', '');
+                  dialog.style.display = 'flex';
+                  dialog.style.visibility = 'visible';
+                  dialog.style.opacity = '1';
+                  dialog.style.transform = 'translateX(0)';
+                }
+                document.body.classList.add('overflow-hidden');
+              }
+            }
+
+            document.dispatchEvent(new CustomEvent('cart:updated', {
+              detail: { cart: parsedState }
+            }));
+          });
+        });
+
+      })
+      .catch(error => {
+        console.error('Cart Error:', error);
+        alert(error.message || 'Kuch masla hua, dobara try karo.');
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+      });
+
+    });
+  });
+
+});
+</script>
+
+
+
+
+
+
+
+<script>
+document.addEventListener("change", function() {
+  const variantAvailable = document.querySelector('[name="id"] option:checked')?.dataset.available;
+
+  const btn = document.querySelector('.arr-cs_coll_tab_cart_buy_button');
+
+  if (variantAvailable === "false") {
+    btn.disabled = true;
+    btn.innerText = "Out of Stock";
+  } else {
+    btn.disabled = false;
+    btn.innerText = "Add to Bag";
+  }
+});</script>

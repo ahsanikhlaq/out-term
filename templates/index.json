@@ -1,0 +1,623 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_banner_7yBAb8": {
+      "type": "custom-banner",
+      "name": "Custom Banner",
+      "settings": {
+        "img-content": true,
+        "des-img": "shopify://shop_images/Frame_12_2_149ee613-02b3-4165-bd64-3bb322d21c89.png",
+        "mbl-img": "shopify://shop_images/Frame_12_3.png",
+        "sub-heading": "SPRING 26'",
+        "heading": "The Blueprint for Your Best Fits",
+        "men-button-text": "Men",
+        "men-button-url": "",
+        "women-button-text": "women",
+        "women-button-url": "",
+        "bg_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0
+      }
+    },
+    "custom_collection_tab_VrTNF6": {
+      "type": "custom-collection-tab",
+      "blocks": {
+        "collection_tab_j3AhKQ": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "fitted-tops",
+            "collection_name": "fitted top"
+          }
+        },
+        "collection_tab_DNrqLh": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "dresses",
+            "collection_name": "dresses"
+          }
+        },
+        "collection_tab_PF6Hfy": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "rugby-polo",
+            "collection_name": "rugby polo"
+          }
+        },
+        "collection_tab_AVBRQQ": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "co-ords",
+            "collection_name": "co-ords"
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_j3AhKQ",
+        "collection_tab_DNrqLh",
+        "collection_tab_PF6Hfy",
+        "collection_tab_AVBRQQ"
+      ],
+      "name": "Collections Tab",
+      "settings": {
+        "headings": "Men’s summer",
+        "button-text": "Explore more",
+        "button-url": "",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 32,
+        "link_text": "Explore more",
+        "link_url": "",
+        "styling": false
+      }
+    },
+    "custom_product_cart_slider_YM6qdj": {
+      "type": "custom-product-cart-slider",
+      "blocks": {
+        "collection_tab_4mBqRy": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "t-shirts-1",
+            "collection_name": "Collection Name"
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_4mBqRy"
+      ],
+      "name": "new arrivals",
+      "settings": {
+        "headings": "new arrivals",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "custom_collection_tab_rxJgBt": {
+      "type": "custom-collection-tab",
+      "blocks": {
+        "collection_tab_z3zUgC": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "fitted-tops",
+            "collection_name": "fitted top"
+          }
+        },
+        "collection_tab_NNje87": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "dresses",
+            "collection_name": "dresses"
+          }
+        },
+        "collection_tab_XNmQhQ": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "rugby-polo",
+            "collection_name": "rugby polo"
+          }
+        },
+        "collection_tab_b6aidD": {
+          "type": "collection_tab",
+          "settings": {
+            "cs_collection": "co-ords",
+            "collection_name": "co-ords"
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_z3zUgC",
+        "collection_tab_NNje87",
+        "collection_tab_XNmQhQ",
+        "collection_tab_b6aidD"
+      ],
+      "name": "Collections Tab",
+      "settings": {
+        "headings": "women",
+        "button-text": "Explore more",
+        "button-url": "",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "link_text": "Explore more",
+        "link_url": "",
+        "styling": false
+      }
+    },
+    "fits_that_rKQCye": {
+      "type": "fits-that",
+      "blocks": {
+        "slide_item_NDDUih": {
+          "type": "slide_item",
+          "settings": {
+            "image": "shopify://shop_images/Frame_50.png",
+            "label": "Blank Canvas"
+          }
+        },
+        "slide_item_cbBmTR": {
+          "type": "slide_item",
+          "settings": {
+            "image": "shopify://shop_images/image_2.png",
+            "label": "Off-Duty Polo"
+          }
+        },
+        "slide_item_DddGxF": {
+          "type": "slide_item",
+          "settings": {
+            "image": "shopify://shop_images/image_2_1.png",
+            "label": "Vibe Check Drop"
+          }
+        },
+        "slide_item_iBaide": {
+          "type": "slide_item",
+          "settings": {
+            "image": "shopify://shop_images/Frame_50.png",
+            "label": "Blank Canvas"
+          }
+        }
+      },
+      "block_order": [
+        "slide_item_NDDUih",
+        "slide_item_cbBmTR",
+        "slide_item_DddGxF",
+        "slide_item_iBaide"
+      ],
+      "name": "Fits That Miss Out",
+      "settings": {
+        "eyebrow": "Best Seller",
+        "heading": "Fits That Miss Out",
+        "subtext": "Chic energy, main character designs. Elevate your everyday rotation. No cap. Dropping now.",
+        "button_label": "Shop Now",
+        "button_link": "",
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "trending_XMLMWi": {
+      "type": "Trending",
+      "name": "Trending",
+      "settings": {
+        "headings": "Trending",
+        "cs_collection": "dresses",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "media_with_content_aF6TTD": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/image_1.png",
+            "link": "",
+            "video": "shopify://files/videos/IMG_8692.MOV",
+            "video_loop": true,
+            "video_autoplay": true,
+            "image_position": "cover",
+            "video_position": "contain"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 18
+          },
+          "blocks": {
+            "text_CgU6Gr": {
+              "type": "text",
+              "name": "t:names.text",
+              "disabled": true,
+              "settings": {
+                "text": "<h6>The Story</h6>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_zCLead": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h3>Our terms story</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h1",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Upz3Mm": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>We source fabrics with uncompromising attention to detail, starting with the yarn — compact or fine — as it sets the foundation. Colors are carefully selected, often guided by Pantones, and dyed through precise processes to achieve the perfect texture, finish, and hand-feel. </p><p>Our fabrics must deliver softness, breathability, and stretch, while maintaining their shape, color, and quality through countless wears. Whether built for streetwear performance or casual luxury, each fabric reflects our brand’s identity.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_7X8VPi": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Read our story",
+                "link": "shopify://collections",
+                "open_in_new_tab": true,
+                "style_class": "button-secondary",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_CgU6Gr",
+            "text_zCLead",
+            "text_Upz3Mm",
+            "button_7X8VPi"
+          ]
+        }
+      },
+      "custom_css": [
+        "video {pointer-events: none;}"
+      ],
+      "name": "Editorial",
+      "settings": {
+        "media_position": "left",
+        "media_width": "medium",
+        "media_height": "100svh",
+        "section_width": "full-width",
+        "extend_media": false,
+        "color_scheme": "scheme-2",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "testimonial_TkXRJ8": {
+      "type": "Testimonial",
+      "blocks": {
+        "add_hNripH": {
+          "type": "add",
+          "settings": {
+            "cs_product": "club-house-jersey-top",
+            "image": "shopify://shop_images/image_20.png",
+            "rich-text": "<p>I am absolutely obsessed with the half-zip I ordered! The quality of the fabric is incredible—it's super comfortable but holds its shape perfectly. It fits exactly how I wanted it to, with that perfect relaxed streetwear look. 'Our Terms' definitely nailed it. I’ve already gotten so many compliments!</p>",
+            "name": "Alex M.",
+            "icon-text": "@rayan"
+          }
+        },
+        "add_qnb8w7": {
+          "type": "add",
+          "settings": {
+            "cs_product": "cropped-zipper-hoodie-for-women",
+            "image": "shopify://shop_images/image_21.png",
+            "rich-text": "<p>Honestly one of the best online shopping experiences I've had in a while. The shipping was fast, and the apparel looks even better in person than it does on the site. You can tell they put a lot of thought into the design and materials. </p>",
+            "name": "Alex M.",
+            "icon-text": "@rayan"
+          }
+        },
+        "add_KUkJ4a": {
+          "type": "add",
+          "settings": {
+            "cs_product": "pink-hue-t-shirt-for-men",
+            "image": "shopify://shop_images/image_22.png",
+            "rich-text": "<p>Finally, a brand that gets it right. The 'Our Terms' gear is stylish, effortless, and feels incredibly premium. It’s rare to find pieces that are this comfortable while still looking put-together. </p>",
+            "name": "Alex M.",
+            "icon-text": "@rayan"
+          }
+        },
+        "add_8Hiz9a": {
+          "type": "add",
+          "settings": {
+            "cs_product": "terms-print-tee-for-women",
+            "image": "shopify://shop_images/image_23.png",
+            "rich-text": "<p>This has quickly become the most worn item in my closet. The 'Our Terms' half-zip is so versatile—I throw it on for running errands, heading to the gym, or just hanging out, and it always looks good.</p>",
+            "name": "Alex M.",
+            "icon-text": "@rayan"
+          }
+        },
+        "add_GBF98M": {
+          "type": "add",
+          "settings": {
+            "cs_product": "terms-print-tee-for-women",
+            "image": "shopify://shop_images/image_23.png",
+            "rich-text": "<p>This has quickly become the most worn item in my closet. The 'Our Terms' half-zip is so versatile—I throw it on for running errands, heading to the gym, or just hanging out, and it always looks good.</p>",
+            "name": "Alex M.",
+            "icon-text": "@rayan"
+          }
+        }
+      },
+      "block_order": [
+        "add_hNripH",
+        "add_qnb8w7",
+        "add_KUkJ4a",
+        "add_8Hiz9a",
+        "add_GBF98M"
+      ],
+      "name": "Testimonial",
+      "settings": {
+        "headings": "Testimonial",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "custom_video_slider_zj9drE": {
+      "type": "custom-video-slider",
+      "blocks": {
+        "video_6nTapn": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/IMG_8686.MOV",
+            "abs_text": ""
+          }
+        },
+        "video_fDmUiG": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/IMG_8692.MOV",
+            "abs_text": ""
+          }
+        },
+        "video_BKnN86": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/1126.mov",
+            "abs_text": ""
+          }
+        },
+        "video_rGtgeK": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/WhatsApp Video 2025-09-23 at 17.26.02_ab8a9cd5.mp4",
+            "abs_text": ""
+          }
+        },
+        "video_czk6qd": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/IMG_0012.MOV",
+            "abs_text": ""
+          }
+        },
+        "video_Mdg9kw": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/0605.mp4",
+            "abs_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_6nTapn",
+        "video_fDmUiG",
+        "video_BKnN86",
+        "video_rGtgeK",
+        "video_czk6qd",
+        "video_Mdg9kw"
+      ],
+      "name": "Video Slider",
+      "settings": {
+        "pdp": false,
+        "rating_text": "",
+        "header_text": "<p>APPROVED BY THE CULTURE</p>",
+        "background_color": "#ffffff",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "items_primary_color": "",
+        "items_light_color": ""
+      }
+    },
+    "custom_faq_APG6mP": {
+      "type": "custom-faq",
+      "blocks": {
+        "best_sellers_VXwPMD": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": false,
+            "heading_faq": "How long will it take for my order to arrive?",
+            "heading_ans": "<p>How long will it take for my order to arrive How long will it take for my order to arrive?</p>"
+          }
+        },
+        "best_sellers_RNtz7p": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": false,
+            "heading_faq": "Do you offer exchanges if the fit isn't right?",
+            "heading_ans": "<p>Do you offer exchanges if the fit isn't right? Do you offer exchanges if the fit isn't right?</p>"
+          }
+        },
+        "best_sellers_VRKE3H": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": true,
+            "heading_faq": "How do I know which size to pick?",
+            "heading_ans": "<p>Our t-shirts are designed with a modern, relaxed streetwear fit. If you prefer a standard fit, we recommend staying true to your size.</p>"
+          }
+        },
+        "best_sellers_7XaBbU": {
+          "type": "best-sellers",
+          "settings": {
+            "default_open": false,
+            "heading_faq": "How should I wash my \"Our Terms\" tees to keep them looking new?",
+            "heading_ans": "<p>How should I wash my \"Our Terms\" tees to keep them looking new? How should I wash my \"Our Terms\" tees to keep them looking new?</p>"
+          }
+        }
+      },
+      "block_order": [
+        "best_sellers_VXwPMD",
+        "best_sellers_RNtz7p",
+        "best_sellers_VRKE3H",
+        "best_sellers_7XaBbU"
+      ],
+      "name": "Custom Faq Section",
+      "settings": {
+        "headings": "FAQ",
+        "butt-text": "see more",
+        "butt_url": "",
+        "back_color": "#f5f5f5",
+        "desktop-padding-top": 60,
+        "desktop-padding-bottom": 40,
+        "padding-top-mbl": 50,
+        "padding-bottom-mbl": 40,
+        "section_color": "#efeee1"
+      }
+    },
+    "premium_streetwear_VLeJk3": {
+      "type": "Premium-Streetwear",
+      "blocks": {
+        "recognition_cVt7XV": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_22.png",
+            "title": "FAST DISPATCH",
+            "text": "<p>Your order is packed and shipped within<strong> 48 hours</strong> of placing it. No waiting around.</p>"
+          }
+        },
+        "recognition_W79bey": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_23.png",
+            "title": "DESIGNED ON OUR TERMS",
+            "text": "<p><strong>100% original</strong>, bold graphics and relaxed streetwear cuts you won't find anywhere else.</p>"
+          }
+        },
+        "recognition_x6VEWH": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_24.png",
+            "title": "EASY 7-DAY EXCHANGES",
+            "text": "<p>Fit not quite right? Enjoy a smooth, no-questions-asked exchange process.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "recognition_cVt7XV",
+        "recognition_W79bey",
+        "recognition_x6VEWH"
+      ],
+      "name": "Premium Streetwear",
+      "settings": {
+        "heading": "Premium Streetwear",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 60
+      }
+    }
+  },
+  "order": [
+    "custom_banner_7yBAb8",
+    "custom_collection_tab_VrTNF6",
+    "custom_product_cart_slider_YM6qdj",
+    "custom_collection_tab_rxJgBt",
+    "fits_that_rKQCye",
+    "trending_XMLMWi",
+    "media_with_content_aF6TTD",
+    "testimonial_TkXRJ8",
+    "custom_video_slider_zj9drE",
+    "custom_faq_APG6mP",
+    "premium_streetwear_VLeJk3"
+  ]
+}

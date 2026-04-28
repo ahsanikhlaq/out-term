@@ -1,0 +1,362 @@
+{% style %}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.desktop-padding-top }}px;
+    padding-bottom: {{ section.settings.desktop-padding-bottom }}px;
+    background: {{ section.settings.back_color }};
+}
+.cs_faq_sec_main{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.cs_faq_quastion{
+    margin: 0;
+  	width: 100%;
+  	font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 25px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #000000;
+}
+.whatMakesLive {
+  	flex: 1;
+  	position: relative;
+  	line-height: 112%;
+  	font-weight: 500;
+}
+.plusIcon {
+  	width: 28px;
+  	border-radius: 97.13px;
+  	max-height: 100%;
+}
+
+
+    
+
+.cs_fa1_main_title p{
+    margin: 0;
+    color: var(--Black, #111);
+    font-family: "SF Pro";
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 590;
+    line-height: 70px; /* 74.4px */
+    letter-spacing: -1.24px;
+    text-align: center;
+    padding-bottom: 40px;
+}
+.cs_fa1_main_title p strong{
+    color: var(--Purple, #4C3E79);
+    font-family: "SF Pro";
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 590;
+    line-height: 120%;
+    letter-spacing: -1.24px;
+    padding-bottom: 40px;
+}
+.cs_faq_ans p {
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 20px;
+    letter-spacing: 6%;
+    vertical-align: middle;
+    color: #000000CC;
+}
+.cs_faq_main {
+    border: 1px solid #0000004D;
+    padding: 16px;
+}
+.cs_faq_heading_main * { cursor:pointer;}
+.cs_faq_heading_main {
+    position: relative;
+  	box-sizing: border-box;
+  	overflow: hidden;
+  	display: flex;
+  	align-items: center;
+    justify-content:center;
+}
+/* -------faq----- */
+
+.cs_faq_ans {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding-top: 0;
+  transition: all 0.5s ease-in-out; 
+}
+
+.cs_faq_main.active .cs_faq_ans {
+  max-height: 500px; 
+  opacity: 1;
+  padding-top: 10px ;
+}
+
+.cs_faq_icon .faq-icon {
+  transition: transform 0.3s ease;
+}
+.cs_faq_main.active .cs_faq_icon .faq-icon {
+  transform: rotate(180deg); 
+}
+.cs_faq_sec_block_side{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cs_faq_sec_button{
+    display: flex;
+    padding: 23px 64px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    background: #221919;
+    border: 1px solid #221919;
+    color: #FFFFFF;
+    font-family: FONTSPRING DEMO - Gibson Medium;
+    font-weight: 500;
+    font-style: Regular;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    max-width: fit-content;
+    margin: 30px auto 0 auto;
+        text-decoration: none;
+}
+.cs_faq_sec_button_mbl{
+    display: none;
+}
+.cs_faq_sec_button_des{
+    display: block;
+}
+/* ------ */
+.cs_faq_icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+ .section-{{ section.id }}-padding .live-heading  {
+   margin: 0 0 30px;
+   font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 60px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #221919;
+}
+.cs_faq_main.active{
+  border: 1px solid #000000
+}
+.cs_faq_icon .cs_line svg {
+  transition: transform 0.3s ease;
+}
+
+.cs_faq_main.active .cs_faq_icon .cs_line svg {
+  transform: rotate(180deg);
+}
+.cs_faq_main.active .cs_faq_icon .cs_line svg{
+  transform: rotate(180deg);
+}
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding-top-mbl }}px;
+        padding-bottom: {{ section.settings.padding-bottom-mbl }}px;
+    }
+    .cs_fa1_main_title p{
+        font-size: 30px;
+        line-height: 36px;
+        padding: 0;
+    }
+    .cs_fa1_main_title p strong{
+        font-size: 30px;
+        line-height: 36px;
+         padding: 0;
+    }
+    .cs_faq_sec_block_side {
+    gap: 14px;
+}
+    .cs_faq_sec_button_mbl{
+    display: block;
+}
+.cs_faq_sec_button_des{
+    display: flex;
+    padding: 18px 60px;
+}
+.cs_faq_sec_button{
+    margin: 30px auto 0;
+}
+.cs_faq_quastion {
+    font-size: 15px;
+    line-height: 19px; 
+    font-weight:500;
+}
+.cs_faq_main {
+    padding: 14px;
+}
+.cs_faq_ans p {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.cs_faq_icon {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+ .section-{{ section.id }}-padding .live-heading  {
+   margin: 0 0 20px;
+   color:#333;
+   font-size: 40px;
+}
+  }
+
+  
+  /* ----- */ 
+  {% endstyle %}
+<section class="section-{{ section.id }}-padding cs_faq_main_parent" id="cs_custom_faq_section">
+  <div class="page-width">
+    <div class="cs_faq_sec_main">
+        <div class="live-heading animate-item">{{ section.settings.headings }}</div>
+        <div class="cs_faq_sec_block_side animate-item">
+           {% for block in section.blocks %}
+<div class="cs_faq_main {% if block.settings.default_open %}active{% endif %}">
+  <div class="cs_faq_heading_main animate-item">
+    <div class="cs_faq_quastion">{{ block.settings.heading_faq }}</div>
+    <div class="cs_faq_icon_main">
+      <div class="cs_faq_icon">
+        <span class="cs_line">
+        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.75 0.785183C12.75 0.785183 8.3133 6.77203 6.7322 6.76735C5.15101 6.76267 0.750035 0.749575 0.750035 0.749575" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="cs_faq_ans">
+    {{ block.settings.heading_ans }}
+  </div>
+</div>
+{% endfor %}
+        </div>
+        <a class="cs_faq_sec_button cs_faq_sec_button_des cs_faq_sec_button_des_hover cs-btn" href="{{ section.settings.butt_url }}">{{ section.settings.butt-text }}</a>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+    "name": "Custom Faq Section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "headings",
+            "label": "Heading"
+        },
+        {
+            "type": "text",
+            "id": "butt-text",
+            "label": "Button Text"
+        },
+        {
+            "type": "url",
+            "id": "butt_url",
+            "label": "Button Url"
+        },
+      {
+        "type": "color",
+        "id": "back_color",
+        "label": "Background Color"
+      },
+        { 
+          "type": "range",
+          "id": "desktop-padding-top",
+          "label": "Desktop Padding Top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16 
+        },
+        { "type": "range",
+          "id": "desktop-padding-bottom",
+          "label": "Desktop Padding Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16
+        },
+        { "type": "range",
+          "id": "padding-top-mbl",
+          "label": "Mobile Padding Top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16
+        },
+        { "type": "range",
+          "id": "padding-bottom-mbl",
+          "label": "Mobile Padding Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 16
+        },
+        {
+        "type": "color",
+        "id": "section_color",
+        "label": "Section Color",
+        "default": "#EFEEE1"
+      },
+    ],
+  "blocks": [
+      {
+        "type": "best-sellers",
+        "name": "Add Tab",
+         "settings": [
+         {
+  "type": "checkbox",
+  "id": "default_open",
+  "label": "Default Open",
+  "default": false
+},
+             {
+            "type": "text",
+            "id": "heading_faq",
+            "label": "Question",
+        },
+        {
+            "type": "richtext",
+            "id": "heading_ans",
+            "label": "Answar",
+        },
+      ]
+      },
+    ],
+    "presets": [
+        { "name": "Custom Faq Section" }
+    ]
+}
+{% endschema %}
+<script> 
+  document.querySelectorAll('.cs_faq_heading_main').forEach(function(heading) 
+  { heading.addEventListener('click', function() { 
+    let parent = this.parentElement; if (parent.classList.contains('active'))
+     {
+        parent.classList.remove('active'); } else { 
+           document.querySelectorAll('.cs_faq_main.active').forEach(function(activeItem) {
+             activeItem.classList.remove('active'); });  parent.classList.add('active'); } }); });
+</script>

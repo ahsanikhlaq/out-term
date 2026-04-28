@@ -1,0 +1,43 @@
+.cs_drawer_upsell_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.cs_drawer_upsell_heading{ 
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 18pxpx;
+    letter-spacing: 6%;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #221919;
+}
+.cs_drawer_upsell_buttons{
+    display: flex;
+    gap: 15px;
+}
+.cs_custom_upsell_swiper_main{
+    overflow: hidden;
+}
+.cart-drawer__summary_cs{
+    display: unset !important;
+}
+.cs_drawer_upsell_button{
+        display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+}
+.dps-image img {
+    max-height: 85px;
+    min-height: 85px;
+    max-width: 85px;
+}
+.cstm_cart_upsell-wrapper .cs_pro_class_product_main{
+    display: flex;
+    gap: 14px;
+}

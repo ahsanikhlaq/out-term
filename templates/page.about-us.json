@@ -1,0 +1,895 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about_us_banner_xERPyF": {
+      "type": "about-us-banner",
+      "name": "About Us Banner",
+      "settings": {
+        "des-img": "shopify://shop_images/banner_2.png",
+        "mbl-img": "shopify://shop_images/banner_1.png",
+        "sub-heading": "About",
+        "men-button-text1": "Our terms",
+        "men-button-url1": "",
+        "Explore-products-text": "Explore products",
+        "Explore-products-url": "",
+        "bg_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mbl_padding_top": 0,
+        "mbl_padding_bottom": 0
+      }
+    },
+    "our_visions_BTVARe": {
+      "type": "Our-visions",
+      "name": "Our Visions",
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mbl": 40,
+        "padding_bottom_mbl": 40,
+        "bg_color": "#f0efed",
+        "heading_color": "#221919",
+        "text_color": "#221919",
+        "font_family": "Helvetica Neue",
+        "show_founded_banner": true,
+        "founded_bold_text": "Founded in 2021,",
+        "founded_text": "Our terms started with a vision: to make casualwear exciting, accessible, and empowering. Today, OT has grown into a community of like-minded individuals who value authenticity, comfort, and bold self-expression.",
+        "banner_margin_bottom": 48,
+        "image_1": "shopify://shop_images/img.png",
+        "image_2": "shopify://shop_images/img_1.png",
+        "image_3": "shopify://shop_images/Frame_1222.png",
+        "heading": "Our Visions",
+        "subtext": "We started our terms to create something that's truly ours — not shaped by trends, but by what we believe works best for real, everyday lifestyles.",
+        "description": "<p>Our pieces are made to be lived in — styled, worn, and vibed with all day, every day. On your terms. Because it's never been about trends. It's about you. Your personality, your energy, your self-expression. If something feels right, wear it — no permission needed.</p>",
+        "show_read_more": true,
+        "read_more_label": "Read More",
+        "read_more_link": ""
+      }
+    },
+    "section_dJPJWT": {
+      "type": "section",
+      "blocks": {
+        "text_iYpDwV": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Our Vision</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kwPGkh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We started <em>Our Terms</em> to create something that’s truly ours — not shaped by trends, but by what we believe works best for real, everyday lifestyles.</p><p>Our pieces are made to be lived in — styled, worn, and vibed with all day, every day. On your terms. Because it’s never been about trends. It’s about you. Your personality, your energy, your self-expression. If something feels right, wear it — no permission needed.<br/>Don’t follow the noise. Don’t fit in. Just be you. Style isn’t about following  </p><p>it’s about owning who you are.</p><p></p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1.25rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_Rbp7bN": {
+          "type": "button",
+          "settings": {
+            "label": "Explore Our Terms",
+            "link": "https://www.shopourterms.com",
+            "open_in_new_tab": false,
+            "style_class": "link",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_iYpDwV",
+        "text_kwPGkh",
+        "button_Rbp7bN"
+      ],
+      "disabled": true,
+      "name": "t:names.pull_quote",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
+    "section_aRgtR8": {
+      "type": "section",
+      "blocks": {
+        "group_gme48y": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-end",
+            "gap": 32,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fill",
+            "custom_height": 100,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-5",
+            "background_media": "image",
+            "video_position": "cover",
+            "background_image": "shopify://shop_images/DSC00467.webp",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "hero-apparel-2",
+            "padding-block-start": 40,
+            "padding-block-end": 40,
+            "padding-inline-start": 40,
+            "padding-inline-end": 40
+          },
+          "blocks": {
+            "button_tW4yNW": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Shop Men",
+                "link": "shopify://collections/bts-men",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_tW4yNW"
+          ]
+        },
+        "group_gAF3gd": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-end",
+            "gap": 32,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fill",
+            "custom_height": 100,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-5",
+            "background_media": "image",
+            "video_position": "cover",
+            "background_image": "shopify://shop_images/DSC00497.webp",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "hero-apparel-2",
+            "padding-block-start": 40,
+            "padding-block-end": 40,
+            "padding-inline-start": 40,
+            "padding-inline-end": 40
+          },
+          "blocks": {
+            "button_bXXDJ3": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Shop Women",
+                "link": "shopify://collections/bts-women",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_bXXDJ3"
+          ]
+        }
+      },
+      "block_order": [
+        "group_gme48y",
+        "group_gAF3gd"
+      ],
+      "disabled": true,
+      "name": "t:names.split_showcase",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": false,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 0,
+        "section_width": "full-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "section_3hKKR8": {
+      "type": "section",
+      "blocks": {
+        "group_ga6Vrn": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-end",
+            "gap": 32,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fill",
+            "custom_height": 100,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-5",
+            "background_media": "image",
+            "video_position": "cover",
+            "background_image": "shopify://shop_images/DSC00227.webp",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "hero-apparel-2",
+            "padding-block-start": 40,
+            "padding-block-end": 40,
+            "padding-inline-start": 40,
+            "padding-inline-end": 40
+          },
+          "blocks": {
+            "spacer_WCyP6z": {
+              "type": "spacer",
+              "settings": {
+                "size": "percent",
+                "percent_size": 100,
+                "pixel_size": 16,
+                "custom_mobile_size": false,
+                "size_mobile": "percent",
+                "percent_size_mobile": 100,
+                "pixel_size_mobile": 120
+              },
+              "blocks": {}
+            },
+            "text_mPdHpb": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Our Vision</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_GEVgbG": {
+              "type": "text",
+              "settings": {
+                "text": "<p>To redefine lifestyle wear by becoming a global symbol of cultural fusion and modern adaptability, inspiring people everywhere to embrace their unique rhythm and live authentically — on their own termsals</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "spacer_WCyP6z",
+            "text_mPdHpb",
+            "text_GEVgbG"
+          ]
+        }
+      },
+      "block_order": [
+        "group_ga6Vrn"
+      ],
+      "disabled": true,
+      "name": "t:names.split_showcase",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": false,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 0,
+        "section_width": "full-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "marquee_fYfqtw": {
+      "type": "marquee",
+      "blocks": {
+        "icon_Dwn4J3": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "disabled": true,
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_NtdanF": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Unmatched comfort</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_fttbjd": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "spotify",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "icon_CbiYqE": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_6NkhQh": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Bold design</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_LiYb6R": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "icon_tR3YxX": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_wQBHg9": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Unmatched comfort</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_RF8djq": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "icon_e8FrUL": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "text_kUKjhN": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>inclusive sizing</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_z77faP": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "icon_JjzHVU": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "price_tag",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "icon_Dwn4J3",
+        "text_NtdanF",
+        "icon_fttbjd",
+        "icon_CbiYqE",
+        "text_6NkhQh",
+        "icon_LiYb6R",
+        "icon_tR3YxX",
+        "text_wQBHg9",
+        "icon_RF8djq",
+        "icon_e8FrUL",
+        "text_kUKjhN",
+        "icon_z77faP",
+        "icon_JjzHVU"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "scheme-5",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
+      }
+    },
+    "media_with_content_QenidV": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "video",
+            "link": "",
+            "video": "shopify://files/videos/IMG_8692.MOV",
+            "video_loop": true,
+            "video_autoplay": true,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "flex-end",
+            "vertical_alignment_flex_direction_column": "flex-end",
+            "gap": 24
+          },
+          "blocks": {
+            "jumbo_text_tHpix3": {
+              "type": "jumbo-text",
+              "name": "t:names.jumbo_text",
+              "settings": {
+                "text": "Shop\nOur\nTerms",
+                "font": "heading",
+                "alignment": "right",
+                "line_height": "0.8",
+                "letter_spacing": "-0.03em",
+                "case": "uppercase",
+                "text_effect": "reveal",
+                "animation_repeat": true
+              },
+              "blocks": {}
+            },
+            "button_xpYBEf": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Explore Collections",
+                "link": "shopify://collections",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "jumbo_text_tHpix3",
+            "button_xpYBEf"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "t:names.editorial_jumbo_text",
+      "settings": {
+        "media_position": "right",
+        "media_width": "medium",
+        "media_height": "60svh",
+        "section_width": "full-width",
+        "extend_media": true,
+        "color_scheme": "scheme-5",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h2>The Journey of Exceptional Fabric</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "disabled": true,
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 0,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "about_us_video_pYyQzm": {
+      "type": "about-us-video",
+      "name": "Video Hero",
+      "settings": {
+        "heading": "It's About Owning Who You Are",
+        "video": "shopify://files/videos/IMG_8686.MOV",
+        "button_text": "SHOP OUR TERMS",
+        "button_url": "",
+        "bg_color": "#f0efed",
+        "padding_top": 60,
+        "padding_bottom": 30,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 20
+      }
+    },
+    "premium_streetwear_yMcnL7": {
+      "type": "Premium-Streetwear",
+      "blocks": {
+        "recognition_xYfdLD": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_22.png",
+            "title": "FAST DISPATCH",
+            "text": "<p>Your order is packed and shipped within<strong> 48 hours</strong> of placing it. No waiting around.</p>"
+          }
+        },
+        "recognition_YkHamp": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_23.png",
+            "title": "DESIGNED ON OUR TERMS",
+            "text": "<p><strong>100% original</strong>, bold graphics and relaxed streetwear cuts you won't find anywhere else.</p>"
+          }
+        },
+        "recognition_khBkMF": {
+          "type": "recognition",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_24.png",
+            "title": "EASY 7-DAY EXCHANGES",
+            "text": "<p>Fit not quite right? Enjoy a smooth, no-questions-asked exchange process.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "recognition_xYfdLD",
+        "recognition_YkHamp",
+        "recognition_khBkMF"
+      ],
+      "name": "Premium Streetwear",
+      "settings": {
+        "heading": "Premium Streetwear",
+        "bg_color": "#f5f5f5",
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "about_us_banner_xERPyF",
+    "our_visions_BTVARe",
+    "section_dJPJWT",
+    "section_aRgtR8",
+    "section_3hKKR8",
+    "marquee_fYfqtw",
+    "media_with_content_QenidV",
+    "main",
+    "about_us_video_pYyQzm",
+    "premium_streetwear_yMcnL7"
+  ]
+}

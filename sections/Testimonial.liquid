@@ -1,0 +1,369 @@
+ <script
+  src="{{ 'product-recommendations.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+ <style>
+  #section-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  background: {{ section.settings.bg_color }};
+}
+.Testimonial-csp-mobs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 38px;
+}
+.Testimonial-live-heading {
+    margin: 0;
+    font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 60px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+}
+.cs_testi_block_content{
+    padding: 20px;
+}
+.Testimonial-cs_coll_tab_sider-button {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 21px;
+}
+.Testimonial-cs_coll_tab_sider-button {
+    cursor: pointer;
+}
+.Testimonial-cs_coll_tab_sider-button_prev {
+    transform: rotate(180deg);
+}
+.cs_testi_block_img_cart img{
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 296px;
+}
+.cs_testi_block_img_cart{
+    position: relative;
+}
+.cs_testi_pro_cart {
+    position: absolute;
+    left: 0;
+    /* transform: translateX(-50%); */
+    bottom: 12px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 94%;
+    /* margin: 0 20px; */
+    box-sizing: border-box;
+    right: 0;
+    margin: 0 auto;
+}
+.cs_stesti_pro_img img{
+    display: block;
+    object-fit: cover;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    min-height: 70px;
+    border-radius: 10px;
+}
+.cs_stesti_pro_title_button{
+    display: flex;
+    {% comment %} align-items: center; {% endcomment %}
+    justify-content: space-between;
+    width: 100%;
+}
+.cs_stesti_cs_pro_title{
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 17px;
+    leading-trim: NONE;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #221919;
+}
+.cs_stesti_cs_text{
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 16px;
+    letter-spacing: 0%;
+    padding: 4px 0;
+    color: #221919CC;   
+}
+.cs_stesti_pro_price{
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 17px;
+    leading-trim: NONE;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #221919;
+}
+.cs_testi_pro_block_cart_main{
+    background: #FFFFFF;
+    border: 1px solid #22191914
+}
+.cs_testi_block_richtext p{
+    margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #221919;
+    min-height: 260px;
+}
+.cs_testi_block_name_icon{
+    display: flex;
+    align-items: center;
+    justify-content: space-Between;
+    margin-top: 8px;
+}
+.cs_testi_name{
+    margin 0:
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 18px;
+    letter-spacing: 0%;
+    color: #221919;
+}
+.cs_testi_name_icon_text{
+    margin: 0;
+    font-family: Montserrat;
+font-weight: 400;
+font-style: Regular;
+font-size: 14px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+color: #221919;
+padding: 6px;
+border: 1px solid #22191947;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+/* Mobile padding */
+.cs_stesti_pro_button .quick-add__button{
+opacity: 1 !important;
+}
+@media (max-width: 767px) {
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+  }
+  .Testimonial-live-heading {
+    font-size: 40px;
+  }
+  .Testimonial-cs_coll_tab_sider-button{
+    display: none;
+  }
+  .Testimonial-csp-mobs{
+      margin-bottom: 20px;
+    }
+    .cs_stesti_cs_text{
+      display: none;
+    }
+    .cs_stesti_pro_price{
+      display: none;
+    }
+    .cs_testi_block_richtext p {
+    font-size: 14px;
+    line-height: 24px;
+        min-height: 217px;
+}
+.cs_testi_block_content {
+    padding: 16px;
+}
+.cs_testi_pro_cart{
+  padding: 10px;
+}
+.cs_stesti_cs_pro_title {
+    font-size: 15px;
+}
+.cs_stesti_pro_img img {
+    width: 62px;
+    height: 53px;
+    min-width: 62px;
+    min-height: 53px;
+}
+}</style>
+<section
+  class="Testimonial-shop-collections Testimonial-cs-featured-collection"
+  id="section-{{ section.id }}"
+>
+  <div class="page-width">
+
+    <div class="Testimonial-csp-mobs">
+    <!-- Heading -->
+    <div class="Testimonial-cs_coll_tab_heading_tab_button animate-item">
+    <h2 class="Testimonial-live-heading">{{ section.settings.headings }}</h2>
+    </div>
+    <div class="Testimonial-cs_coll_tab_sider-button animate-item">
+        <span class="Testimonial-cs_coll_tab_sider-button_next">{% render 'cs_tab_slider_button' %}</span>
+         <span class="Testimonial-cs_coll_tab_sider-button_prev">{% render 'cs_tab_slider_button' %}</span>
+    </div>
+    </div>
+    <!-- Collections Wrapper -->
+   <div class="Testimonial-collections-wrapper animate-item">
+  
+    <div id="collection-{{ section.id }}">
+      <div class="swiper collection-swiper-{{ section.id }} Testimonial-mb-5">
+        <div class="swiper-wrapper">
+
+         {%- for block in section.blocks -%}
+    <div class="swiper-slide cs_testi_pro_block_cart_main">
+        <div class="cs_testi_pro_block_cart">
+            <div class="cs_testi_block_img_cart">
+            <img src="{{ block.settings.image | image_url }}" width="100%" height="auto" loading="lazy">
+        <div class="cs_testi_pro_cart">
+           {% assign product = all_products[block.settings.cs_product] %}
+
+{% if product %}
+  <div class="cs_stesti_pro_img">
+    <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+  </div>
+
+  <div class="cs_stesti_pro_title_button">
+    <div class="cs_stesti_pro_title">
+      <h3 class="cs_stesti_cs_pro_title">
+  {{ product.title | split: ' ' | slice: 0, 2 | join: ' ' }}
+</h3>
+      <h4 class="cs_stesti_cs_text">Classic jersey</h4>
+      <p class="cs_stesti_pro_price">{{ product.price | money }}</p>
+    </div>
+
+    <div class="cs_stesti_pro_button">
+       
+           {% render 'quick-add',
+  product: product,
+  section_id: section.id,   
+  block: block,
+  color_scheme: section.settings.color_scheme
+%}
+      {% comment %} {% render 'cs_stesti_buy_button', product: product %} {% endcomment %}
+    </div>
+  </div>
+{% endif %}
+        </div>
+    </div>
+    <div class="cs_testi_block_content">
+        <div class="cs_testi_block_richtext">{{ block.settings.rich-text }}</div>
+        <div class="cs_testi_block_name_icon">
+            <span class="cs_testi_name">{{ block.settings.name }}</span>
+            <span class="cs_testi_name_icon_text">{{ block.settings.icon-text }} {% render 'cs_testi_icon' %}</span>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endfor %}
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Testimonial",
+  "settings": [
+    { "type": "text", "id": "headings", "label": "Section Heading",},
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 },
+  ],
+  "blocks": [
+    {
+      "type": "add",
+      "name": "add",
+      "settings": [
+         {
+        "type": "product",
+        "id": "cs_product",
+        "label": "Select Product"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "richtext",
+            "id": "rich-text",
+            "label": "Rich Text"
+        },
+        {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+        },
+        {
+            "type": "text",
+            "id": "icon-text",
+            "label": "Iocn Text"
+        }
+      ]
+    }
+    ],
+  "presets": [
+    { "name": "Testimonial", "category": "Custom" }
+  ]
+}
+{% endschema %}
+{% comment %} ---tab-script {% endcomment %}
+<script>
+  // Initialize Swipers for each block
+  
+    new Swiper(".collection-swiper-{{ section.id }}", {
+      slidesPerView: 4,
+      spaceBetween: 16,
+      speed: 500,
+      pagination: {
+        el: ".cs-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".Testimonial-cs_coll_tab_sider-button_next",
+        prevEl: ".Testimonial-cs_coll_tab_sider-button_prev",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1.2, spaceBetween: 16 },
+        768: { slidesPerView: 2.2, spaceBetween: 16 },
+        1024: { slidesPerView: 4, spaceBetween: 16 },
+      },
+    });
+ 
+</script>
+{% comment %} ------------------add-to-cart----------------- {% endcomment %}

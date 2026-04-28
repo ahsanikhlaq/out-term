@@ -1,0 +1,132 @@
+<style>
+    .cs_pro_icon_text_main{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+    .cs_pro_icon_text_main_in{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px Dashed #22191947;
+        padding: 12px;
+    }
+    .cs_pro_icon_text_img img{
+        width: 38px;
+        height: 38px;
+        display: block;
+        object-fit: cover;
+    }
+    .cs_pro_icon_text{
+        margin: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 19px;
+    letter-spacing: 3px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #221919;
+    }
+  @media (max-width: 768px) {
+    .cs_pro_icon_text_main {
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+.cs_pro_icon_text_main_in {
+    flex-direction: row;
+}
+
+  }
+</style>
+
+<div class="cs_pro_icon_text_main">
+    <div class="cs_pro_icon_text_main_in">
+        {%  if block.settings.icon_img1 !=blank %}
+        <div class="cs_pro_icon_text_img">
+            <img src="{{ block.settings.icon_img1 | image_url }}" width="100%" height="auto" loading="lazy">
+        </div>
+    {% endif %}
+        <h4 class="cs_pro_icon_text">
+        {{ block.settings.icon_text1 }}
+        </h4>
+    </div>
+     <div class="cs_pro_icon_text_main_in">
+        {%  if block.settings.icon_img1 !=blank %}
+        <div class="cs_pro_icon_text_img">
+            <img src="{{ block.settings.icon_img2 | image_url }}" width="100%" height="auto" loading="lazy">
+        </div>
+
+    {% endif %}
+        <h4 class="cs_pro_icon_text">
+        {{ block.settings.icon_text2 }}
+        </h4>
+    </div>
+     <div class="cs_pro_icon_text_main_in">
+        {%  if block.settings.icon_img1 !=blank %}
+        <div class="cs_pro_icon_text_img">
+            <img src="{{ block.settings.icon_img3 | image_url }}" width="100%" height="auto" loading="lazy">
+        </div>
+    {% endif %}
+        <h4 class="cs_pro_icon_text">
+        {{ block.settings.icon_text3 }}
+        </h4>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "parent_block",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Icon Text1"
+    },
+    {
+        "type": "image_picker",
+        "id": "icon_img1",
+        "label": "Icon Image"
+    },
+    {
+        "type": "text",
+        "id": "icon_text1",
+        "label": "Icon Texr"
+    },
+     {
+        "type": "header",
+        "content": "Icon Text2"
+    },
+    {
+        "type": "image_picker",
+        "id": "icon_img2",
+        "label": "Icon Image"
+    },
+    {
+        "type": "text",
+        "id": "icon_text2",
+        "label": "Icon Texr"
+    },
+     {
+        "type": "header",
+        "content": "Icon Text3"
+    },
+    {
+        "type": "image_picker",
+        "id": "icon_img3",
+        "label": "Icon Image"
+    },
+    {
+        "type": "text",
+        "id": "icon_text3",
+        "label": "Icon Texr"
+    }
+  ],
+  "presets": [
+    {
+      "name": "parent_block",
+},
+]
+}
+{% endschema %}

@@ -1,0 +1,117 @@
+<style>
+  /* ------------------------------upsell------------------- */
+ #section-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  background: {{ section.settings.bg_color }};
+}
+.cs_slectd-pro_blck{
+        display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.cs_slectd-pro_main .dps-image img{
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 100vh !important;
+    min-height: auto !important;
+}
+.cs_slectd-pro_main .cs_slec-pro_title_button{
+    display: flex;
+    justify-content: space-between;
+}
+.cs_slectd-pro_main .cs_coll_tab_cart_buy_button{
+    background: transparent;
+    border: none;
+    width: auto;
+    padding: 0;
+}
+.cs_slectd-pro_main .cs_coll_tab_title_varint{
+    margin: 0;
+}
+.cs_slectd-pro_main .cs_coll_tab_title_varint {
+    margin: 0;
+    flex-direction: column;
+}
+.cs_slectd-pro_main .cs_coll_tab_cart_content {
+    padding: 23px;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    max-width: 380px;
+    background: #FFFFFF;
+    border-radius: 16px;
+}
+/* Mobile padding */
+@media (max-width: 767px) {
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+  }
+  .cs_slectd-pro_blck{
+    grid-template-columns: 1fr;
+}
+.cs_slectd-pro_main .cs_coll_tab_cart_content {
+    padding: 16px;
+    left: 23px;
+    top: 50px;
+    transform: unset;
+    max-width: 260px;
+}
+}
+</style>
+<div class="cs_slectd-pro_main" id="section-{{ section.id }}">
+    <div class="cs_slectd-pro_blck">
+        {% for block in section.blocks %}
+       <div class="swiper-wrapper">
+              {% assign product = all_products[block.settings.cs_product] %}
+          
+             {% if product != blank %}
+              <div class="swiper-slide product-card">
+                {% render 'custom-product-slec', product: product, section_id: section.id %}
+              </div>
+            {% endif %}
+            </div>
+{% endfor %}
+    </div>
+
+</div>
+{% schema %}
+{
+  "name": "Selected Product",
+  "settings": [
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 80 },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 },
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+       {
+        "type": "product",
+        "id": "cs_product",
+        "label": "Select Product"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Selected Product",
+},
+]
+}
+{% endschema %}
+
+

@@ -1,0 +1,555 @@
+<style>
+  .section-{{ section.id }}{
+      background-color: {{ section.settings.background_color }};
+      padding-top: {{  section.settings.padding_top_desktop }}px ;
+      padding-bottom: {{  section.settings.padding_bottom_desktop }}px ;
+  }
+
+  .container-fluid {
+      position: relative;
+  }
+  .vs-seekbar-container {
+    flex: 1;
+    height: 5px;
+    {% comment %} background: #1ABC9C4D; {% endcomment %}
+    background-color: {{ section.settings.items_light_color }};
+    cursor: pointer;
+    position: relative;
+  }
+  .vs-seekbar {
+    height: 100%;
+    {% comment %} background: #1ABC9C; {% endcomment %}
+    background: {{ section.settings.items_primary_color }} ;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .vs-play-btn-bottom {
+        border-radius: 30px;
+      padding: 0px 6px;
+      border: 1.06px solid {{ section.settings.items_primary_color }} ;
+      color: {{ section.settings.items_primary_color }} ;
+      {% comment %} border: 1.06px solid #1ABC9C;
+      color: #1ABC9C; {% endcomment %}
+      margin-right: 5px;
+      cursor: pointer;
+  }
+  .swiper-button-prev:after,
+  .swiper-button-next:after{
+    display: none;
+  }
+  .form-hd {
+    font-weight: 700;
+    color: #000;
+  }
+  .form-hd span {
+   font-family: 'Clash Display Bold' !important;
+   color: #538775;
+   font-weight: 500;
+   font-style: italic;
+   font-weight: bold;
+  }
+  .vs-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor:pointer;
+    z-index: 999;
+  }
+  .vs-play-btn svg{
+    width: 42px;
+    height: 42px;
+  }
+
+  .vs-video-card {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 /3;
+    position: relative;
+}
+
+  .vs-video-card video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 4px;
+    cursor: pointer;
+    object-fit: cover;
+  }
+  .swiper-pagination.effectiveFormulas {
+    display: block;
+  }
+  .three-slides {
+    max-width:1200px;
+    margin:0 auto;
+  }
+  
+  .swiper-container {
+    overflow: hidden !important; /* Essential for Swiper to render slides outside the box */
+  }
+
+  .vs-slide {
+    height: auto; /* Ensures the aspect ratio 2/3 works */
+  }
+
+  .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.vs-video-card_abs-icon{
+  max-width: 30px;
+  min-width: 28px;
+  width: 100%;
+  height: auto;
+}
+
+.vs-video-card_abs-icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vs-video-card_abs-content {
+    padding: 6px 12px;
+    background-color: #FAF7ED;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 110px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display:none;
+}
+
+span.vs-video-card_abs-text {
+    font-family: GT Cinetype;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #010e11;
+    display: block;
+}
+
+.video_title p{
+   font-family: 'FONTSPRING DEMO - Gibson Book';
+    font-weight: 300;
+    font-style: Regular;
+    font-size: 60px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    color: #221919;
+    padding-bottom: 40px;
+}
+{% comment %} ------ {% endcomment %}
+ .cs_reviews-swiper-pagination{
+    position: unset;
+        width: fit-content !important;
+}
+.cs_reviews-swiper-pagination .swiper-pagination-bullet{
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    background: #F0F0F0;
+    margin: 0 10px !important;
+}
+.cs_reviews-swiper-pagination .swiper-pagination-bullet-active{
+background: var(--herbies-dark-charcoal, #2A2929);
+}
+.hr-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+        margin-top: 35px;
+}
+.cs_reiv_butt-prev{
+    transform: rotate(180deg);
+    line-height: 0;
+    cursor: pointer;
+}
+.cs_reiv_butt-next{
+    line-height: 0;
+    cursor: pointer;
+}
+.hr-controls .swiper-button-disabled svg{
+opacity: 0.2;
+}
+.video-slider-formulas *{
+  letter-spacing: 0;
+}
+    @media (max-width: 768px) {
+      .section-{{ section.id }}{
+          padding-top: {{  section.settings.padding_top_mobile }}px ;
+          padding-bottom: {{  section.settings.padding_bottom_mobile }}px ;
+      }
+
+      div#video-slider-formulas-section .container-fluid {
+          padding-right: 0;
+      }
+     
+      #vs-container .swiper-button-next, #vs-container .swiper-button-prev {
+        top: 45%;
+      }
+        .three-slides {
+          max-width:100%;
+        }
+        .video_title p{
+    font-size: 36px;
+    padding-right: 16px;
+}
+
+
+.hr-controls {
+    margin-top: 20px;
+    justify-content: space-between;
+}
+.cs_reviews-swiper-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+}
+.video_title p{
+    font-size: 40px;
+    max-width: 307px;
+    margin: 0 auto;
+    padding-bottom: 35px;
+}
+#video-slider-formulas-section .page-width{
+  padding-right: 0;
+}
+.cs_reviews-swiper-pagination{
+      padding: 0 !important;
+    text-align: center;
+    margin: auto;
+}
+    }
+
+</style>
+
+
+<div id="video-slider-formulas-section" class="video-slider-formulas section-{{ section.id }} {% if section.settings.slides_per_view_desktop == 3 %}three-slides-container{% endif %} {% if section.settings.pdp %} pdp-{{ section.id }} {% endif %}">
+    <div class="page-width">
+    <div class="vide-slider_head animate-item">
+        {% if section.settings.header_text != blank %}
+            <h3 class="video_title animate-item">{{ section.settings.header_text }}</h3>
+        {% endif %}
+    </div>
+  <div class="container-fluid animate-item">
+    <div id="vs-container" class="swiper-container">
+      <div class="swiper-wrapper cstm_video-wrapper" >
+        {% for block in section.blocks %}
+            {% assign video_poster = block.settings.video | img_url: ""   %}
+          <div class="swiper-slide vs-slide">
+            <div class="vs-video-card">
+              {% if block.settings.abs_img != blank or block.settings.abs_text != blank %}
+                <div class="vs-video-card_abs-content">
+                  {% if block.settings.abs_img != blank %}
+                    <div class="vs-video-card_abs-icon">
+                      {{ block.settings.abs_img | image_url: width: 1600 | image_tag:
+                            widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                            alt: "image",
+                            loading: "lazy"
+                        }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.abs_text != blank %}
+                    <span class="vs-video-card_abs-text">
+                      {{ block.settings.abs_text }}
+                    </span>
+                  {% endif %}
+                </div>
+              {% endif %}
+              <div class="vs-play-btn">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="80" height="80" rx="40" fill="white"/>
+                    <path d="M63.5 40L28.25 59.0526L28.25 20.9474L63.5 40Z" fill="#221919"/>
+                    </svg>
+              </div>
+              {{ block.settings.video | video_tag: class: 'custom-video-slider', controls: false, muted: false, poster: video_poster
+                  }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+       <div class="hr-controls">
+        
+     <div class="cs_reviews-swiper-pagination"></div>
+     
+
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+     var swiper = new Swiper('.swiper-container', {
+  slidesPerView: 4,
+  spaceBetween: 20,
+  speed: 500,
+  pagination: {
+      el: '.cs_reviews-swiper-pagination',
+      clickable: true,
+    },
+  breakpoints: {
+    0: {
+      slidesPerView: 1.1,
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 4,
+    },
+  },
+}); 
+>
+    setTimeout(() => {
+      swiper.update();
+    }, 500);
+
+    document.querySelectorAll('.vs-slide').forEach(function (slide) {
+      const video = slide.querySelector('video');
+      const playBtn = slide.querySelector('.vs-play-btn');
+      const playBtnBottom = slide.querySelector('.vs-play-btn-bottom');
+      const seekbar = slide.querySelector('.vs-seekbar');
+      const seekbarContainer = slide.querySelector('.vs-seekbar-container');
+
+      if (!video) return;
+
+      // Initialize video controls state
+      video.controls = false;
+
+      function pauseOtherVideos() {
+        document.querySelectorAll('.vs-slide').forEach((otherSlide) => {
+          if (otherSlide !== slide) {
+            const otherVideo = otherSlide.querySelector('video');
+            if (otherVideo) {
+              otherVideo.pause();
+              otherVideo.controls = false;
+              const otherPlayBtn = otherSlide.querySelector('.vs-play-btn');
+              if (otherPlayBtn) otherPlayBtn.style.display = 'block';
+              const otherBottomBtn = otherSlide.querySelector('.vs-play-btn-bottom');
+              if (otherBottomBtn) otherBottomBtn.textContent = '▶';
+            }
+          }
+        });
+      }
+
+      function togglePlay() {
+        if (video.paused) {
+          pauseOtherVideos();
+          video.play().catch((error) => console.error('Video play failed:', error));
+          video.controls = false;
+          if (playBtn) playBtn.style.display = 'none';
+          if (playBtnBottom) playBtnBottom.textContent = '❚❚';
+        } else {
+          video.pause();
+          video.controls = false;
+          {% comment %} video.controls = true; {% endcomment %}
+          if (playBtn) playBtn.style.display = 'block';
+          if (playBtnBottom) playBtnBottom.textContent = '▶';
+        }
+      }
+
+      // Event listeners
+      playBtn?.addEventListener('click', togglePlay);
+      playBtnBottom?.addEventListener('click', togglePlay);
+      // ✅ FIX: click on video toggles play/pause
+      video.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        togglePlay();
+      });
+
+      video.addEventListener('timeupdate', function () {
+        if (video.duration && seekbar) {
+          seekbar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+        }
+      });
+
+      video.addEventListener('ended', () => {
+        video.controls = true;
+        if (playBtn) playBtn.style.display = 'block';
+        if (playBtnBottom) playBtnBottom.textContent = '▶';
+      });
+
+      seekbarContainer?.addEventListener('click', function (e) {
+        const rect = this.getBoundingClientRect();
+        const pos = (e.clientX - rect.left) / rect.width;
+        video.currentTime = pos * video.duration;
+      });
+
+      // Optional: Hide native controls on mouse leave
+      video.addEventListener('mouseleave', () => {
+        if (!video.paused) video.controls = false;
+      });
+    });
+  });
+
+  document.querySelectorAll('video').forEach((video) => {
+    // iOS poster fallback
+    if (!video.poster && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      const thumbnail = video.getAttribute('data-fallback-poster');
+      if (thumbnail) {
+        video.poster = thumbnail;
+      }
+    }
+
+    // Preload first frame for iOS
+    video.addEventListener('loadedmetadata', () => {
+      if (video.paused) {
+        video.currentTime = 0.1;
+      }
+    });
+  });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Video Slider",
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Select a Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "abs_img",
+          "label": "Absolute Icon"
+        },
+        {
+          "type": "text",
+          "id": "abs_text",
+          "label": "Absolute Text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "pdp",
+      "label": "PDP Stylling",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Video Slider Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "stars_image",
+      "label": "Stars Image"
+    },
+
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text"
+    },
+    {
+      "type": "richtext",
+      "id": "header_text",
+      "label": "Header Text",
+    },
+    {
+      "type": "header",
+      "content": "Slider Controls"
+    },
+    {
+      "type": "header",
+      "content": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "items_primary_color",
+      "label": "Items Primary Color",
+      "info": "Dark and Primary Color for icons"
+    },
+    {
+      "type": "color_background",
+      "id": "items_light_color",
+      "label": "Video Path Color",
+      "info": "Video Path BG Light"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

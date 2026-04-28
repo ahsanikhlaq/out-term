@@ -1,0 +1,416 @@
+{% comment %}
+  Section: Feature Comparison Table
+  File: sections/comparison-table.liquid
+  - All icons inline (no snippets needed)
+  - All CSS inline (no asset file needed)
+{% endcomment %}
+
+<style>
+  .comparison-section {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: {{ section.settings.section_bg }};
+    padding: {{ section.settings.section_padding_top }}px 20px {{ section.settings.section_padding_bottom }}px;
+  }
+
+  .comparison-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .comparison-table {
+    background-color: #FFFFFF80;
+    border-radius: 18px;
+    overflow: hidden;
+    padding: 40px;
+  }
+
+  .comparison-header,
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 160px 160px;
+    align-items: center;
+        height: 70px;
+        gap: 40px;
+  }
+
+  .comparison-row:last-child {
+    border-bottom: none;
+  }
+
+
+  .col-our-brand,
+  .col-other {
+    height: 100%;
+  }
+  .comparison-row .col-our-brand{
+    background: #fff;
+  }
+  .comparison-row .col-other{
+    background: #fff;
+  }
+  .col-our-brand,
+  .col-other {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .comparison-header .col-our-brand {
+    background-color: {{ section.settings.brand_color }};
+    border-radius: 30px 30px 0 0;
+        height: 100%;
+      }
+
+  .comparison-header .col-our-brand span {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: SemiBold;
+    font-size: 17px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  .comparison-header .col-other span {
+    color: {{ section.settings.text_color }};
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 17px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+        max-width: 121px;
+
+  }
+
+  .features-label {
+    font-family: Montserrat;
+font-weight: 500;
+font-style: Medium;
+font-size: 28px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+text-transform: uppercase;
+color: {{ section.settings.text_color }};
+  }
+
+  .feature-name {
+   font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 21px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    margin: 0;
+    color: #221919;
+  }
+
+  .comparison-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .comparison-icon.check svg {
+    stroke: {{ section.settings.check_color }};
+    fill: none;
+    width: 35px;
+    height: 35px;
+  }
+
+  .comparison-icon.cross svg {
+    stroke: {{ section.settings.cross_color }};
+    fill: none;
+    width: 28px;
+    height: 28px;
+  }
+.comparison-header .col-other{
+    background: #F0F0F0;
+    border-radius: 30px 30px 0 0;
+        height: 100%;
+}
+  @media (max-width: 600px) {
+    .comparison-header,
+    .comparison-row {
+      grid-template-columns: 1fr 90px 90px;
+      height: 55px;
+    gap: 12px;
+    }
+    .comparison-table{
+          padding: 10px;
+    }
+    .features-label {
+    font-size: 14px;
+    }
+.comparison-icon.check svg {
+    width: 22px;
+    height: 22px;
+}
+.comparison-icon.cross svg {
+    stroke: #e53935;
+    fill: none;
+    width: 22px;
+    height: 22px;
+}
+    .feature-name {
+      font-size: 10px;
+    }
+.comparison-header .col-our-brand {
+    border-radius: 16px 16px 0 0;
+    height: 100%;
+}
+.comparison-header .col-other {
+    border-radius: 12px 12px 0 0;
+    height: 100%;
+}
+    .comparison-header .col-our-brand span,
+    .comparison-header .col-other span {
+      font-size: 10px;
+    }
+    
+  }
+</style>
+
+<section class="comparison-section">
+  <div class="comparison-wrapper animate-item">
+    <div class="comparison-table">
+
+      {%- comment -%} Header Row {%- endcomment -%}
+      <div class="comparison-header animate-item">
+        <div class="col-features">
+          <span class="features-label animate-item">{{ section.settings.features_label }}</span>
+        </div>
+        <div class="col-our-brand animate-item">
+          <span>{{ section.settings.our_brand_label }}</span>
+        </div>
+        <div class="col-other animate-item">
+          <span>{{ section.settings.other_brand_label }}</span>
+        </div>
+      </div>
+
+      {%- comment -%} Feature Rows {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'feature_row' -%}
+          <div class="comparison-row animate-item" {{ block.shopify_attributes }}>
+
+            <div class="col-features">
+              <p class="feature-name animate-item">{{ block.settings.feature_name }}</p>
+            </div>
+
+            <div class="col-our-brand animate-item">
+              {%- if block.settings.our_brand_has_feature -%}
+                <span class="comparison-icon check" aria-label="Yes">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="9 12 11 14 15 10"/>
+                  </svg>
+                </span>
+              {%- else -%}
+                <span class="comparison-icon cross animate-item" aria-label="No">
+                  <svg width="39" height="37" viewBox="0 0 39 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.7061 22.1621H33.4793C35.3741 22.1621 37.0713 20.8804 37.2726 18.9948C37.3564 18.2065 37.3984 17.4143 37.3982 16.6216C37.3982 11.3618 35.5662 6.53053 32.506 2.7316C31.7894 1.84142 30.6831 1.38526 29.5418 1.38526H22.1249C21.2318 1.38471 20.3444 1.52814 19.4969 1.81003L13.7459 3.73073C12.8984 4.01262 12.011 4.15605 11.1178 4.1555H8.72801M27.7061 22.1621C26.5647 22.1621 25.8758 23.4992 26.3671 24.5298C27.2494 26.3866 27.7056 28.4171 27.7024 30.4729C27.7024 31.5749 27.2646 32.6319 26.4853 33.4111C25.706 34.1904 24.6491 34.6282 23.547 34.6282C23.1796 34.6282 22.8273 34.4823 22.5676 34.2225C22.3078 33.9628 22.1619 33.6105 22.1619 33.2431V32.0741C22.1619 31.0158 21.9587 29.9687 21.5672 28.9862C21.0058 27.5826 19.8496 26.5299 18.5144 25.8188C16.4645 24.725 14.6655 23.2154 13.2324 21.3864C12.3127 20.2156 10.9682 19.3919 9.47967 19.3919H8.77049M27.7061 22.1621H23.6393M8.72801 4.1555C8.70954 4.24784 8.6763 4.34019 8.63382 4.42883C7.53865 6.64503 6.9255 9.13826 6.9255 11.7737C6.9255 14.5199 7.59037 17.111 8.77049 19.3919M8.72801 4.1555C8.86837 3.48141 8.39004 2.77038 7.66608 2.77038H5.98916C4.34733 2.77038 2.82554 3.72704 2.34721 5.29685C1.72113 7.34683 1.38501 9.52055 1.38501 11.7737C1.38501 14.6418 1.92982 17.3807 2.91973 19.8961C3.48486 21.3255 4.92539 22.1621 6.46195 22.1621H8.40666C9.27837 22.1621 9.78255 21.1353 9.33008 20.3892C9.1321 20.0633 8.94546 19.7307 8.77049 19.3919" stroke="#C30000" stroke-width="2.77025" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                </span>
+              {%- endif -%}
+            </div>
+
+            <div class="col-other animate-item">
+              {%- if block.settings.other_brand_has_feature -%}
+                <span class="comparison-icon check" aria-label="Yes">
+                  <svg width="61" height="62" viewBox="0 0 61 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1.62207" y="1.62207" width="57.5836" height="58.3946" rx="28.7918" stroke="#869E0E" stroke-width="3.24415"/>
+<path d="M19.0593 32.2386L23.8844 39.9586C24.4893 40.9266 25.8782 40.9835 26.5604 40.0684L41.7684 19.6675" stroke="#869E0E" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
+                </span>
+              {%- else -%}
+                <span class="comparison-icon cross animate-item" aria-label="No">
+                  <span class="comparison-icon cross" aria-label="No">
+                  <svg width="39" height="37" viewBox="0 0 39 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.7061 22.1621H33.4793C35.3741 22.1621 37.0713 20.8804 37.2726 18.9948C37.3564 18.2065 37.3984 17.4143 37.3982 16.6216C37.3982 11.3618 35.5662 6.53053 32.506 2.7316C31.7894 1.84142 30.6831 1.38526 29.5418 1.38526H22.1249C21.2318 1.38471 20.3444 1.52814 19.4969 1.81003L13.7459 3.73073C12.8984 4.01262 12.011 4.15605 11.1178 4.1555H8.72801M27.7061 22.1621C26.5647 22.1621 25.8758 23.4992 26.3671 24.5298C27.2494 26.3866 27.7056 28.4171 27.7024 30.4729C27.7024 31.5749 27.2646 32.6319 26.4853 33.4111C25.706 34.1904 24.6491 34.6282 23.547 34.6282C23.1796 34.6282 22.8273 34.4823 22.5676 34.2225C22.3078 33.9628 22.1619 33.6105 22.1619 33.2431V32.0741C22.1619 31.0158 21.9587 29.9687 21.5672 28.9862C21.0058 27.5826 19.8496 26.5299 18.5144 25.8188C16.4645 24.725 14.6655 23.2154 13.2324 21.3864C12.3127 20.2156 10.9682 19.3919 9.47967 19.3919H8.77049M27.7061 22.1621H23.6393M8.72801 4.1555C8.70954 4.24784 8.6763 4.34019 8.63382 4.42883C7.53865 6.64503 6.9255 9.13826 6.9255 11.7737C6.9255 14.5199 7.59037 17.111 8.77049 19.3919M8.72801 4.1555C8.86837 3.48141 8.39004 2.77038 7.66608 2.77038H5.98916C4.34733 2.77038 2.82554 3.72704 2.34721 5.29685C1.72113 7.34683 1.38501 9.52055 1.38501 11.7737C1.38501 14.6418 1.92982 17.3807 2.91973 19.8961C3.48486 21.3255 4.92539 22.1621 6.46195 22.1621H8.40666C9.27837 22.1621 9.78255 21.1353 9.33008 20.3892C9.1321 20.0633 8.94546 19.7307 8.77049 19.3919" stroke="#C30000" stroke-width="2.77025" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                </span>
+              {%- endif -%}
+            </div>
+
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "tag": "section",
+  "class": "comparison-table-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "features_label",
+      "label": "Features Column Label",
+      "default": "FEATURES"
+    },
+    {
+      "type": "text",
+      "id": "our_brand_label",
+      "label": "Our Brand Column Label",
+      "default": "SHOP OUR TERMS"
+    },
+    {
+      "type": "text",
+      "id": "other_brand_label",
+      "label": "Other Brand Column Label",
+      "default": "OTHER BRAND"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "brand_color",
+      "label": "Our Brand Column Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Checkmark Color",
+      "default": "#4caf50"
+    },
+    {
+      "type": "color",
+      "id": "cross_color",
+      "label": "Thumbs Down Color",
+      "default": "#e53935"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_row",
+      "name": "Feature Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_name",
+          "label": "Feature Name",
+          "default": "FEATURE NAME"
+        },
+        {
+          "type": "checkbox",
+          "id": "our_brand_has_feature",
+          "label": "Our Brand Has This Feature",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "other_brand_has_feature",
+          "label": "Other Brand Has This Feature",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "blocks": [
+        {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "PREMIUM RIPPLED RIBBED KNIT FABRIC",
+            "our_brand_has_feature": true,
+            "other_brand_has_feature": false
+          }
+        },
+        {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "ADVANCED BREATHABILITY TECHNOLOGY",
+            "our_brand_has_feature": true,
+            "other_brand_has_feature": false
+          }
+        },
+        {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "EASY CARE: MACHINE WASH & IRON-EASY™",
+            "our_brand_has_feature": true,
+            "other_brand_has_feature": false
+          }
+        },
+        {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "SUSTAINABLE FABRIC SOURCING",
+            "our_brand_has_feature": true,
+            "other_brand_has_feature": false
+          }
+        },
+        {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "SKIN-SAFE, NON-IRRITATING FINISH",
+            "our_brand_has_feature": true,
+            "other_brand_has_feature": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
