@@ -1,0 +1,460 @@
+<style>
+  #cs-offers-{{ section.id }} {
+    background: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  .cs-offers-heading-{{ section.id }} {
+    margin: 0 0 24px;
+    font-family: 'FONTSPRING DEMO - Gibson Book', sans-serif;
+    font-weight: 300;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #221919;
+  }
+
+  /* ── Two-column layout ── */
+  .cs-offers-layout-{{ section.id }} {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 16px;
+    align-items: stretch;
+    min-height: 580px;
+  }
+
+  /* ── Hero card ── */
+  .cs-offers-hero-{{ section.id }} {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid rgba(34, 25, 25, 0.15);
+  }
+
+  .cs-offers-hero-img-wrap-{{ section.id }} {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .cs-offers-hero-img-wrap-{{ section.id }} > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Hero bag icon — top-right of image */
+  .cs-offers-hero-atc-{{ section.id }} {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+  }
+
+  /* Bundle info — overlaid at image bottom on desktop */
+  .cs-offers-hero-info-{{ section.id }} {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    padding: 20px 24px;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .cs-offers-bundle-title-{{ section.id }} {
+    font-family: 'FONTSPRING DEMO - Gibson Book', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    color: #221919;
+    margin: 0 0 8px;
+  }
+
+  .cs-offers-bundle-item-{{ section.id }} {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #221919;
+    margin: 0;
+  }
+
+  /* ── Product grid (right side) ── */
+  .cs-offers-products-{{ section.id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    height: 100%;
+  }
+
+  /* ── Product card ── */
+  .cs-offers-card-{{ section.id }} {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f5;
+    overflow: hidden;
+  }
+
+  .cs-offers-card-img-wrap-{{ section.id }} {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .cs-offers-card-img-wrap-{{ section.id }} > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Discount badge */
+  .cs-offers-badge-{{ section.id }} {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #221919;
+    z-index: 2;
+    line-height: 1;
+  }
+
+  /* Product card footer — name only (ATC is absolute) */
+  .cs-offers-card-footer-{{ section.id }} {
+    flex-shrink: 0;
+    padding: 12px 52px 12px 14px;
+    background: #ffffff;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .cs-offers-card-name-{{ section.id }} {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #221919;
+    margin: 0;
+  }
+
+  /* Product card ATC — desktop: bottom-right (over footer) */
+  .cs-offers-card-atc-{{ section.id }} {
+    position: absolute;
+    bottom: 9px;
+    right: 10px;
+    z-index: 3;
+  }
+
+  /* ── Quick-add overrides (bag icon button) ── */
+  .cs-offers-atc-inner .quick-add {
+    position: static !important;
+    inset: unset !important;
+    z-index: unset !important;
+    pointer-events: auto !important;
+  }
+  .cs-offers-atc-inner .quick-add__product-form-component {
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .cs-offers-atc-inner .quick-add__product-form-component .shopify-product-form {
+    height: auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .cs-offers-atc-inner .quick-add__button {
+    position: static !important;
+    right: unset !important;
+    bottom: unset !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    border-radius: 6px !important;
+    background: #221919 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+    flex-shrink: 0 !important;
+  }
+  .cs-offers-atc-inner .quick-add__button:hover {
+    opacity: 0.78 !important;
+    scale: 1 !important;
+  }
+  .cs-offers-atc-inner .quick-add__button .add-to-cart-text__content {
+    display: none !important;
+  }
+  .cs-offers-atc-inner .quick-add__button .add-to-cart-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .cs-offers-atc-inner .quick-add__button svg {
+    width: 14px !important;
+    height: 14px !important;
+    display: block !important;
+  }
+  .cs-offers-atc-inner .quick-add__button svg path {
+    fill: white !important;
+  }
+  .cs-offers-atc-inner .cs-add-to-cart-icon_main > span {
+    display: none !important;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 767px) {
+    #cs-offers-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .cs-offers-heading-{{ section.id }} {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    /* Stack vertically */
+    .cs-offers-layout-{{ section.id }} {
+      grid-template-columns: 1fr;
+      min-height: unset;
+      gap: 0;
+    }
+
+    /* Hero: image then info below */
+    .cs-offers-hero-{{ section.id }} {
+      height: auto;
+    }
+
+    .cs-offers-hero-img-wrap-{{ section.id }} {
+      flex: unset;
+      aspect-ratio: 4 / 5;
+    }
+
+    /* Bundle info moves below image, centered */
+    .cs-offers-hero-info-{{ section.id }} {
+      position: static;
+      text-align: center;
+      padding: 20px 16px 24px;
+    }
+
+    .cs-offers-bundle-title-{{ section.id }} {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    /* Product grid below hero */
+    .cs-offers-products-{{ section.id }} {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 10px;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    /* Card image: aspect ratio on mobile */
+    .cs-offers-card-img-wrap-{{ section.id }} {
+      flex: unset;
+      aspect-ratio: 3 / 4;
+    }
+
+    /* ATC: move to top-right of image on mobile */
+    .cs-offers-card-atc-{{ section.id }} {
+      bottom: unset;
+      top: 10px;
+      right: 10px;
+    }
+
+    /* Footer: no extra padding-right since ATC is on image */
+    .cs-offers-card-footer-{{ section.id }} {
+      padding-right: 14px;
+      min-height: 42px;
+    }
+
+    .cs-offers-card-name-{{ section.id }} {
+      font-size: 11px;
+    }
+  }
+</style>
+
+<section id="cs-offers-{{ section.id }}">
+  <div class="page-width">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="cs-offers-heading-{{ section.id }} animate-item">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="cs-offers-layout-{{ section.id }} animate-item">
+
+      {%- comment -%} ── Hero bundle card ── {%- endcomment -%}
+      {%- assign hero_block = section.blocks | where: "type", "hero" | first -%}
+      {%- if hero_block -%}
+        {%- assign hero_product = all_products[hero_block.settings.product] -%}
+        <div class="cs-offers-hero-{{ section.id }}">
+
+          <div class="cs-offers-hero-img-wrap-{{ section.id }}">
+            {%- liquid
+              if hero_block.settings.image != blank
+                assign hero_img = hero_block.settings.image | image_url: width: 800
+              elsif hero_product and hero_product.featured_image
+                assign hero_img = hero_product.featured_image | image_url: width: 800
+              else
+                assign hero_img = nil
+              endif
+            -%}
+            {%- if hero_img -%}
+              <img
+                src="{{ hero_img }}"
+                alt="{{ hero_block.settings.bundle_title | escape }}"
+                width="800"
+                loading="lazy"
+              >
+            {%- endif -%}
+
+            {%- if hero_product -%}
+              <div class="cs-offers-hero-atc-{{ section.id }}">
+                <div class="cs-offers-atc-inner">
+                  <product-card data-no-navigation style="display:contents">
+                    <a href="{{ hero_product.url }}" ref="productCardLink" style="display:none;" aria-hidden="true" tabindex="-1"></a>
+                    {%- render 'quick-add', product: hero_product, section_id: section.id, block: hero_block -%}
+                  </product-card>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+
+          <div class="cs-offers-hero-info-{{ section.id }}">
+            {%- if hero_block.settings.bundle_title != blank -%}
+              <h3 class="cs-offers-bundle-title-{{ section.id }}">{{ hero_block.settings.bundle_title }}</h3>
+            {%- endif -%}
+            {%- if hero_block.settings.item_1 != blank -%}
+              <p class="cs-offers-bundle-item-{{ section.id }}">{{ hero_block.settings.item_1 }}</p>
+            {%- endif -%}
+            {%- if hero_block.settings.item_2 != blank -%}
+              <p class="cs-offers-bundle-item-{{ section.id }}">{{ hero_block.settings.item_2 }}</p>
+            {%- endif -%}
+          </div>
+
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} ── Product cards grid ── {%- endcomment -%}
+      <div class="cs-offers-products-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- if block.type == "product_card" -%}
+            {%- assign card_product = all_products[block.settings.product] -%}
+            {%- if card_product -%}
+              <div class="cs-offers-card-{{ section.id }}">
+
+                <div class="cs-offers-card-img-wrap-{{ section.id }}">
+                  {%- if block.settings.badge != blank -%}
+                    <span class="cs-offers-badge-{{ section.id }}">{{ block.settings.badge }}</span>
+                  {%- endif -%}
+                  {%- liquid
+                    if block.settings.image != blank
+                      assign card_img = block.settings.image | image_url: width: 500
+                    elsif card_product.featured_image
+                      assign card_img = card_product.featured_image | image_url: width: 500
+                    else
+                      assign card_img = nil
+                    endif
+                  -%}
+                  {%- if card_img -%}
+                    <img
+                      src="{{ card_img }}"
+                      alt="{{ card_product.title | escape }}"
+                      loading="lazy"
+                    >
+                  {%- endif -%}
+                </div>
+
+                <div class="cs-offers-card-footer-{{ section.id }}">
+                  <p class="cs-offers-card-name-{{ section.id }}">{{ card_product.title }}</p>
+                </div>
+
+                <div class="cs-offers-card-atc-{{ section.id }}">
+                  <div class="cs-offers-atc-inner">
+                    <product-card data-no-navigation style="display:contents">
+                      <a href="{{ card_product.url }}" ref="productCardLink" style="display:none;" aria-hidden="true" tabindex="-1"></a>
+                      {%- render 'quick-add', product: card_product, section_id: section.id, block: block -%}
+                    </product-card>
+                  </div>
+                </div>
+
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Our Offers",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Section Heading", "default": "OUR OFFERS" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "header", "content": "Padding Desktop" },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Desktop)", "default": 60 },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Desktop)", "default": 60 },
+    { "type": "header", "content": "Padding Mobile" },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Top (Mobile)", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 200, "step": 4, "unit": "px", "label": "Padding Bottom (Mobile)", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "Hero Bundle Card",
+      "limit": 1,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Hero Image" },
+        { "type": "text", "id": "bundle_title", "label": "Bundle Title", "default": "THE DUO EDIT" },
+        { "type": "text", "id": "item_1", "label": "Bundle Item 1", "default": "[1 X] THE 'BORN AGAIN' OVERSIZED HOODIE" },
+        { "type": "text", "id": "item_2", "label": "Bundle Item 2", "default": "[1 X] THE 'OUR TERMS' ESSENTIAL OVERSIZED TEE" },
+        { "type": "product", "id": "product", "label": "Bundle Product (Add to Cart)" }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "image_picker", "id": "image", "label": "Custom Image (overrides product image)" },
+        { "type": "text", "id": "badge", "label": "Discount Badge", "default": "-45% OFF" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Our Offers", "category": "Custom" }
+  ]
+}
+{% endschema %}

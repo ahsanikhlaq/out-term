@@ -106,6 +106,64 @@
         "padding_bottom_mobile": 20
       }
     },
+    "our_offers_cs001": {
+      "type": "custom-our-offers",
+      "blocks": {
+        "hero_cs001": {
+          "type": "hero",
+          "settings": {
+            "bundle_title": "THE DUO EDIT",
+            "item_1": "[1 X] THE 'BORN AGAIN' OVERSIZED HOODIE",
+            "item_2": "[1 X] THE 'OUR TERMS' ESSENTIAL OVERSIZED TEE",
+            "product": "club-house-jersey-top"
+          }
+        },
+        "product_card_cs001": {
+          "type": "product_card",
+          "settings": {
+            "product": "pink-hue-t-shirt-for-men",
+            "badge": "-45% OFF"
+          }
+        },
+        "product_card_cs002": {
+          "type": "product_card",
+          "settings": {
+            "product": "club-house-jersey-top",
+            "badge": "-45% OFF"
+          }
+        },
+        "product_card_cs003": {
+          "type": "product_card",
+          "settings": {
+            "product": "terms-print-tee-for-women",
+            "badge": "-45% OFF"
+          }
+        },
+        "product_card_cs004": {
+          "type": "product_card",
+          "settings": {
+            "product": "cropped-zipper-hoodie-for-women",
+            "badge": "-45% OFF"
+          }
+        }
+      },
+      "block_order": [
+        "hero_cs001",
+        "product_card_cs001",
+        "product_card_cs002",
+        "product_card_cs003",
+        "product_card_cs004"
+      ],
+      "name": "Our Offers",
+      "settings": {
+        "heading": "OUR OFFERS",
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
     "custom_collection_tab_rxJgBt": {
       "type": "custom-collection-tab",
       "blocks": {
@@ -611,6 +669,7 @@
     "custom_banner_7yBAb8",
     "custom_collection_tab_VrTNF6",
     "custom_product_cart_slider_YM6qdj",
+    "our_offers_cs001",
     "custom_collection_tab_rxJgBt",
     "fits_that_rKQCye",
     "trending_XMLMWi",
